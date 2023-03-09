@@ -1,0 +1,37 @@
+Websites:-
+- cubic-bezier.com (for making animation cubic-bezier) 
+
+Best CSS Reference Websites:-
+CSS Triggers
+CSS Reference | A free visual guide to CSS
+CSS reference | MDN
+SitePoint CSS Reference
+CSS Properties | HTML Dog
+CSS Almanac | CSS-Tricks
+CSS Reference | Codrops
+Codrops CSS Reference
+CSS Reference | W3Schools
+W3Schools CSS Reference
+CSS HTML XHTML Reference Book
+CSS Properties and Values
+CSS Basic User Interface Module Level 3 (CSS3 UI)
+CSS Properties Index | Jens Oliver Meiert
+Complete CSS Reference | JavaScript Kit
+Quick CSS Property Reference | Little Web Hut
+Little Web Hut
+CSS References | The Web Design Group
+Web Design Group CSS References
+All CSS Properties Listed Alphabetically
+CSS Property Index
+CSS Properties List | PageResource
+CSS Property Reference | Tizag Tutorials
+CSS 2.1 Reference | Cultured Code
+CSS Reference | Webucator
+Introduction to Safari CSS Reference
+Safari CSS Reference
+Microsoft CSS Reference
+Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification
+W3C CSS 2.1
+CSS Reference | SS64.com
+An A-Z Index of CSS
+CSS Cheat Sheet
