@@ -1,250 +1,46 @@
-|
-|
-|   Dev.BUSHRA CSS CheatSheet
-|
-| 
-|------------------------------------------------------------------------------------
+|                                                                                   |
+|                                  Dev.BUSHRA                                       |
+|                                CSS CheatSheet                                     |
+|-----------------------------------------------------------------------------------|
 |                              All CSS Properties                                   |
 |                      www.w3schools.com/css/css3_2dtransforms.asp                  |
-|------------------------------------------------------------------------------------
+|-----------------------------------------------------------------------------------|
 |
 |
-|   [Animation] 
-|   animation                    binds an animation to an element 
-|   animation-delay              delays animation start 
-|   animation-direction          reverse animation or in alternate cycles 
-|   animation-duration           animation duration in seconds or ms 
-|   animation-fill-mode          style when the animation is not playing 
-|   animation-iteration-count    number of an animation replay 
-|   animation-name               name for the @keyframes{} animation 
-|   animation-play-state         the animation is running or paused 
-|   animation-timing-function    speed curve of an animation 
-|   backface-visibility          is element visible when not facing the screen 
-|   @keyframes                   specifies the animation code {}
-|
-|   [Align] 
-|   align-content       behavior of the flex-wrap property 
-|   align-items         alignment of items inside the container 
-|   align-self          alignment of the selected item 
-|
-|   [Justify]
-|   justify-content     justifies flexible container's items horizontally if necessary 
-|   justify-item        set on the grid container to give child elements (grid items) alignment in the inline direction. 
-|   justify-self        aligns a grid item within its grid cell in the inline direction. 
-|
-|   [Flex] 
-|   flex-basis       initial length of a flexible item 
-|   flex-direction   direction of the flexible items    
-|   flex-flow        shorthand for flex-direction and flex-wrap 
-|   flex-grow        how much the item will grow relative other items 
-|   flex-shrink      how to shrink the item relative to other items 
-|   flex-wrap        wrap flexible items 
-|
-|   [Grid] 
-|   grid-area                    Either specifies a "name for the grid item", or this property is a shorthand property for the "grid-row-start, grid-column-start, grid-row-end, and grid-column-end" properties 
-|   grid-auto-columns	         Specifies a "default column size" 
-|   grid-auto-flow	             Specifies how auto-placed items are inserted in the grid 
-|   grid-auto-rows	             Specifies a "default row size" 
-|   grid-column	                 A shorthand property for the "grid-column-start and the grid-column-end" properties 
-|   grid-column-end	             Specifies "where to end the grid item" 
-|   grid-column-gap	             Specifies the "size of the gap between columns" 
-|   grid-column-start	         Specifies "where to start the grid item" 
-|   grid-gap	                 A shorthand property for the "grid-row-gap and grid-column-gap" properties 
-|   gap	                         A shorthand property for the "row-gap and the column-gap" properties 
-|   grid-row	                 A shorthand property for the "grid-row-start and the grid-row-end" properties 
-|   grid-row-end	             Specifies "where to end the grid item" 
-|   grid-row-gap	             Specifies the "size of the gap between rows" 
-|   grid-row-start	             Specifies "where to start the grid item" 
-|   grid-template	             A shorthand property for the "grid-template-rows, grid-template-columns and grid-areas" properties 
-|   grid-template-areas	         Specifies "how to display columns and rows", using named grid items 
-|   grid-template-columns	     Specifies the "size of the columns, and how many columns in a grid layout" 
-|   grid-template-rows	         Specifies the "size of the rows in a grid layout" 
-|
-|   [Background] 
-|   background               all bg properties in one declaration 
-|   background-attachment    is the bg image scroll/ fixed/ local 
-|   background-blend-mode    blend mode of each bg layer 
-|   background-clip          painting area of the bg 
-|   background-origin        where is the bg imade is positioned 
-|   background-position      position of the bg image 
-|   background-repate        bg image repeated no/ repeat/ repeat-x/ repeat-y 
-|   background-size          bg image size 
-|
-|   [Border]
-|   border                       set border properties 
-|   border-bottom                bottom border properties in one line 
-|   border-bottom-color          color of the bottom border 
-|   border-bottom-left-radius    border bottom left radius 
-|   border-bottom-right-radius   border bottom right radius 
-|   border-bottom-style          border bottom style 
-|   border-bottom-width          border bottom width 
-|   border-collapse              border collapse 
-|   border-color                 border color 
-|   border-image                 sets an image as border 
-|   border-image-outset          border image area extends beyond the border box 
-|   border-image-repeat          border image repeated, rounded or stretched 
-|   border-image-slice           how to slice the border image 
-|   border-image-source          path to the border image 
-|   border-image-width           border image width 
-|   border-left                  left border properties in one line 
-|   border-left-color            border left color 
-|   border-left-style            border left style 
-|   border-left-width            border left width 
-|   border-radius                border radius of the four rounded corners 
-|   border-right                 right border properties in one line 
-|   border-right-color           border right color 
-|   border-right-style           border right style 
-|   border-right-width           border right width 
-|   border-spacing               border spacing 
-|   border-style                 border style 
-|   border-top                   top border properties in one line 
-|   border-top-color             border top color 
-|   border-top-left-radius       border top left radius 
-|   border-top-right-radius      border top right radius 
-|   border-top-style             border top style 
-|   border-top-width             border top width 
-|   border-width                 border width 
-|   
-|   [Column] 
-|   columns              set column-width and column-count 
-|   column-count         divide the content in columns 
-|   column-fill          balanced fill or not 
-|   column-gap           gap between the columns    
-|   column-rule          separator between columns, like border 
-|   column-rule-color    column rule color 
-|   column-rule-style    column rule style 
-|   column-rule-width    column rule width 
-|   column-span          column span 
-|   column-width         column width 
-|
-|   [Font] 
-|   font                 all font properties in one line 
-|   @font-face           declare non-web-safe fonts {}
-|   font-family          font of the element 
-|   font-size            font size    
-|   font-size-adjust     control font size if the first declared option is not available 
-|   font-stretch         widen or narrow text 
-|   font-style           font style: normal, italic, oblique 
-|   font-variant         set small-caps 
-|   font-weight          use bold or thin characters 
-|
-|   [List] 
-|   list-style           all list properties in one line 
-|   list-style-image     replace the list item marker with an image 
-|   list-style-position  list item markers inside or outside the content flow 
-|   list-style-type      set the type of the list item marker 
-|
-|   [Outline] 
-|   outline          drow an outer border around elemen 
-|   outline-color    outline color 
-|   outline-offset   gap between the element and the outline 
-|   outline-style    outline style 
-|   outline-width    outline width 
-|   
-|   [Overflow] 
-|   overflow     hide, display or scroll if the content overflows its container 
-|   overflow-x   horizontal overflow 
-|   overflow-y   vertical overflow 
-|
-|   [Text] 
-|   text-align       horizontal alignment of text 
-|   text-align-last  horizontal alignment of last line of tex 
-|   text-decoration  overline, underline or line-through the text 
-|   text-indent      indentation of the first line of the text 
-|   text-overflow    the way how overflowed content is marked (ellipsis) 
-|   text-shadow      text shadow 
-|   text-transform   capitalization of text 
-|
-|   [Mask] 
-|   mask	            Hides parts of an element by masking or clipping an image at specific places
-|   mask-clip	        Specifies the mask area
-|   mask-composite	    Represents a compositing operation used on the current mask layer with the mask layers below it
-|   mask-image	        Specifies an image to be used as a mask layer for an element
-|   mask-mode	        Specifies whether the mask layer image is treated as a luminance mask or as an alpha mask
-|   mask-origin	        Specifies the origin position (the mask position area) of a mask layer image
-|   mask-position	    Sets the starting position of a mask layer image (relative to the mask position area)
-|   mask-repeat	        Specifies how the mask layer image is repeated
-|   mask-size	        Specifies the size of a mask layer image
-|   mask-type	        Specifies whether an SVG <mask> element is treated as a luminance mask or as an alpha mask
-|
-|   [Box]
-|   box-shadow           shadow to element 
-|   box-sizing           box sizing properties
-|   box-decoration-break	    Sets the behavior of the background and border of an element at page-break, or, for in-line elements, at line-break.
-|   box-shadow	                Attaches one or more shadows to an element
-|   box-sizing	                Defines how the width and height of an element are calculated: should they include padding and borders, or not
-|
-|   [Break]
-|   break-after	                Specifies whether or not a page-, column-, or region-break should occur after the specified element
-|   break-before	            Specifies whether or not a page-, column-, or region-break should occur before the specified element
-|   break-inside	            Specifies whether or not a page-, column-, or region-break should occur inside the specified element
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|=====================================================================================
-|   [Others]
-|   all                  change all properties 
-|   bottom               bottom offset for relative and absolute elements 
- 
-|   caption-side         placement of a table caption 
-|   clear                deny floating of an element 
-|   clip                 clip an absolutely positioned element 
-|   color                text color 
-|   content              insert content :before and :after elements 
-|   counter-increment    count sections 
-|   counter-reset        reset counter 
-|   cursor               cursor type when element is hovered 
-|   direction            writing direction, Arabic is using rtl 
-|   display              box display type    
-|   empty-cells          hide borders and background on empty table cells 
-|   filter               image effects: grayscale, blur, invert etc.    
-|   float                float elements left or right 
-|   hanging-punctuation  can a punctuation mark be placed outside the line box? 
-|   height               height of the element    
 
-|   left                 left offset for relative and absolute elements 
-|   letter-spacing       space between characters 
-|   line-height          line height of text or inline-block elements 
-|   max-height           maximum height of element 
-|   max-width            maximum width of element 
-|   min-height           minimum height 
-|   min-width            minimum width 
-|   nav-down             where to navigate when the the arrow-down button is pressed 
-|   nav-index            sets sequential navigation order 
-|   nav-left             where to navigate when the the arrow-left button is presse 
-|   nav-right            where to navigate when the the arrow-right button is pressed 
-|   nav-up               where to navigate when the the arrow-up button is presse 
-|   opacity              transparency level of an element 
-|   order                reorder elements in a container 
-|   page-break-after     adds page break after an element 
-|   page-break-before    adds page break before an element 
-|   page-break-inside    allow page break inside an element 
-|   perspective          how many pixels the 3D element is placed from the view 
-|   perspective-origin   where is the 3D element based in the x- and y-axis 
-|   position             positioning type: absolute, fixed, relative, static 
-|   quotes               set quotation marks to wrap an element 
-|   resize               declare resizable elements 
-|   right                right offset for relative and absolute elements 
-|   tab-size             tab character space length 
-|   table-layout         table layout algorithm 
-|   
 
-/*  ================================================[ All CSS Properties by Alphabet ]===========================================================  */
 
-[A] 
-align-content                Specifies the alignment between the lines "inside a flexible container" when the items do not use all available space 
-align-items                  Specifies the alignment for items 'inside a flexible container' 
-align-self	                 Specifies the alignment for selected items inside a flexible container 
-all	                         Resets all properties (except unicode-bidi and direction) 
+
+[Color]
+mix-blend-mode	    Specifies how an element's content should blend with its direct parent background
+color	                    Sets the color of text
+[3D]
+perspective	        Gives a 3D-positioned element some perspective
+perspective          how many pixels the 3D element is placed from the view 
+perspective-origin   where is the 3D element based in the x- and y-axis 
+perspective-origin	Defines at which position the user is looking at the 3D-positioned element
+z-index     controle the 3d position and what element is above the other element.
+[Transform]    
+transform	Applies a 2D or 3D transformation to an element
+transform-origin	Allows you to change the position on transformed elements
+transform-style	Specifies how nested elements are rendered in 3D space
+transition	A shorthand property for all the transition-* properties
+transition-delay	Specifies when the transition effect will start
+transition-duration	Specifies how many seconds or milliseconds a transition effect takes to complete
+transition-property	Specifies the name of the CSS property the transition effect is for
+transition-timing-function	Specifies the speed curve of the transition effect
+[Animation] 
+animation                    binds an animation to an element 
+animation-delay              delays animation start 
+animation-direction          reverse animation or in alternate cycles 
+animation-duration           animation duration in seconds or ms 
+animation-fill-mode          style when the animation is not playing 
+animation-iteration-count    number of an animation replay 
+animation-name               name for the @keyframes{} animation 
+animation-play-state         the animation is running or paused 
+animation-timing-function    speed curve of an animation 
+backface-visibility          is element visible when not facing the screen 
+@keyframes                   specifies the animation code {}
 animation	                 A shorthand property for "all the animation-* properties
 animation-delay	             Specifies a delay for the start of an animation
 animation-direction	         Specifies whether an animation should be played forwards, backwards or in alternate cycles
@@ -254,9 +50,59 @@ animation-iteration-count	 Specifies the number of times an animation should be 
 animation-name	             Specifies a name for the @keyframes {} animation
 animation-play-state	     Specifies whether the animation is running or paused 
 animation-timing-function	 Specifies the speed curve of an animation 
+[Align] 
+align-content       behavior of the flex-wrap property 
+align-items         alignment of items inside the container 
+align-self          alignment of the selected item 
+[Justify]
+justify-content     justifies flexible container's items horizontally if necessary 
+justify-item        set on the grid container to give child elements (grid items) alignment in the inline direction. 
+justify-self        aligns a grid item within its grid cell in the inline direction. 
+[Position]
+position	        Specifies the type of positioning method used for an element (static, relative, absolute or fixed)
 
-[B] 
-backface-visibility	         Defines whether or not the back face of an element should be visible when facing the user 
+[Flex] 
+flex	                    A shorthand property for the flex-grow, flex-shrink, and the flex-basis properties
+flex-basis       initial length of a flexible item 
+flex-direction   direction of the flexible items    
+flex-flow        shorthand for flex-direction and flex-wrap 
+flex-grow        how much the item will grow relative other items 
+flex-shrink      how to shrink the item relative to other items 
+flex-wrap        wrap flexible items 
+flex-basis	     Specifies the initial length of a flexible item
+flex-direction  Specifies the direction of the flexible items
+flex-flow	     A shorthand property for the flex-direction and the flex-wrap properties
+flex-grow	     Specifies how much the item will grow relative to the rest
+flex-shrink	     Specifies how the item will shrink relative to the rest
+flex-wrap	     Specifies whether the flexible items should wrap or not
+[Grid] 
+grid-area                    Either specifies a "name for the grid item", or this property is a shorthand property for the "grid-row-start, grid-column-start, grid-row-end, and grid-column-end" properties 
+grid-auto-columns	         Specifies a "default column size" 
+grid-auto-flow	             Specifies how auto-placed items are inserted in the grid 
+grid-auto-rows	             Specifies a "default row size" 
+grid-column	                 A shorthand property for the "grid-column-start and the grid-column-end" properties 
+grid-column-end	             Specifies "where to end the grid item" 
+grid-column-gap	             Specifies the "size of the gap between columns" 
+grid-column-start	         Specifies "where to start the grid item" 
+grid-gap	                 A shorthand property for the "grid-row-gap and grid-column-gap" properties 
+gap	                         A shorthand property for the "row-gap and the column-gap" properties 
+grid-row	                 A shorthand property for the "grid-row-start and the grid-row-end" properties 
+grid-row-end	             Specifies "where to end the grid item" 
+grid-row-gap	             Specifies the "size of the gap between rows" 
+grid-row-start	             Specifies "where to start the grid item" 
+grid-template	             A shorthand property for the "grid-template-rows, grid-template-columns and grid-areas" properties 
+grid-template-areas	         Specifies "how to display columns and rows", using named grid items 
+grid-template-columns	     Specifies the "size of the columns, and how many columns in a grid layout" 
+grid-template-rows	         Specifies the "size of the rows in a grid layout" 
+[Background] 
+background               all bg properties in one declaration 
+background-attachment    is the bg image scroll/ fixed/ local 
+background-blend-mode    blend mode of each bg layer 
+background-clip          painting area of the bg 
+background-origin        where is the bg imade is positioned 
+background-position      position of the bg image 
+background-repate        bg image repeated no/ repeat/ repeat-x/ repeat-y 
+background-size          bg image size 
 background	                 A shorthand property for all the background-* properties 
 background-attachment	     Sets whether a background image scrolls with the rest of the page, or is fixed 
 background-blend-mode	     Specifies the blending mode of each background layer (color/image) 
@@ -267,48 +113,52 @@ background-origin	         Specifies the origin position of a background image
 background-position	         Specifies the position of a background image 
 background-repeat	         Sets if/how a background image will be repeated 
 background-size	             Specifies the size of the background images 
-border	                     A shorthand property for border-width, border-style and border-color 
-border-bottom	             A shorthand property for border-bottom-width, border-bottom-style and border-bottom-color 
-border-bottom-color	         Sets the color of the bottom border 
-border-bottom-left-radius	 Defines the radius of the border of the bottom-left corner 
-border-bottom-right-radius	 Defines the radius of the border of the bottom-right corner 
-border-bottom-style	         Sets the style of the bottom border 
-border-bottom-width	         Sets the width of the bottom border 
-border-collapse	             Sets whether table borders should collapse into a single border or be separated 
-border-color	             Sets the color of the four borders 
-border-image	             A shorthand property for all the border-image-* properties 
-border-image-outset	        Specifies the amount by which the border image area extends beyond the border box
-border-image-repeat	        Specifies whether the border image should be repeated, rounded or stretched
-border-image-slice	        Specifies how to slice the border image
-border-image-source	        Specifies the path to the image to be used as a border
-border-image-width	        Specifies the width of the border image
-border-left	                A shorthand property for all the border-left-* properties
-border-left-color	        Sets the color of the left border
-border-left-style	        Sets the style of the left border
-border-left-width	        Sets the width of the left border
-border-radius	            A shorthand property for the four border-*-radius properties
-border-right	            A shorthand property for all the border-right-* properties
-border-right-color	        Sets the color of the right border
-border-right-style	        Sets the style of the right border
-border-right-width	        Sets the width of the right border
-border-spacing	            Sets the distance between the borders of adjacent cells
-border-style	            Sets the style of the four borders
-border-top	                A shorthand property for border-top-width, border-top-style and border-top-color
-border-top-color	        Sets the color of the top border
-border-top-left-radius	    Defines the radius of the border of the top-left corner
-border-top-right-radius	    Defines the radius of the border of the top-right corner
-border-top-style	        Sets the style of the top border
-border-top-width	        Sets the width of the top border
-border-width	            Sets the width of the four borders
-bottom	                    Sets the elements position, from the bottom of its parent element
+[Border]
+border                       set border properties 
+border-bottom                bottom border properties in one line 
+border-bottom-color          color of the bottom border 
+border-bottom-left-radius    border bottom left radius 
+border-bottom-right-radius   border bottom right radius 
+border-bottom-style          border bottom style 
+border-bottom-width          border bottom width 
+border-collapse              border collapse 
+border-color                 border color 
+border-image                 sets an image as border 
+border-image-outset          border image area extends beyond the border box 
+border-image-repeat          border image repeated, rounded or stretched 
+border-image-slice           how to slice the border image 
+border-image-source          path to the border image 
+border-image-width           border image width 
+border-left                  left border properties in one line 
+border-left-color            border left color 
+border-left-style            border left style 
+border-left-width            border left width 
+border-radius                border radius of the four rounded corners 
+border-right                 right border properties in one line 
+border-right-color           border right color 
+border-right-style           border right style 
+border-right-width           border right width 
+border-spacing               border spacing 
+border-style                 border style 
+border-top                   top border properties in one line 
+border-top-color             border top color 
+border-top-left-radius       border top left radius 
+border-top-right-radius      border top right radius 
+border-top-style             border top style 
+border-top-width             border top width 
+border-width                 border width 
 
-[C] 
-caption-side	            Specifies the placement of a table caption
-caret-color	                Specifies the color of the cursor (caret) in inputs, textareas, or any element that is editable
-@charset{}	                Specifies the character encoding used in the style sheet
-clear	                    Specifies what should happen with the element that is next to a floating element
-clip	                    Clips an absolutely positioned element
-color	                    Sets the color of text
+[Column] 
+columns              set column-width and column-count 
+column-count         divide the content in columns 
+column-fill          balanced fill or not 
+column-gap           gap between the columns    
+column-rule          separator between columns, like border 
+column-rule-color    column rule color 
+column-rule-style    column rule style 
+column-rule-width    column rule width 
+column-span          column span 
+column-width         column width 
 column-count	            Specifies the number of columns an element should be divided into
 column-fill	                Specifies how to fill columns, balanced or not
 column-gap	                Specifies the gap between the columns
@@ -319,28 +169,16 @@ column-rule-width	        Specifies the width of the rule between columns
 column-span	                Specifies how many columns an element should span across
 column-width	            Specifies the column width
 columns	                    A shorthand property for column-width and column-count
-content	                    Used with the :before and :after pseudo-elements, to insert generated content
-counter-increment	        Increases or decreases the value of one or more CSS counters
-counter-reset	            Creates or resets one or more CSS counters
-cursor	                    Specifies the mouse cursor to be displayed when pointing over an element
-
-[D] 
-direction	                Specifies the text direction/writing direction
-display	                    Specifies how a certain HTML element should be displayed.
-
-[E] 
-empty-cells	                Specifies whether or not to display borders and background on empty cells in a table
-
-[F] 
-filter	                    Defines effects (e.g. blurring or color shifting) on an element before the element is displayed
-flex	                    A shorthand property for the flex-grow, flex-shrink, and the flex-basis properties
-flex-basis	                Specifies the initial length of a flexible item
-flex-direction	            Specifies the direction of the flexible items
-flex-flow	                A shorthand property for the flex-direction and the flex-wrap properties
-flex-grow	                Specifies how much the item will grow relative to the rest
-flex-shrink	                Specifies how the item will shrink relative to the rest
-flex-wrap	                Specifies whether the flexible items should wrap or not
-float	                    Specifies whether an element should float to the left, right, or not at all
+[Font] 
+font                 all font properties in one line 
+@font-face           declare non-web-safe fonts {}
+font-family          font of the element 
+font-size            font size    
+font-size-adjust     control font size if the first declared option is not available 
+font-stretch         widen or narrow text 
+font-style           font style: normal, italic, oblique 
+font-variant         set small-caps 
+font-weight          use bold or thin characters 
 font	                    A shorthand property for the font-style, font-variant, font-weight, font-size/line-height, and the font-family properties
 @font-face	                A rule that allows websites to download and use fonts other than the "web-safe" fonts
 font-family	                Specifies the font family for text
@@ -361,90 +199,7 @@ font-variant-ligatures	    Controls which ligatures and contextual forms are use
 font-variant-numeric	    Controls the usage of alternate glyphs for numbers, fractions, and ordinal markers
 font-variant-position	    Controls the usage of alternate glyphs of smaller size positioned as superscript or subscript regarding the baseline of the font
 font-weight	                Specifies the weight of a font
-
-[H] 
-hanging-punctuation	         Specifies whether a punctuation character may be placed outside the line box 
-height	                     Sets the height of an element 
-hyphens	                     Sets how to split words to improve the layout of paragraphs 
-
-[I] 
-image-rendering	              Specifies the "type of algorithm to use for image scaling" 
-@import{}	                      Allows you to "import a style sheet" into another style sheet 
-isolation	                  Defines whether an element must create a new stacking content 
-
-[L] 
-left	                        Specifies the left position of a positioned element
 letter-spacing	                Increases or decreases the space between characters in a text
-line-break	                    Specifies how/if to break lines
-line-height	                    Sets the line height
-list-style	                    Sets all the properties for a list in one declaration
-list-style-image	            Specifies an image as the list-item marker
-list-style-position	            Specifies the position of the list-item markers (bullet points)
-list-style-type	                Specifies the type of list-item marker
-
-[M] 
-mask	            Hides parts of an element by masking or clipping an image at specific places
-mask-clip	        Specifies the mask area
-mask-composite	    Represents a compositing operation used on the current mask layer with the mask layers below it
-mask-image	        Specifies an image to be used as a mask layer for an element
-mask-mode	        Specifies whether the mask layer image is treated as a luminance mask or as an alpha mask
-mask-origin	        Specifies the origin position (the mask position area) of a mask layer image
-mask-position	    Sets the starting position of a mask layer image (relative to the mask position area)
-mask-repeat	        Specifies how the mask layer image is repeated
-mask-size	        Specifies the size of a mask layer image
-mask-type	        Specifies whether an SVG <mask> element is treated as a luminance mask or as an alpha mask
-max-height	        Sets the maximum height of an element
-max-width	        Sets the maximum width of an element
-@media{}	        Sets the style rules for different media types/devices/sizes
-min-height	        Sets the minimum height of an element
-min-width	        Sets the minimum width of an element
-mix-blend-mode	    Specifies how an element's content should blend with its direct parent background
-
-[O] 
-object-fit	Specifies how the contents of a replaced element should be fitted to the box established by its used height and width
-object-position	Specifies the alignment of the replaced element inside its box
-opacity	Sets the opacity level for an element
-order	Sets the order of the flexible item, relative to the rest
-orphans	Sets the minimum number of lines that must be left at the bottom of a page or column
-outline	A shorthand property for the outline-width, outline-style, and the outline-color properties
-outline-color	Sets the color of an outline
-outline-offset	Offsets an outline, and draws it beyond the border edge
-outline-style	Sets the style of an outline
-outline-width	Sets the width of an outline
-overflow
-Specifies what happens if content overflows an element's box
-overflow-wrap	Specifies whether or not the browser can break lines with long words, if they overflow the container
-overflow-x	Specifies whether or not to clip the left/right edges of the content, if it overflows the element's content area
-overflow-y	Specifies whether or not to clip the top/bottom edges of the content, if it overflows the element's content area
-
-[P] 
-padding	            A shorthand property for all the padding-* properties
-padding-bottom	    Sets the bottom padding of an element
-padding-left	    Sets the left padding of an element
-padding-right	    Sets the right padding of an element
-padding-top	        Sets the top padding of an element
-page-break-after	Sets the page-break behavior after an element
-page-break-before	Sets the page-break behavior before an element
-page-break-inside	Sets the page-break behavior inside an element
-perspective	        Gives a 3D-positioned element some perspective
-perspective-origin	Defines at which position the user is looking at the 3D-positioned element
-pointer-events	    Defines whether or not an element reacts to pointer events
-position	        Specifies the type of positioning method used for an element (static, relative, absolute or fixed)
-
-[Q] 
-quotes	Sets the type of quotation marks for embedded quotations
-
-[R] 
-resize	Defines if (and how) an element is resizable by the user
-right	Specifies the right position of a positioned element
-row-gap	Specifies the gap between the grid rows
-
-[S] 
-scroll-behavior	Specifies whether to smoothly animate the scroll position in a scrollable box, instead of a straight jump
-
-[T] 
-tab-size	Specifies the width of a tab character
-table-layout	Defines the algorithm used to lay out table cells, rows, and columns
 text-align	Specifies the horizontal alignment of text
 text-align-last	Describes how the last line of a block or a line right before a forced line break is aligned when text-align is "justify"
 text-combine-upright	Specifies the combination of multiple characters into the space of a single character
@@ -459,15 +214,181 @@ text-overflow	Specifies what should happen when text overflows the containing el
 text-shadow	Adds shadow to text
 text-transform	Controls the capitalization of text
 text-underline-position	Specifies the position of the underline which is set using the text-decoration property
+word-break	    Specifies how words should break when reaching the end of a line
+word-spacing	Increases or decreases the space between words in a text
+word-wrap	    Allows long, unbreakable words to be broken and wrap to the next line
+writing-mode	Specifies whether lines of text are laid out horizontally or vertically
+white-space     Specifies how white-space inside an element is handled
+
+[Line]
+line-break	                    Specifies how/if to break lines
+line-height	                    Sets the line height
+[List] 
+list-style           all list properties in one line 
+list-style-image     replace the list item marker with an image 
+list-style-position  list item markers inside or outside the content flow 
+list-style-type      set the type of the list item marker 
+[P] 
+page-break-after	Sets the page-break behavior after an element
+page-break-before	Sets the page-break behavior before an element
+page-break-inside	Sets the page-break behavior inside an element
+[Outline] 
+outline          A shorthand property for the outline-width, outline-style, and the outline-color properties (drow an outer border around elemen)
+outline-color    outline color 
+outline-offset   gap between the element and the outline 
+outline-style    outline style 
+outline-width    outline width 
+
+[Overflow] 
+overflow     hide, display or scroll if the content overflows its container 
+overflow-x   horizontal overflow 
+overflow-y   vertical overflow 
+overflow
+Specifies what happens if content overflows an element's box
+overflow-wrap	Specifies whether or not the browser can break lines with long words, if they overflow the container
+overflow-x	Specifies whether or not to clip the left/right edges of the content, if it overflows the element's content area
+overflow-y	Specifies whether or not to clip the top/bottom edges of the content, if it overflows the element's content area
+
+[Scroll]
+scroll-behavior	Specifies whether to smoothly animate the scroll position in a scrollable box, instead of a straight jump
+[Text] 
+text-align       horizontal alignment of text 
+text-align-last  horizontal alignment of last line of tex 
+text-decoration  overline, underline or line-through the text 
+text-indent      indentation of the first line of the text 
+text-overflow    the way how overflowed content is marked (ellipsis) 
+text-shadow      text shadow 
+text-transform   capitalization of text 
+[Mask] 
+mask	            Hides parts of an element by masking or clipping an image at specific places
+mask-clip	        Specifies the mask area
+mask-composite	    Represents a compositing operation used on the current mask layer with the mask layers below it
+mask-image	        Specifies an image to be used as a mask layer for an element
+mask-mode	        Specifies whether the mask layer image is treated as a luminance mask or as an alpha mask
+mask-origin	        Specifies the origin position (the mask position area) of a mask layer image
+mask-position	    Sets the starting position of a mask layer image (relative to the mask position area)
+mask-repeat	        Specifies how the mask layer image is repeated
+mask-size	        Specifies the size of a mask layer image
+mask-type	        Specifies whether an SVG <mask> element is treated as a luminance mask or as an alpha mask
+[Box]
+box-shadow           shadow to element 
+box-sizing           box sizing properties
+box-decoration-break	    Sets the behavior of the background and border of an element at page-break, or, for in-line elements, at line-break.
+box-shadow	                Attaches one or more shadows to an element
+box-sizing	                Defines how the width and height of an element are calculated: should they include padding and borders, or not
+[Break]
+break-after	                Specifies whether or not a page-, column-, or region-break should occur after the specified element
+break-before	            Specifies whether or not a page-, column-, or region-break should occur before the specified element
+break-inside	            Specifies whether or not a page-, column-, or region-break should occur inside the specified element
+[Nav]
+nav-down             where to navigate when the the arrow-down button is pressed 
+nav-index            sets sequential navigation order 
+nav-left             where to navigate when the the arrow-left button is presse 
+nav-right            where to navigate when the the arrow-right button is pressed 
+nav-up               where to navigate when the the arrow-up button is presse 
+[Tab] 
+tab-size	Specifies the width of a tab character
+
+[Table]
+table-layout	Defines the algorithm used to lay out table cells, rows, and columns
+
+
+
+=====================================================================================
+[Others]
+all                  change all properties 
+bottom               bottom offset for relative and absolute elements 
+caption-side         placement of a table caption 
+clear                deny floating of an element 
+clip                 clip an absolutely positioned element 
+color                text color 
+content              insert content :before and :after elements 
+counter-increment    count sections 
+counter-reset        reset counter 
+cursor               cursor type when element is hovered 
+direction            writing direction, Arabic is using rtl 
+display              box display type    
+empty-cells          hide borders and background on empty table cells 
+filter               image effects: grayscale, blur, invert etc.    
+float                float elements left or right 
+hanging-punctuation  can a punctuation mark be placed outside the line box? 
+letter-spacing       space between characters 
+line-height          line height of text or inline-block elements 
+opacity              transparency level of an element 
+order                reorder elements in a container 
+page-break-after     adds page break after an element 
+page-break-before    adds page break before an element 
+page-break-inside    allow page break inside an element 
+position             positioning type: absolute, fixed, relative, static 
+quotes               set quotation marks to wrap an element 
+resize               declare resizable elements 
+right                right offset for relative and absolute elements 
+=====================================================================================
+=====================================================================================
+=====================================================================================
+=====================================================================================
+=====================================================================================
+=====================================================================================
+=====================================================================================
+=====================================================================================
+=====================================================================================
+=====================================================================================
+=====================================================================================
+=====================================================================================
+
+
+/*  ================================================[ All CSS Properties by Alphabet ]===========================================================  */
+
+[A] 
+all	                         Resets all properties (except unicode-bidi and direction) 
+[B] 
+backface-visibility	         Defines whether or not the back face of an element should be visible when facing the user 
+bottom	                    Sets the elements position, from the bottom of its parent element
+[C] 
+caption-side	            Specifies the placement of a table caption
+caret-color	                Specifies the color of the cursor (caret) in inputs, textareas, or any element that is editable
+@charset{}	                Specifies the character encoding used in the style sheet
+clear	                    Specifies what should happen with the element that is next to a floating element
+clip	                    Clips an absolutely positioned element
+content	                    Used with the :before and :after pseudo-elements, to insert generated content
+counter-increment	        Increases or decreases the value of one or more CSS counters
+counter-reset	            Creates or resets one or more CSS counters
+cursor	                    Specifies the mouse cursor to be displayed when pointing over an element
+[D] 
+direction	                Specifies the text direction/writing direction
+display	                    Specifies how a certain HTML element should be displayed.
+[E] 
+empty-cells	                Specifies whether or not to display borders and background on empty cells in a table
+[F] 
+filter	                    Defines effects (e.g. blurring or color shifting) on an element before the element is displayed
+float	                    Specifies whether an element should float to the left, right, or not at all
+[H] 
+hanging-punctuation	         Specifies whether a punctuation character may be placed outside the line box 
+hyphens	                     Sets how to split words to improve the layout of paragraphs 
+[I] 
+image-rendering	              Specifies the "type of algorithm to use for image scaling" 
+@import{}	                      Allows you to "import a style sheet" into another style sheet 
+isolation	                  Defines whether an element must create a new stacking content 
+[L] 
+left	                        Specifies the left position of a positioned element
+[O] 
+object-fit	Specifies how the contents of a replaced element should be fitted to the box established by its used height and width
+object-position	Specifies the alignment of the replaced element inside its box
+opacity	Sets the opacity level for an element
+order	Sets the order of the flexible item, relative to the rest
+orphans	Sets the minimum number of lines that must be left at the bottom of a page or column
+
+
+pointer-events	    Defines whether or not an element reacts to pointer events
+[Q] 
+quotes	Sets the type of quotation marks for embedded quotations
+[R] 
+resize	Defines if (and how) an element is resizable by the user
+right	Specifies the right position of a positioned element
+row-gap	Specifies the gap between the grid rows
+[S] 
 top	Specifies the top position of a positioned element
-transform	Applies a 2D or 3D transformation to an element
-transform-origin	Allows you to change the position on transformed elements
-transform-style	Specifies how nested elements are rendered in 3D space
-transition	A shorthand property for all the transition-* properties
-transition-delay	Specifies when the transition effect will start
-transition-duration	Specifies how many seconds or milliseconds a transition effect takes to complete
-transition-property	Specifies the name of the CSS property the transition effect is for
-transition-timing-function	Specifies the speed curve of the transition effect
+
 
 [U] 
 unicode-bidi	Used together with the direction property to set or return whether the text should be overridden to support multiple languages in the same document
@@ -478,16 +399,10 @@ vertical-align	Sets the vertical alignment of an element
 visibility	Specifies whether or not an element is visible
 
 [W] 
-white-space     Specifies how white-space inside an element is handled
 widows	        Sets the minimum number of lines that must be left at the top of a page or column
 width	        Sets the width of an element
-word-break	    Specifies how words should break when reaching the end of a line
-word-spacing	Increases or decreases the space between words in a text
-word-wrap	    Allows long, unbreakable words to be broken and wrap to the next line
-writing-mode	Specifies whether lines of text are laid out horizontally or vertically
 
 [Z]
-z-index     controle the 3d position and what element is above the other element.
 
 /*  =====================================================[ CSS Selectors ]===========================================================================  */
 
