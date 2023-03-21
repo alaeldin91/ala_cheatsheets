@@ -850,4 +850,244 @@ Brush Script MT (cursive)
 Note: Before you publish your website, always check how your fonts appear on different browsers and devices, and always use fallback fonts!
 
 
+===================================================================================================
+===================================================================================================
+===================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===================================================================================================
+                                            Responsive Design Basics 
+===================================================================================================
+
+
+/*||||||||||||||||||||||||||||| Responsive Design Basics |||||||||||||||||||||||||||||*/
+
+/* Viewport */
+- The viewport is the visible area on the screen of the user (the dimension of the device screen).
+- The browser viewport is the area of the window in which web content can be seen.
+
+/* Defulet Screen Width Sizes */
+    1. Mobiles Screen = 320px to 480px
+    2. Tablets Screen = 481px to 768px
+    3. Descktops Screen = 1025px to 1200px
+    4. Tv Screen = 1201px and more
+
+    NOTE: you only need to change the CSS to make your website responsive for all screen types.
+
+/* Viewport Meta Tag */
+- The meta tag defines metadata/information about an HTML document.
+- Viewport meta tag is a way to add additional information to a web page (information about the viewpotrt).
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="info_name" content="attribute-1_value, attribute-2_value, attribute-3_value">
+
+- Viewport meta tag here tells the browser that the width of the screen should be considered the full width of the page and that's mean the website will follow the width of device the user is use.
+
+    #Meta Tage attribute:
+    - charset : specifies the character encoding for the HTML document -> (charset="utf-8", utf-8, utf)
+    - content : speciifes the value associaated with the http-equiv or name attribute -> ( width="device-width", initial-scale=1.0, shrink-to-fit=no )
+    - http-equiv : provides an HTTP header for the information/value of the content attribute-> (http-equiv="refresh", content-security, policy, content-type, default-style)
+    - name : spesifies a name for the metadata ->(name="viewport", application-name, author, description, generator, keywords)
+    
+/* Media Queries */
+- Media queries allow you to create different layouts depend on the size of the viewport.
+
+    @media media_type and (exoressions) {
+        /* CSS ruels */
+    }
+
+    @media screen and (max-width: 800px) {
+        .content p {
+            font-size: 16px;
+        }
+    }/* this mean: applay this ruels to all screens that have width from 0px to 800px (800px screen width and less) */
+
+    @media screen and (min-width: 800px) {
+        .content p {
+            font-size: 16px;
+        }
+    }/* this mean: applay this ruels to all screens that have width of 800px and above (800px screen width and above) */
+
+/* Layouts */
+- Layouts is the arrangement of all visual element on a webpage.
+
+/* Fluid Layouts */
+- is a layout that uses proportional values as a measurement unit for blocks of elements.
+- is a layout use relative measurements and respond to the width of the viewport.
+
+/* Fixed Layouts */
+- is a layout use static measurements and do not respond to the width of the viewport.
+
+/* Tablet Style */
+- follow the design to find a mistake and then make a breakpoint and fix it.
+
+/* Mobile Style */
+/* Humburger Menu : */
+/* HTML */
+<header>
+    <nav>
+        <a class="burger-menu"></a>
+    </nav>
+</header>
+
+</body>
+<!-- script -->
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="menu.js"></script> 
+</html>
+
+/* CSS */
+.humburger-menu { /* menu style */
+    display: block;
+    background: url(../images/burger-menu-white.png) no-repeat 95% center;
+    cursor: pointer;
+}
+header nav ul { /* when first page load normal-view */
+    overflow: hidden;
+    height: 0; /* hide the menu items */
+}
+header nav ul.open{ /* when mouse click the humburger-menu */
+    height: auto; /* when click show the menu items */
+}
+header nav ul  li{ /* menu items style */
+    float: none;
+    text-align: left/center;
+    width: 100%;
+    margin: 0;
+}
+header nav ul li a{ /* menu items style */
+    color: #fff;
+    display: block;
+    border-bottom: 1px solid #color;
+    padding: 10px;
+    margin: 0;
+}
+
+/* Jquiery / JavaScript */
+$(document).ready(function(){
+    $(".burger-menu").on("click", function(){
+        $("header nav ul").toggleClass("open");
+    });
+});
+
+/* End Humburger Menu */
+
+/* Responsive Images & Ployfills */
+- use tage <picture> to make your website images more responsive.
+    <picture>
+        <source srecset = "small.jpg" media = "(max-width: 480px)">
+        <source srcset = "medium.jpg" media = "(max-width: 768px)">
+        <img srcset = "big.jpg">
+    </picture>
+
+NOTE: add this code to let your browser support <picture> tag:
+<head>
+    <script>
+        // Picture element HTML5 shiv
+        document.createElement( "picture" );
+    </script>
+    <script src="picturefille.js" async></script>/* NOTE: download this from picturefill.com */
+</head>
+
+/* MORE */
+===================================================================================================
+===================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===================================================================================================
+
+Best CSS Reference Websites
+
+===================================================================================================
+
+Websites:-
+- cubic-bezier.com (for making animation cubic-bezier) 
+
+Best CSS Reference Websites:-
+CSS Triggers
+CSS Reference | A free visual guide to CSS
+CSS reference | MDN
+SitePoint CSS Reference
+CSS Properties | HTML Dog
+CSS Almanac | CSS-Tricks
+CSS Reference | Codrops
+Codrops CSS Reference
+CSS Reference | W3Schools
+W3Schools CSS Reference
+CSS HTML XHTML Reference Book
+CSS Properties and Values
+CSS Basic User Interface Module Level 3 (CSS3 UI)
+CSS Properties Index | Jens Oliver Meiert
+Complete CSS Reference | JavaScript Kit
+Quick CSS Property Reference | Little Web Hut
+Little Web Hut
+CSS References | The Web Design Group
+Web Design Group CSS References
+All CSS Properties Listed Alphabetically
+CSS Property Index
+CSS Properties List | PageResource
+CSS Property Reference | Tizag Tutorials
+CSS 2.1 Reference | Cultured Code
+CSS Reference | Webucator
+Introduction to Safari CSS Reference
+Safari CSS Reference
+Microsoft CSS Reference
+Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification
+W3C CSS 2.1
+CSS Reference | SS64.com
+An A-Z Index of CSS
+CSS Cheat Sheet
+===================================================================================================
+
+
 
