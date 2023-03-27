@@ -4,22 +4,26 @@
 |-----------------------------------------------------------------------------------|
 |                              All CSS Properties                                   |
 |                      www.w3schools.com/css/css3_2dtransforms.asp                  |
-|-----------------------------------------------------------------------------------|
-|
-|
+|___________________________________________________________________________________|
 
 
 
+
+
+/* CSS Properties ****************************************************/
 
 [Color]
 mix-blend-mode	    Specifies how an element's content should blend with its direct parent background
+caret-color	                Specifies the color of the cursor (caret) in inputs, textareas, or any element that is editable
 color	                    Sets the color of text
+
 [3D]
 perspective	        Gives a 3D-positioned element some perspective
 perspective          how many pixels the 3D element is placed from the view 
 perspective-origin   where is the 3D element based in the x- and y-axis 
 perspective-origin	Defines at which position the user is looking at the 3D-positioned element
 z-index     controle the 3d position and what element is above the other element.
+
 [Transform]    
 transform	Applies a 2D or 3D transformation to an element
 transform-origin	Allows you to change the position on transformed elements
@@ -29,6 +33,7 @@ transition-delay	Specifies when the transition effect will start
 transition-duration	Specifies how many seconds or milliseconds a transition effect takes to complete
 transition-property	Specifies the name of the CSS property the transition effect is for
 transition-timing-function	Specifies the speed curve of the transition effect
+
 [Animation] 
 animation                    binds an animation to an element 
 animation-delay              delays animation start 
@@ -50,16 +55,24 @@ animation-iteration-count	 Specifies the number of times an animation should be 
 animation-name	             Specifies a name for the @keyframes {} animation
 animation-play-state	     Specifies whether the animation is running or paused 
 animation-timing-function	 Specifies the speed curve of an animation 
+
+[Window]
+widows	        Sets the minimum number of lines that must be left at the top of a page or column
+
 [Align] 
 align-content       behavior of the flex-wrap property 
 align-items         alignment of items inside the container 
 align-self          alignment of the selected item 
+vertical-align	Sets the vertical alignment of an element
+
 [Justify]
 justify-content     justifies flexible container's items horizontally if necessary 
 justify-item        set on the grid container to give child elements (grid items) alignment in the inline direction. 
 justify-self        aligns a grid item within its grid cell in the inline direction. 
+
 [Position]
 position	        Specifies the type of positioning method used for an element (static, relative, absolute or fixed)
+clip                 clip an absolutely positioned element 
 
 [Flex] 
 flex	                    A shorthand property for the flex-grow, flex-shrink, and the flex-basis properties
@@ -94,6 +107,7 @@ grid-template	             A shorthand property for the "grid-template-rows, gri
 grid-template-areas	         Specifies "how to display columns and rows", using named grid items 
 grid-template-columns	     Specifies the "size of the columns, and how many columns in a grid layout" 
 grid-template-rows	         Specifies the "size of the rows in a grid layout" 
+
 [Background] 
 background               all bg properties in one declaration 
 background-attachment    is the bg image scroll/ fixed/ local 
@@ -113,6 +127,7 @@ background-origin	         Specifies the origin position of a background image
 background-position	         Specifies the position of a background image 
 background-repeat	         Sets if/how a background image will be repeated 
 background-size	             Specifies the size of the background images 
+
 [Border]
 border                       set border properties 
 border-bottom                bottom border properties in one line 
@@ -169,6 +184,11 @@ column-rule-width	        Specifies the width of the rule between columns
 column-span	                Specifies how many columns an element should span across
 column-width	            Specifies the column width
 columns	                    A shorthand property for column-width and column-count
+
+[Images]
+image-rendering	              Specifies the "type of algorithm to use for image scaling" 
+filter               image effects: grayscale, blur, invert etc.    
+
 [Font] 
 font                 all font properties in one line 
 @font-face           declare non-web-safe fonts {}
@@ -223,21 +243,28 @@ white-space     Specifies how white-space inside an element is handled
 [Line]
 line-break	                    Specifies how/if to break lines
 line-height	                    Sets the line height
+
 [List] 
 list-style           all list properties in one line 
 list-style-image     replace the list item marker with an image 
 list-style-position  list item markers inside or outside the content flow 
 list-style-type      set the type of the list item marker 
-[P] 
+
+[Page] 
 page-break-after	Sets the page-break behavior after an element
 page-break-before	Sets the page-break behavior before an element
 page-break-inside	Sets the page-break behavior inside an element
+
 [Outline] 
 outline          A shorthand property for the outline-width, outline-style, and the outline-color properties (drow an outer border around elemen)
 outline-color    outline color 
 outline-offset   gap between the element and the outline 
 outline-style    outline style 
 outline-width    outline width 
+
+[Object]
+object-fit	Specifies how the contents of a replaced element should be fitted to the box established by its used height and width
+object-position	Specifies the alignment of the replaced element inside its box
 
 [Overflow] 
 overflow     hide, display or scroll if the content overflows its container 
@@ -251,6 +278,7 @@ overflow-y	Specifies whether or not to clip the top/bottom edges of the content,
 
 [Scroll]
 scroll-behavior	Specifies whether to smoothly animate the scroll position in a scrollable box, instead of a straight jump
+
 [Text] 
 text-align       horizontal alignment of text 
 text-align-last  horizontal alignment of last line of tex 
@@ -259,6 +287,7 @@ text-indent      indentation of the first line of the text
 text-overflow    the way how overflowed content is marked (ellipsis) 
 text-shadow      text shadow 
 text-transform   capitalization of text 
+
 [Mask] 
 mask	            Hides parts of an element by masking or clipping an image at specific places
 mask-clip	        Specifies the mask area
@@ -270,141 +299,76 @@ mask-position	    Sets the starting position of a mask layer image (relative to 
 mask-repeat	        Specifies how the mask layer image is repeated
 mask-size	        Specifies the size of a mask layer image
 mask-type	        Specifies whether an SVG <mask> element is treated as a luminance mask or as an alpha mask
+
 [Box]
 box-shadow           shadow to element 
 box-sizing           box sizing properties
 box-decoration-break	    Sets the behavior of the background and border of an element at page-break, or, for in-line elements, at line-break.
 box-shadow	                Attaches one or more shadows to an element
 box-sizing	                Defines how the width and height of an element are calculated: should they include padding and borders, or not
+
 [Break]
 break-after	                Specifies whether or not a page-, column-, or region-break should occur after the specified element
 break-before	            Specifies whether or not a page-, column-, or region-break should occur before the specified element
 break-inside	            Specifies whether or not a page-, column-, or region-break should occur inside the specified element
+
 [Nav]
 nav-down             where to navigate when the the arrow-down button is pressed 
 nav-index            sets sequential navigation order 
 nav-left             where to navigate when the the arrow-left button is presse 
 nav-right            where to navigate when the the arrow-right button is pressed 
 nav-up               where to navigate when the the arrow-up button is presse 
+
 [Tab] 
 tab-size	Specifies the width of a tab character
 
 [Table]
 table-layout	Defines the algorithm used to lay out table cells, rows, and columns
-
-
-
-=====================================================================================
-[Others]
-all                  change all properties 
-bottom               bottom offset for relative and absolute elements 
+empty-cells          hide borders and background on empty table cells 
 caption-side         placement of a table caption 
+
+[Floating]
+float                float elements left or right 
 clear                deny floating of an element 
-clip                 clip an absolutely positioned element 
-color                text color 
+
+[Content]
 content              insert content :before and :after elements 
 counter-increment    count sections 
-counter-reset        reset counter 
+counter-reset        reset counter
+
+[Others * ]
+all                  change all properties 
 cursor               cursor type when element is hovered 
-direction            writing direction, Arabic is using rtl 
+pointer-events	    Defines whether or not an element reacts to pointer events
 display              box display type    
-empty-cells          hide borders and background on empty table cells 
-filter               image effects: grayscale, blur, invert etc.    
-float                float elements left or right 
+direction            writing direction, Arabic is using rtl 
 hanging-punctuation  can a punctuation mark be placed outside the line box? 
-letter-spacing       space between characters 
-line-height          line height of text or inline-block elements 
 opacity              transparency level of an element 
 order                reorder elements in a container 
-page-break-after     adds page break after an element 
-page-break-before    adds page break before an element 
-page-break-inside    allow page break inside an element 
-position             positioning type: absolute, fixed, relative, static 
 quotes               set quotation marks to wrap an element 
 resize               declare resizable elements 
-right                right offset for relative and absolute elements 
-=====================================================================================
-=====================================================================================
-=====================================================================================
-=====================================================================================
-=====================================================================================
-=====================================================================================
-=====================================================================================
-=====================================================================================
-=====================================================================================
-=====================================================================================
-=====================================================================================
-=====================================================================================
-
-
-/*  ================================================[ All CSS Properties by Alphabet ]===========================================================  */
-
-[A] 
-all	                         Resets all properties (except unicode-bidi and direction) 
-[B] 
-backface-visibility	         Defines whether or not the back face of an element should be visible when facing the user 
-bottom	                    Sets the elements position, from the bottom of its parent element
-[C] 
-caption-side	            Specifies the placement of a table caption
-caret-color	                Specifies the color of the cursor (caret) in inputs, textareas, or any element that is editable
-@charset{}	                Specifies the character encoding used in the style sheet
-clear	                    Specifies what should happen with the element that is next to a floating element
-clip	                    Clips an absolutely positioned element
-content	                    Used with the :before and :after pseudo-elements, to insert generated content
-counter-increment	        Increases or decreases the value of one or more CSS counters
-counter-reset	            Creates or resets one or more CSS counters
-cursor	                    Specifies the mouse cursor to be displayed when pointing over an element
-[D] 
-direction	                Specifies the text direction/writing direction
-display	                    Specifies how a certain HTML element should be displayed.
-[E] 
-empty-cells	                Specifies whether or not to display borders and background on empty cells in a table
-[F] 
-filter	                    Defines effects (e.g. blurring or color shifting) on an element before the element is displayed
-float	                    Specifies whether an element should float to the left, right, or not at all
-[H] 
-hanging-punctuation	         Specifies whether a punctuation character may be placed outside the line box 
-hyphens	                     Sets how to split words to improve the layout of paragraphs 
-[I] 
-image-rendering	              Specifies the "type of algorithm to use for image scaling" 
-@import{}	                      Allows you to "import a style sheet" into another style sheet 
 isolation	                  Defines whether an element must create a new stacking content 
-[L] 
-left	                        Specifies the left position of a positioned element
-[O] 
-object-fit	Specifies how the contents of a replaced element should be fitted to the box established by its used height and width
-object-position	Specifies the alignment of the replaced element inside its box
-opacity	Sets the opacity level for an element
-order	Sets the order of the flexible item, relative to the rest
-orphans	Sets the minimum number of lines that must be left at the bottom of a page or column
-
-
-pointer-events	    Defines whether or not an element reacts to pointer events
-[Q] 
-quotes	Sets the type of quotation marks for embedded quotations
-[R] 
-resize	Defines if (and how) an element is resizable by the user
-right	Specifies the right position of a positioned element
-row-gap	Specifies the gap between the grid rows
-[S] 
-top	Specifies the top position of a positioned element
-
-
-[U] 
+orphans         	Sets the minimum number of lines that must be left at the bottom of a page or column
 unicode-bidi	Used together with the direction property to set or return whether the text should be overridden to support multiple languages in the same document
 user-select	Specifies whether the text of an element can be selected
-
-[V] 
-vertical-align	Sets the vertical alignment of an element
 visibility	Specifies whether or not an element is visible
 
-[W] 
-widows	        Sets the minimum number of lines that must be left at the top of a page or column
-width	        Sets the width of an element
 
-[Z]
 
-/*  =====================================================[ CSS Selectors ]===========================================================================  */
+
+
+
+
+/* CSS Selectors ****************************************************/
+Selector Types :
+1. Descendant Selectors         #content p{property: value;}
+2. Child Selectors              #content > p{property: value;}              Select only the direct child of the tag.
+3. Adjacent Selectors           #articles h2 + p{property: value;}          Select the elemants which comes directly after another elemant.
+4. Attribute Selectors          span[class="check"]{property: value;}
+5. Pseudo Class Selectors       a:hover{property: value;}
+8. Combining Selectors :        div.featcher-content{property: value;}      Combin selector with class/ID selector without space in btween, and its get  you the tag that have a class/ID as the selctor.
+9. The Universal Selector       *{property: value;}                         Select all the html tags in the page
+
 
 Selector	            Example	                    description
 
@@ -469,256 +433,6 @@ element1~element2       p ~ ul	                    Selects every <ul> element th
 :valid	                input:valid	                Selects all input elements with a valid value
 :visited	            a:visited	                Selects all visited links
 
-Selector Types :
-    1. Descendant Selectors         #content p{property: value;}
-    2. Child Selectors              #content > p{property: value;}              Select only the direct child of the tag.
-    3. Adjacent Selectors           #articles h2 + p{property: value;}          Select the elemants which comes directly after another elemant.
-    4. Attribute Selectors          span[class="check"]{property: value;}
-    5. Pseudo Class Selectors       a:hover{property: value;}
-    8. Combining Selectors :        div.featcher-content{property: value;}      Combin selector with class/ID selector without space in btween, and its get  you the tag that have a class/ID as the selctor.
-    9. The Universal Selector       *{property: value;}                         Select all the html tags in the page
-
-/*  =======================================================[ CSS Functions ]====================================================================  */
-
-CSS functions are used as a value for various CSS properties.
-
-Function	        Description
-
-attr()	            Returns the value of an attribute of the selected element
-calc()	            Allows you to perform calculations to determine CSS property values
-conic-gradient()	Creates a conic gradient
-counter()	        Returns the current value of the named counter
-cubic-bezier()	    Defines a Cubic Bezier curve
-hsl()	            Defines colors using the Hue-Saturation-Lightness model (HSL)
-hsla()	            Defines colors using the Hue-Saturation-Lightness-Alpha model (HSLA)
-linear-gradient()	Creates a linear gradient
-max()	            Uses the largest value, from a comma-separated list of values, as the property value
-min()	            Uses the smallest value, from a comma-separated list of values, as the property value
-radial-gradient()	Creates a radial gradient
-repeating-conic-gradient()	Repeats a conic gradient
-repeating-linear-gradient()	Repeats a linear gradient
-repeating-radial-gradient()	Repeats a radial gradient
-rgb()	            Defines colors using the Red-Green-Blue model (RGB)
-rgba()	            Defines colors using the Red-Green-Blue-Alpha model (RGBA)
-var()	            Inserts the value of a custom property
-
-/* ==================================================[ Position Property ]============================================================================ */
-
-- Position Property takes one of these values:
-1. Static
-2. Relative
-3. Absolute
-4. Fixed
-5. Inherit
-6. Sticky
-
-[Static]
-
-[Relative] 
-- Use to: Move the element from its orignal place.
-Put the element in the default/orignal position/place.
-Allow you to move the element from its default/orignal position/place through (left, right, top, bottom) properties.
-
-[Absolute]
-- Use to: Move the element so far from its orignal place without holding a empty space in the document flow. 
-Set the element absolutely relative to the parent element (parent must be relative element).
-Take the element from the normal document flow and conect it to its parent element document flow (the element will be flying in the page without orignal place only you can fit it inside a spesific place).
-
-[Fixed]
-
-[Inherit]
-
-[Sticky]
-- Use to:
-A mix btween 
-
-
-/* ==============================================================[ Unites ]====================================================================  */
-
-There are two types of length units: 
-1. absolute   2. relative.
-
-1. [Absolute Lengths] :
-The absolute length units are fixed and a length expressed in any of these will appear as exactly that size.
-Absolute length units are not recommended for use on screen, because screen sizes vary so much. However, they can be used if the output medium is known, such as for print layout.
-(Geting the element out of the "Main Document Floats")
-
-Unit	Description
-cm	    centimeters
-mm	    millimeters
-in	    inches (1in = 96px = 2.54cm)
-px     *pixels (1px = 1/96th of 1in)
-pt	    points (1pt = 1/72 of 1in)
-pc	    picas (1pc = 12 pt)
-
-* Pixels (px) are relative to the viewing device. For low-dpi devices, 1px is one device pixel (dot) of the display. For printers and high resolution screens 1px implies multiple device pixels.
-
-2. [Relative Lengths] :
-Relative length units specify a length relative to another length property. Relative length units scale better between different rendering medium.
-(Keeping the element out of the "Main Document Floats")
-
-Unit	Description	
-em	    Relative to the font-size of the element (2em means 2 times the size of the current font)	
-ex	    Relative to the x-height of the current font (rarely used)	
-ch	    Relative to the width of the "0" (zero)	
-rem	    Relative to font-size of the root element	
-vw	    Relative to 1% of the width of the viewport*	
-vh	    Relative to 1% of the height of the viewport*	
-vmin	Relative to 1% of viewport's* smaller dimension	
-vmax	Relative to 1% of viewport's* larger dimension	
-%	    Relative to the parent element
-
-/* ======================================================[ Media Querey ]=============================================================== */
-
-/* Media query use when specific action happend and its change the proparity of it or of other tages. */
-@media screen and (properity-name: value) {
-    properity-name: value;
-}
-
-
-/* =====================================================[  The Net Ninja Courses ]================================================================== */
-
-[Custom Properties] (Variables) :
-    :root{
-        --variable-name: value;
-        --font-color: #999;
-        --them-color: #fff;
-        --text-size: 18px;
-    }
-
-    banner{
-        background: var(--them-color);
-        font-size: var(--text-size);
-    }
-/* NOTE: you can overwrite the Custom Properties inside in any tage properties.  */
-
-[Example] :
-Animate the background-color from red to blue: 
-    @keyframes mymove {
-    from {background-color: red;}
-    to {background-color: blue;}
-    }
-
-[Gradient] :
-    background: linear-gradient(position, #fromcolor startwith%, #tocolor endwith%);
-    background: -moz-linear-gradient(top, #aadddd 0%, #77aaaa 100%);  to let firefox support gradinnts 
-    background: -webkit-linear-gradient(top, #aadddd 0%, #77aaaa 100%);  to let chrom support gradinnts 
-    background: linear-gradient(top, #aadddd 0%, #77aaaa 100%);
-
-
-[Cool Gradiants Code Genarate] :
-    https://www.colorzilla.com/gradient-editor/  
-
-
-[Box Shadow] : 
-box-shadow: horizontalPosition verticalPosition blureRadius spreadValue rgba(0,0,0,0.6);
-box-shadow: 2px 2px 4px 6px rgba(255, 59, 90, 0.7);
-
-[Cool Box Shadow Code Genarate] :
-https://www.cssmatic.com/box-shadow/
-
-[Fallback Option] : 
-fallback option can help you if the browser dont support the CSS rule.
- 
-[Cool website to checks css rule over the diffrent browser] :
-https://www.caniuse.com/ 
-https://www.pleeease.io/
-https://www.modernizr.com
-
-
-display: flex;      definition & what it does.
-flex-shrink         definition & what it does.
-flex-grow; 1;        ...
-flex-wrap: wrap;     wrap and move the element to the next line.
-flex-basis: 100px;  (inishule width) same as min-width but it can be shrink when the browser window get smaller.   
-min-width: 100px;   make the minimumm width of element 200px and the element cant goes less than that whatever its happens.
-max-width: 100px;
-flex: grow shrink basis;       the best way to defind all the flex in  one line.
-
-- Only when the browser screen is larger than 768px this flex proparites will apply :
-    @media screen and (min-width: 768px){
-        tag{
-            proparties: value;
-        }
-    }
-
-justify-contenet: center;   it will center all the flex element in the screen, and also u can use ( flex-end / flex-sart / space-around / space-btween)
-
-Aline in Flex Basis:-
-flex-flow: row/coulmn   control the place of main and cross axis.(revers in coulmn)
-
-_ main axis
-|
-cross axis
-
-aline-items: center;    controle the aline of the element in the cross axis.
-justfiy-content: center; controle the aline of the element in the main axis.
-
-
-Q: what is the use and the deffrents btween Floats & Flexbox & Grid?
-
-
-[Grid] :
-- Make an element use Grid:
-in the targeted tag/class/id
-    
-    tag/class/id name{
-        display: grid;                              to let the element use grid
-        grid-template-columns: 30% 20% 10%;         defind 3 columns with there widths
-        grid-template-columns: 1fr 2fr 1fr;         using fr
-        grid-template-columns: repeat(3, 1fr);      same as above but its cool and easy.
-        grid-template-columns: repeat(NumberOfColumns, WidthOfColumns);
-    }
-
-
-/* ========================================================[ Basics ]===================================================================== */ 
-
-[Include external css file] : 
-<link rel="stylesheet" type="text/css" href="/style
-
-[Internal styles] : 
-<style type="text/css">
- div { color: #444;}
-</style>
-
-[Inline styles] :
-<tag style="property: value"> </tag>
-
-[Syntax] : 
-selector{
- property: value;
- property2: value2;
-}
-
-[Size] : 
-1. Absolute : absolute size (px)
-2. Relative : they are good in responsive designs (em, %)
-
-[Clearfix] : 
-.clearfix:after {
- clear: both;
- content: " ";
- display: block;
- font-size: 0;
- height: 0;
- visibility: hidden;
-}
-
-.clearfix { display: inline-block; }
-
-* html .clearfix { height: 1%; }
-
-.clearfix { display: block; }
-
-[Box Model] :
-The box model is: a way that elements represent them self in the page in terms of a space. 
-    1- margin    : is the external space around the element to separate it from other elements. 
-    2- border    : is the part of the box model btween the padding and the margin. 
-    3- padding   : is the internal space around the element it self. 
-    4- element   : is the tag it self. 
-
-
-
 [Attribute Selectors] : 
     tagname[attributrname]       all the tagsname with a attribute 
     a[target]                    all a tags with a "target" attribute 
@@ -731,7 +445,6 @@ The box model is: a way that elements represent them self in the page in terms o
      <a href^="chair.pdf"> PGF Link</a> 
     p[href$="pdf"]              all p tags have a attribur "href" and its value ends with "pdf" 
     input[type="button"]        specified input type 
-
 
 [Pseudo Classes Selectors] :
 Specifies a special state of the selected element, they got 3 type: 
@@ -780,112 +493,81 @@ Specifies a special state of the selected element, they got 3 type:
     ::selection                        portion selected by user 
     :target                            highlight active anchor 
 
-
 [Media Queries] : 
     [Syntax] 
     @media not|only mediatype and (media feature) {
     CSS Code... 
     }
 
-[Link external file] :     
-    <link rel="stylesheet" media=mediatype and|not|only
-     Viewport is 480 pixels or smaller
-      
-    @media screen and (max-width: 480px) { }
-     Viewport width smaller OR height smaller 
-    @media screen and (max-width: 600px), (max-height:
-     Print style 
-    @media print { ... }
-     Night / dark mode 
-    @media (prefers-color-scheme: dark) { ... }
-     Media types 
-    all, print, screen, speech
-
-[Media features] : 
-        width            viewport width 
-        height           viewport height 
-        orientation      orientation of the viewpor 
-        aspect-ratio     ratio between width & height 
-        color            number of bits per color 
-        color-index      number of displayable colors 
-        monochrome       color on greyscale device 
-        resolution       resolution of the device 
-        scan             scanning process of the device 
-        grid             device is a grid or bitmap 
-        
-[Reset CSS to default] : 
-    html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5
-    article,aside,details,figcaption,figure,footer,header,
-    body { line-height: 1;}
-    ol,ul { list-style: none;}
-    blockquote,q { quotes: none;}
-    blockquote:before,blockquote:after,q:before,q:after {
-    table { border-collapse: collapse; border-spacing: 0;}
-
-/* ==============================================================[ More ]====================================================== */
-
-[Commonly Used Fallback Fonts] :
-There are no 100% completely web safe fonts. There is always a chance that a font is not found or is not installed properly. Therefore, it is very important to always use fallback fonts.
-This means that you should add a list of similar "backup fonts" in the font-family property. If the first font does not work, the browser will try the next one, and the next one, and so on. Always end the list with a generic font family name.
-Below are some commonly used fallback fonts, organized by the 5 generic font families:
-Serif
-Sans-serif
-Monospace
-Cursive
-Fantasy
 
 
-[Best Web Safe Fonts for HTML and CSS]
-The following fonts are the best web safe fonts for HTML and CSS:
-Arial (sans-serif)
-Verdana (sans-serif)
-Helvetica (sans-serif)
-Tahoma (sans-serif)
-Trebuchet MS (sans-serif)
-Times New Roman (serif)
-Georgia (serif)
-Garamond (serif)
-Courier New (monospace)
-Brush Script MT (cursive)
-Note: Before you publish your website, always check how your fonts appear on different browsers and devices, and always use fallback fonts!
 
+    
+/* CSS Functions ****************************************************/
+CSS functions are used as a value for various CSS properties.
 
-===================================================================================================
-===================================================================================================
-===================================================================================================
+Function	        Description
+
+attr()	            Returns the value of an attribute of the selected element
+calc()	            Allows you to perform calculations to determine CSS property values
+conic-gradient()	Creates a conic gradient
+counter()	        Returns the current value of the named counter
+cubic-bezier()	    Defines a Cubic Bezier curve
+hsl()	            Defines colors using the Hue-Saturation-Lightness model (HSL)
+hsla()	            Defines colors using the Hue-Saturation-Lightness-Alpha model (HSLA)
+linear-gradient()	Creates a linear gradient
+max()	            Uses the largest value, from a comma-separated list of values, as the property value
+min()	            Uses the smallest value, from a comma-separated list of values, as the property value
+radial-gradient()	Creates a radial gradient
+repeating-conic-gradient()	Repeats a conic gradient
+repeating-linear-gradient()	Repeats a linear gradient
+repeating-radial-gradient()	Repeats a radial gradient
+rgb()	            Defines colors using the Red-Green-Blue model (RGB)
+rgba()	            Defines colors using the Red-Green-Blue-Alpha model (RGBA)
+var()	            Inserts the value of a custom property
 
 
 
 
 
+/* CSS Length Unites ****************************************************/
+There are two types of length units: 
+1. absolute   2. relative.
+
+1. [Absolute Lengths] :
+The absolute length units are fixed and a length expressed in any of these will appear as exactly that size.
+Absolute length units are not recommended for use on screen, because screen sizes vary so much. However, they can be used if the output medium is known, such as for print layout.
+(Geting the element out of the "Main Document Floats")
+
+Unit	Description
+cm	    centimeters
+mm	    millimeters
+in	    inches (1in = 96px = 2.54cm)
+px     *pixels (1px = 1/96th of 1in)
+pt	    points (1pt = 1/72 of 1in)
+pc	    picas (1pc = 12 pt)
+
+* Pixels (px) are relative to the viewing device. For low-dpi devices, 1px is one device pixel (dot) of the display. For printers and high resolution screens 1px implies multiple device pixels.
+
+2. [Relative Lengths] :
+Relative length units specify a length relative to another length property. Relative length units scale better between different rendering medium.
+(Keeping the element out of the "Main Document Floats")
+
+Unit	Description	
+em	    Relative to the font-size of the element (2em means 2 times the size of the current font)	
+ex	    Relative to the x-height of the current font (rarely used)	
+ch	    Relative to the width of the "0" (zero)	
+rem	    Relative to font-size of the root element	
+vw	    Relative to 1% of the width of the viewport*	
+vh	    Relative to 1% of the height of the viewport*	
+vmin	Relative to 1% of viewport's* smaller dimension	
+vmax	Relative to 1% of viewport's* larger dimension	
+%	    Relative to the parent element
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-===================================================================================================
-                                            Responsive Design Basics 
-===================================================================================================
-
-
-/*||||||||||||||||||||||||||||| Responsive Design Basics |||||||||||||||||||||||||||||*/
+/* MCSS Responsive DesignORE ****************************************************/
 
 /* Viewport */
 - The viewport is the visible area on the screen of the user (the dimension of the device screen).
@@ -1087,7 +769,111 @@ W3C CSS 2.1
 CSS Reference | SS64.com
 An A-Z Index of CSS
 CSS Cheat Sheet
-===================================================================================================
+
+/* THE END **************************************************/
 
 
+
+
+
+
+/* MORE ****************************************************/
+
+[Commonly Used Fallback Fonts] :
+There are no 100% completely web safe fonts. There is always a chance that a font is not found or is not installed properly. Therefore, it is very important to always use fallback fonts.
+This means that you should add a list of similar "backup fonts" in the font-family property. If the first font does not work, the browser will try the next one, and the next one, and so on. Always end the list with a generic font family name.
+Below are some commonly used fallback fonts, organized by the 5 generic font families:
+Serif
+Sans-serif
+Monospace
+Cursive
+Fantasy
+
+
+[Best Web Safe Fonts for HTML and CSS]
+The following fonts are the best web safe fonts for HTML and CSS:
+Arial (sans-serif)
+Verdana (sans-serif)
+Helvetica (sans-serif)
+Tahoma (sans-serif)
+Trebuchet MS (sans-serif)
+Times New Roman (serif)
+Georgia (serif)
+Garamond (serif)
+Courier New (monospace)
+Brush Script MT (cursive)
+Note: Before you publish your website, always check how your fonts appear on different browsers and devices, and always use fallback fonts!
+
+/* The Net Ninja Courses */
+[Custom Properties] (Variables) :
+    :root{
+        --variable-name: value;
+        --font-color: #999;
+        --them-color: #fff;
+        --text-size: 18px;
+    }
+
+    banner{
+        background: var(--them-color);
+        font-size: var(--text-size);
+    }
+/* NOTE: you can overwrite the Custom Properties inside in any tage properties.  */
+[Example] :
+Animate the background-color from red to blue: 
+    @keyframes mymove {
+    from {background-color: red;}
+    to {background-color: blue;}
+    }
+[Gradient] :
+    background: linear-gradient(position, #fromcolor startwith%, #tocolor endwith%);
+    background: -moz-linear-gradient(top, #aadddd 0%, #77aaaa 100%);  to let firefox support gradinnts 
+    background: -webkit-linear-gradient(top, #aadddd 0%, #77aaaa 100%);  to let chrom support gradinnts 
+    background: linear-gradient(top, #aadddd 0%, #77aaaa 100%);
+[Cool Gradiants Code Genarate] :
+    https://www.colorzilla.com/gradient-editor/  
+[Box Shadow] : 
+box-shadow: horizontalPosition verticalPosition blureRadius spreadValue rgba(0,0,0,0.6);
+box-shadow: 2px 2px 4px 6px rgba(255, 59, 90, 0.7);
+[Cool Box Shadow Code Genarate] :
+https://www.cssmatic.com/box-shadow/
+[Fallback Option] : 
+fallback option can help you if the browser dont support the CSS rule.
+[Cool website to checks css rule over the diffrent browser] :
+https://www.caniuse.com/ 
+https://www.pleeease.io/
+https://www.modernizr.com
+display: flex;      definition & what it does.
+flex-shrink         definition & what it does.
+flex-grow; 1;        ...
+flex-wrap: wrap;     wrap and move the element to the next line.
+flex-basis: 100px;  (inishule width) same as min-width but it can be shrink when the browser window get smaller.   
+min-width: 100px;   make the minimumm width of element 200px and the element cant goes less than that whatever its happens.
+max-width: 100px;
+flex: grow shrink basis;       the best way to defind all the flex in  one line.
+
+- Only when the browser screen is larger than 768px this flex proparites will apply :
+    @media screen and (min-width: 768px){
+        tag{
+            proparties: value;
+        }
+    }
+justify-contenet: center;   it will center all the flex element in the screen, and also u can use ( flex-end / flex-sart / space-around / space-btween)
+Aline in Flex Basis:-
+flex-flow: row/coulmn   control the place of main and cross axis.(revers in coulmn)
+_ main axis
+cross axis
+aline-items: center;    controle the aline of the element in the cross axis.
+justfiy-content: center; controle the aline of the element in the main axis.
+
+Q: what is the use and the deffrents btween Floats & Flexbox & Grid?
+[Grid] :
+- Make an element use Grid:
+in the targeted tag/class/id
+    tag/class/id name{
+        display: grid;                              to let the element use grid
+        grid-template-columns: 30% 20% 10%;         defind 3 columns with there widths
+        grid-template-columns: 1fr 2fr 1fr;         using fr
+        grid-template-columns: repeat(3, 1fr);      same as above but its cool and easy.
+        grid-template-columns: repeat(NumberOfColumns, WidthOfColumns);
+    }
 
