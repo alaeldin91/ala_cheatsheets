@@ -1,14 +1,11 @@
+/*___________________________________________________________________________________
 |                                                                                   |
 |                                  Dev.BUSHRA                                       |
 |                                CSS CheatSheet                                     |
 |-----------------------------------------------------------------------------------|
 |                              All CSS Properties                                   |
 |                      www.w3schools.com/css/css3_2dtransforms.asp                  |
-|___________________________________________________________________________________|
-
-
-
-
+|___________________________________________________________________________________*/
 
 /* CSS Properties ****************************************************/
 
@@ -88,6 +85,7 @@ flex-flow	     A shorthand property for the flex-direction and the flex-wrap pro
 flex-grow	     Specifies how much the item will grow relative to the rest
 flex-shrink	     Specifies how the item will shrink relative to the rest
 flex-wrap	     Specifies whether the flexible items should wrap or not
+
 [Grid] 
 grid-area                    Either specifies a "name for the grid item", or this property is a shorthand property for the "grid-row-start, grid-column-start, grid-row-end, and grid-column-end" properties 
 grid-auto-columns	         Specifies a "default column size" 
@@ -353,13 +351,8 @@ unicode-bidi	Used together with the direction property to set or return whether 
 user-select	Specifies whether the text of an element can be selected
 visibility	Specifies whether or not an element is visible
 
-
-
-
-
-
-
 /* CSS Selectors ****************************************************/
+
 Selector Types :
 1. Descendant Selectors         #content p{property: value;}
 2. Child Selectors              #content > p{property: value;}              Select only the direct child of the tag.
@@ -498,12 +491,9 @@ Specifies a special state of the selected element, they got 3 type:
     @media not|only mediatype and (media feature) {
     CSS Code... 
     }
-
-
-
-
     
 /* CSS Functions ****************************************************/
+
 CSS functions are used as a value for various CSS properties.
 
 Function	        Description
@@ -526,11 +516,8 @@ rgb()	            Defines colors using the Red-Green-Blue model (RGB)
 rgba()	            Defines colors using the Red-Green-Blue-Alpha model (RGBA)
 var()	            Inserts the value of a custom property
 
-
-
-
-
 /* CSS Length Unites ****************************************************/
+
 There are two types of length units: 
 1. absolute   2. relative.
 
@@ -563,9 +550,6 @@ vh	    Relative to 1% of the height of the viewport*
 vmin	Relative to 1% of viewport's* smaller dimension	
 vmax	Relative to 1% of viewport's* larger dimension	
 %	    Relative to the parent element
-
-
-
 
 /* MCSS Responsive DesignORE ****************************************************/
 
@@ -697,40 +681,7 @@ NOTE: add this code to let your browser support <picture> tag:
     <script src="picturefille.js" async></script>/* NOTE: download this from picturefill.com */
 </head>
 
-/* MORE */
-===================================================================================================
-===================================================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-===================================================================================================
-
-Best CSS Reference Websites
-
-===================================================================================================
+/* More ****************************************************/
 
 Websites:-
 - cubic-bezier.com (for making animation cubic-bezier) 
@@ -770,15 +721,6 @@ CSS Reference | SS64.com
 An A-Z Index of CSS
 CSS Cheat Sheet
 
-/* THE END **************************************************/
-
-
-
-
-
-
-/* MORE ****************************************************/
-
 [Commonly Used Fallback Fonts] :
 There are no 100% completely web safe fonts. There is always a chance that a font is not found or is not installed properly. Therefore, it is very important to always use fallback fonts.
 This means that you should add a list of similar "backup fonts" in the font-family property. If the first font does not work, the browser will try the next one, and the next one, and so on. Always end the list with a generic font family name.
@@ -788,7 +730,6 @@ Sans-serif
 Monospace
 Cursive
 Fantasy
-
 
 [Best Web Safe Fonts for HTML and CSS]
 The following fonts are the best web safe fonts for HTML and CSS:
@@ -804,7 +745,8 @@ Courier New (monospace)
 Brush Script MT (cursive)
 Note: Before you publish your website, always check how your fonts appear on different browsers and devices, and always use fallback fonts!
 
-/* The Net Ninja Courses */
+/* Net Ninja Courses ****************************************************/
+
 [Custom Properties] (Variables) :
     :root{
         --variable-name: value;
