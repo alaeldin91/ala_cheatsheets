@@ -144,3 +144,182 @@ store.state.a // -> `moduleA`'s state
 store.state.b // -> `moduleB`'s state
 
 // Advanced
+
+
+
+
+
+
+
+/************************************************************************************ Examples *************************************************************************************/
+
+// npm package for phoneNumber with country code :
+// 1. vue-tel-input-vuetify
+// 2.vue-phone-number-input
+
+
+// Input filed for phone number with option to select the country code with the flag
+<template>
+    <v-container>
+    <v-row>
+        <v-col cols="3">
+        <v-select
+            v-model="selectedCountryCode"
+            :items="countryCodes"
+            label="Country Code"
+            item-value="code"
+            item-text="name"
+            @change="onCountryCodeChanged"
+        >
+            <template v-slot:prepend-item="{ item }">
+            <v-list-item>
+                <v-list-item-avatar>
+                <v-img :src="item.flag" />
+                </v-list-item-avatar>
+                <v-list-item-title>{{ item.name }}</v-list-item-title>
+                <v-list-item-subtitle>{{ item.code }}</v-list-item-subtitle>
+            </v-list-item>
+            </template>
+        </v-select>
+        </v-col>
+        <v-col cols="9">
+        <v-text-field
+            v-model="phoneNumber"
+            label="Phone Number"
+            type="tel"
+        ></v-text-field>
+        </v-col>
+    </v-row>
+    </v-container>
+</template>
+
+<script>
+export default {
+    data() {
+    return {
+        selectedCountryCode: '',
+        countryCodes: [],
+        phoneNumber: '',
+    };
+    },
+    mounted() {
+    this.loadCountryCodes();
+    },
+    methods: {
+    async loadCountryCodes() {
+        try {
+            const response = await this.$axios.$get('https://example.com/api/country-codes')
+            .then(res => {
+                const data = res.json()
+                this.countryCodes = data.map((item) => ({
+                    code: item.code,
+                    name: item.name,
+                    flag: `https://example.com${item.flagUrl}`,
+                }))
+                this.selectedCountryCode = this.countryCodes[0].code;
+            })
+            .catch(err => console.log(err))
+        } catch (error) {
+            console.error(error);
+        }
+    },
+    onCountryCodeChanged() {
+        // do something when the selected country code changes
+    },
+    },
+};
+</script>
+
+// Phone Number + Country Code + Country Flag using npm vue-phone-number-input package
+<template>
+<div>
+    <label for="phone">Phone Number</label>
+    <PhoneNumberInput
+    id="phone"
+    v-model="phoneNumber"
+    />
+</div>
+</template>
+
+
+<script>
+import PhoneNumberInput from 'vue-phone-number-input';
+import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+
+export default {
+components: {
+    PhoneNumberInput,
+},
+data() {
+    return {
+    phoneNumber: '',
+    };
+},
+}
+
+</script>
+
+
+
+// Uploading pdf/ex/etc files to the DB
+
+// Backend code (to get the file URL)
+/** Upload files in AWS */  
+router.post('/upload-file', validateToken, async (req, res) => {
+  try {
+      const s3 = new AWS.S3({
+          accessKeyId: ID,
+          secretAccessKey: SECRET
+      });
+      const fileContent = fs.readFileSync(req.files.a.tempFilePath);
+
+      const params = {
+          Bucket: BUCKET_NAME + '/' + req.body.folder,
+          Key: req.body.b,
+          Body: fileContent,
+          ACL: 'public-read',
+          ContentType: req.files.a.mimetype
+      };
+
+      // Uploading files to the bucket
+      s3.upload(params, function (err, data) {
+          if (err) {
+              throw err;
+          }
+          else {
+              // console.log(res)
+              res.json({ name: params.Key, url: data.Location })
+          }
+          console.log(`File uploaded successfully. ${data.Location}`);
+      });
+  } catch (error) {
+      console.log("#log", error);
+      res.status(400).json({ message: error.message })
+  }
+})
+
+// Frontend (use the file URL)
+let upload_meta = {
+  file: this.uploadFiles[i],
+  filename: this.uploadFiles[i].name,
+};
+await this.uploadFile(upload_meta);
+async uploadFile(val) {
+     const token = this.$store.getters.getToken;
+     const AuthStr = "Bearer ".concat(token);
+
+     const fd = new FormData();
+     fd.append("a", val.file, val.name);
+     fd.append("b", this.selectedEmp._id + Date.now() + val.file.name);
+     fd.append("folder", "claims");
+
+     await this.$axios
+       .$post("/requests/upload-file", fd, {
+         headers: { Authorization: AuthStr },
+       })
+       .then((res) => {
+         this.link_url = res.url;
+         this.link_filename = res.name;
+       })
+       .catch((e) => console.log(e));
+  },

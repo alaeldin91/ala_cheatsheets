@@ -161,3 +161,38 @@ app.post('/requests', (req, res) => {
 app.listen(port, () => {
     console.log(`server running at port ${port}`)
 })
+
+
+// EVENT BUS (server.js) Single file : [ its use to distribute single route /events to a deferent endpoints]
+require('dotenv').config()
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
+const bodyParser = require('body-parser')
+const timeout = require('connect-timeout')
+const axios = require('axios')
+const port = 7900
+const app = express()
+app.use(cors())
+app.use(timeout('5s'))
+app.use(bodyParser.json({limit: '50mb'}))
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}))
+const events = [];
+app.post('/events', (req, res) => {
+    const event = req.body;
+    events.push(event);
+    // endpoint - 1
+    axios.post('http://localhost:7500/events', event); // CENTRAL
+    axios.post('http://localhost:7800/events', event); // QUERY
+    // endpoint - 2
+    axios.post('http://localhost:7800/events', event); // QUERY
+    // endpoint - 3
+    axios.post('http://localhost:7800/events', event); // QUERY
+    res.send({ status: 'OK' });
+});
+app.get('/events', (req, res) => {
+    es.send(events);
+});
+app.listen(port, () => {
+    console.log(`server running at port ${port}`)
+})
