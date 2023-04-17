@@ -1,355 +1,339 @@
-/*___________________________________________________________________________________
-|                                                                                   |
-|                                  Dev.BUSHRA                                       |
-|                                CSS CheatSheet                                     |
-|-----------------------------------------------------------------------------------|
-|                              All CSS Properties                                   |
-|                      www.w3schools.com/css/css3_2dtransforms.asp                  |
-|___________________________________________________________________________________*/
-
-/* CSS Properties ****************************************************/
+/* CSS Cheatsheet - dev-bushra */
 
 [Color]
-mix-blend-mode	    Specifies how an element's content should blend with its direct parent background
-caret-color	                Specifies the color of the cursor (caret) in inputs, textareas, or any element that is editable
-color	                    Sets the color of text
+mix-blend-mode: Specifies how an element's content should blend with its direct parent background
+caret-color: Specifies the color of the cursor (caret) in inputs, textareas, or any element that is editable.
+color: Sets the color of text.
 
 [3D]
-perspective	        Gives a 3D-positioned element some perspective
-perspective          how many pixels the 3D element is placed from the view 
-perspective-origin   where is the 3D element based in the x- and y-axis 
-perspective-origin	Defines at which position the user is looking at the 3D-positioned element
-z-index     controle the 3d position and what element is above the other element.
+perspective: Gives a 3D-positioned element some perspective.
+perspective: how many pixels the 3D element is placed from the view.
+perspective-origin: Where is the 3D element based in the x- and y-axis.
+perspective-origin: Defines at which position the user is looking at the 3D-positioned element.
+z-index: Control the 3d position and what element is above the other element.
 
-[Transform]    
-transform	Applies a 2D or 3D transformation to an element
-transform-origin	Allows you to change the position on transformed elements
-transform-style	Specifies how nested elements are rendered in 3D space
-transition	A shorthand property for all the transition-* properties
-transition-delay	Specifies when the transition effect will start
-transition-duration	Specifies how many seconds or milliseconds a transition effect takes to complete
-transition-property	Specifies the name of the CSS property the transition effect is for
-transition-timing-function	Specifies the speed curve of the transition effect
+[Transform]
+transform: Function thats applies a 2D transformation animation to an element (translate|matrix|matrix3d|scale|rotate|skew|scale|perspective).
+transform-origin: Allows you to change the position of transform of an elements (center|top|bottom|right|left).
+transform-style: Sets whether children of an element are positioned in the 3D space or are flattened in the plane of the element (flat|3d).
+
+[Transition]
+transition: Shorthand for 'transition-property transition-duration transition-timing-function transition-delay' that provide a way to control animation speed when changing CSS properties (Instead of having property changes take effect immediately).
+transition-property: Values (none|all|property|initial|inherit).
+transition-duration: Values (0s|1s|2s).
+transition-timing-function: Values (ease|linear|ease-in|ease-out|ease-in-out|step-start|step-end).
+transition-delay: Values (0s|1s|2s).
 
 [Animation] 
-animation                    binds an animation to an element 
-animation-delay              delays animation start 
-animation-direction          reverse animation or in alternate cycles 
-animation-duration           animation duration in seconds or ms 
-animation-fill-mode          style when the animation is not playing 
-animation-iteration-count    number of an animation replay 
-animation-name               name for the @keyframes{} animation 
-animation-play-state         the animation is running or paused 
-animation-timing-function    speed curve of an animation 
-backface-visibility          is element visible when not facing the screen 
-@keyframes                   specifies the animation code {}
-animation	                 A shorthand property for "all the animation-* properties
-animation-delay	             Specifies a delay for the start of an animation
-animation-direction	         Specifies whether an animation should be played forwards, backwards or in alternate cycles
-animation-duration	         Specifies how long an animation should take to complete one cycle
-animation-fill-mode     	 Specifies a style for the element when the animation is not playing. (before it starts, after it ends, or both) 
-animation-iteration-count	 Specifies the number of times an animation should be played
-animation-name	             Specifies a name for the @keyframes {} animation
-animation-play-state	     Specifies whether the animation is running or paused 
-animation-timing-function	 Specifies the speed curve of an animation 
+animation: Shorthand property for "all the animation-* properties.
+animationbinds: an animation to an element 
+animation-delay: delays animation start 
+animation-direction: reverse animation or in alternate cycles 
+animation-durationanimation: duration in seconds or ms 
+animation-fill-mode: style when the animation is not playing 
+animation-iteration-countnumber: of an animation replay 
+animation-namename: for the @keyframes{} animation 
+animation-play-state: the animation is running or paused 
+animation-timing-functionspeed: curve of an animation 
+backface-visibility: is element visible when not facing the screen 
+@keyframesspecifies the animation code {}
+animation-delay: Specifies a delay for the start of an animation
+animation-direction: Specifies whether an animation should be played forwards, backwards or in alternate cycles
+animation-duration: Specifies how long an animation should take to complete one cycle
+animation-fill-mode: Specifies a style for the element when the animation is not playing. (before it starts, after it ends, or both) 
+animation-iteration-count: Specifies the number of times an animation should be played
+animation-name: Specifies a name for the @keyframes {} animation
+animation-play-state: Specifies whether the animation is running or paused 
+animation-timing-function: Specifies the speed curve of an animation 
 
 [Window]
-widows	        Sets the minimum number of lines that must be left at the top of a page or column
+widows: Sets the minimum number of lines that must be left at the top of a page or column
+
+[x,y Axis]
+-x: Set the vertical axis for an element like [Align] properties.
+-y: Set the horizontal axis for an element like [Justify] properties.
 
 [Align] 
-align-content       behavior of the flex-wrap property 
-align-items         alignment of items inside the container 
-align-self          alignment of the selected item 
-vertical-align	Sets the vertical alignment of an element
+align-contentbehavior: of the flex-wrap property 
+align-items: alignment of items inside the container
+align-self: alignment of the selected item 
+vertical-align: Sets the vertical alignment of an element
 
 [Justify]
-justify-content     justifies flexible container's items horizontally if necessary 
-justify-item        set on the grid container to give child elements (grid items) alignment in the inline direction. 
-justify-self        aligns a grid item within its grid cell in the inline direction. 
+justify-content: justifies flexible container's items horizontally if necessary 
+justify-itemset: on the grid container to give child elements (grid items) alignment in the inline direction. 
+justify-selfaligns: a grid item within its grid cell in the inline direction. 
 
 [Position]
-position	        Specifies the type of positioning method used for an element (static, relative, absolute or fixed)
-clip                 clip an absolutely positioned element 
+position	Specifies the type of positioning method used for an element (static, relative, absolute or fixed)
+clip clip an absolutely positioned element 
 
 [Flex] 
-flex	                    A shorthand property for the flex-grow, flex-shrink, and the flex-basis properties
-flex-basis       initial length of a flexible item 
-flex-direction   direction of the flexible items    
-flex-flow        shorthand for flex-direction and flex-wrap 
-flex-grow        how much the item will grow relative other items 
-flex-shrink      how to shrink the item relative to other items 
-flex-wrap        wrap flexible items 
-flex-basis	     Specifies the initial length of a flexible item
-flex-direction  Specifies the direction of the flexible items
-flex-flow	     A shorthand property for the flex-direction and the flex-wrap properties
-flex-grow	     Specifies how much the item will grow relative to the rest
-flex-shrink	     Specifies how the item will shrink relative to the rest
-flex-wrap	     Specifies whether the flexible items should wrap or not
+flex: A shorthand property for the flex-grow, flex-shrink, and the flex-basis properties
+flex-basisinitial: length of a flexible item 
+flex-directiondirection: of the flexible items
+flex-flowshorthand: for flex-direction and flex-wrap 
+flex-growhow: much the item will grow relative other items 
+flex-shrink: how to shrink the item relative to other items 
+flex-wrapwrap: flexible items 
+flex-basis: Specifies the initial length of a flexible item
+flex-direction: Specifies the direction of the flexible items
+flex-flow: A shorthand property for the flex-direction and the flex-wrap properties
+flex-grow: Specifies how much the item will grow relative to the rest
+flex-shrink: Specifies how the item will shrink relative to the rest
+flex-wrap: Specifies whether the flexible items should wrap or not
 
 [Grid] 
-grid-area                    Either specifies a "name for the grid item", or this property is a shorthand property for the "grid-row-start, grid-column-start, grid-row-end, and grid-column-end" properties 
-grid-auto-columns	         Specifies a "default column size" 
-grid-auto-flow	             Specifies how auto-placed items are inserted in the grid 
-grid-auto-rows	             Specifies a "default row size" 
-grid-column	                 A shorthand property for the "grid-column-start and the grid-column-end" properties 
-grid-column-end	             Specifies "where to end the grid item" 
-grid-column-gap	             Specifies the "size of the gap between columns" 
-grid-column-start	         Specifies "where to start the grid item" 
-grid-gap	                 A shorthand property for the "grid-row-gap and grid-column-gap" properties 
-gap	                         A shorthand property for the "row-gap and the column-gap" properties 
-grid-row	                 A shorthand property for the "grid-row-start and the grid-row-end" properties 
-grid-row-end	             Specifies "where to end the grid item" 
-grid-row-gap	             Specifies the "size of the gap between rows" 
-grid-row-start	             Specifies "where to start the grid item" 
-grid-template	             A shorthand property for the "grid-template-rows, grid-template-columns and grid-areas" properties 
-grid-template-areas	         Specifies "how to display columns and rows", using named grid items 
-grid-template-columns	     Specifies the "size of the columns, and how many columns in a grid layout" 
-grid-template-rows	         Specifies the "size of the rows in a grid layout" 
+grid-area: Either specifies a "name for the grid item", or this property is a shorthand property for the "grid-row-start, grid-column-start, grid-row-end, and grid-column-end" properties 
+grid-auto-columns: Specifies a "default column size" 
+grid-auto-flow: Specifies how auto-placed items are inserted in the grid 
+grid-auto-rows: Specifies a "default row size" 
+grid-column	 A shorthand property for the "grid-column-start and the grid-column-end" properties 
+grid-column-end: Specifies "where to end the grid item" 
+grid-column-gap: Specifies the "size of the gap between columns" 
+grid-column-start: Specifies "where to start the grid item" 
+grid-gap: A shorthand property for the "grid-row-gap and grid-column-gap" properties 
+gap: A shorthand property for the "row-gap and the column-gap" properties 
+grid-row: A shorthand property for the "grid-row-start and the grid-row-end" properties 
+grid-row-end: Specifies "where to end the grid item" 
+grid-row-gap: Specifies the "size of the gap between rows" 
+grid-row-start: Specifies "where to start the grid item" 
+grid-template: A shorthand property for the "grid-template-rows, grid-template-columns and grid-areas" properties 
+grid-template-areas: Specifies "how to display columns and rows", using named grid items 
+grid-template-columns: Specifies the "size of the columns, and how many columns in a grid layout" 
+grid-template-rows: Specifies the "size of the rows in a grid layout" 
+place-items: Shorthand for the align-items and justify-items.
 
 [Background] 
-background               all bg properties in one declaration 
-background-attachment    is the bg image scroll/ fixed/ local 
-background-blend-mode    blend mode of each bg layer 
-background-clip          painting area of the bg 
-background-origin        where is the bg imade is positioned 
-background-position      position of the bg image 
-background-repate        bg image repeated no/ repeat/ repeat-x/ repeat-y 
-background-size          bg image size 
-background	                 A shorthand property for all the background-* properties 
-background-attachment	     Sets whether a background image scrolls with the rest of the page, or is fixed 
-background-blend-mode	     Specifies the blending mode of each background layer (color/image) 
-background-clip	             Defines how far the background (color or image) should extend within an element 
-background-color	         Specifies the background color of an element 
-background-image	         Specifies one or more background images for an element 
-background-origin	         Specifies the origin position of a background image 
-background-position	         Specifies the position of a background image 
-background-repeat	         Sets if/how a background image will be repeated 
-background-size	             Specifies the size of the background images 
+background: All bg properties in one declaration 
+background-attachmentis: the bg image scroll/ fixed/ local 
+background-blend-modeblend: mode of each bg layer 
+background-clip: painting area of the bg 
+background-originwhere: is the bg imade is positioned 
+background-position: position of the bg image 
+background-repatebg: image repeated no/ repeat/ repeat-x/ repeat-y 
+background-size: bg image size 
+background: A shorthand property for all the background-* properties 
+background-attachment: Sets whether a background image scrolls with the rest of the page, or is fixed 
+background-blend-mode: Specifies the blending mode of each background layer (color/image) 
+background-clip: Defines how far the background (color or image) should extend within an element 
+background-color: Specifies the background color of an element 
+background-image: Specifies one or more background images for an element 
+background-origin: Specifies the origin position of a background image 
+background-position: Specifies the position of a background image 
+background-repeat: Sets if/how a background image will be repeated 
+background-size: Specifies the size of the background images 
 
 [Border]
-border                       set border properties 
-border-bottom                bottom border properties in one line 
-border-bottom-color          color of the bottom border 
-border-bottom-left-radius    border bottom left radius 
-border-bottom-right-radius   border bottom right radius 
-border-bottom-style          border bottom style 
-border-bottom-width          border bottom width 
-border-collapse              border collapse 
-border-color                 border color 
-border-image                 sets an image as border 
-border-image-outset          border image area extends beyond the border box 
-border-image-repeat          border image repeated, rounded or stretched 
-border-image-slice           how to slice the border image 
-border-image-source          path to the border image 
-border-image-width           border image width 
-border-left                  left border properties in one line 
-border-left-color            border left color 
-border-left-style            border left style 
-border-left-width            border left width 
-border-radius                border radius of the four rounded corners 
-border-right                 right border properties in one line 
-border-right-color           border right color 
-border-right-style           border right style 
-border-right-width           border right width 
-border-spacing               border spacing 
-border-style                 border style 
-border-top                   top border properties in one line 
-border-top-color             border top color 
-border-top-left-radius       border top left radius 
-border-top-right-radius      border top right radius 
-border-top-style             border top style 
-border-top-width             border top width 
-border-width                 border width 
+border: set border properties 
+border-bottombottom: border properties in one line 
+border-bottom-color: color of the bottom border 
+border-bottom-left-radius: border bottom left radius 
+border-bottom-right-radius: border bottom right radius 
+border-bottom-style: border bottom style 
+border-bottom-width: border bottom width 
+border-collapse: border collapse 
+border-color: border color 
+border-image: sets an image as border 
+border-image-outset: border image area extends beyond the border box 
+border-image-repeat: Set border image repeated, rounded or stretched. 
+border-image-slice: Divides the image specified by border-image-source into regions.
+border-image-source: path to the border image 
+border-image-width: border image width 
+border-left: left border properties in one line 
+border-left-color: border left color 
+border-left-style: border left style 
+border-left-width: border left width 
+border-radius: border radius of the four rounded corners 
+border-right: right border properties in one line 
+border-right-color: border right color 
+border-right-style: border right style 
+border-right-width: border right width 
+border-spacing: border spacing 
+border-style: border style 
+border-top: top border properties in one line 
+border-top-color: border top color 
+border-top-left-radius: border top left radius 
+border-top-right-radius: border top right radius 
+border-top-style: border top style 
+border-top-width: border top width 
+border-width: border width 
 
 [Column] 
-columns              set column-width and column-count 
-column-count         divide the content in columns 
-column-fill          balanced fill or not 
-column-gap           gap between the columns    
-column-rule          separator between columns, like border 
-column-rule-color    column rule color 
-column-rule-style    column rule style 
-column-rule-width    column rule width 
-column-span          column span 
-column-width         column width 
-column-count	            Specifies the number of columns an element should be divided into
-column-fill	                Specifies how to fill columns, balanced or not
-column-gap	                Specifies the gap between the columns
-column-rule	                A shorthand property for all the column-rule-* properties
-column-rule-color	        Specifies the color of the rule between columns
-column-rule-style	        Specifies the style of the rule between columns
-column-rule-width	        Specifies the width of the rule between columns
-column-span	                Specifies how many columns an element should span across
-column-width	            Specifies the column width
-columns	                    A shorthand property for column-width and column-count
+columns: set column-width and column-count 
+column-count: divide the content in columns 
+column-fill: balanced fill or not 
+column-gap: gap between the columns
+column-rule: separator between columns, like border 
+column-rule-color: column rule color 
+column-rule-style: column rule style 
+column-rule-width: column rule width 
+column-span: column span 
+column-width: column width 
+column-count: Specifies the number of columns an element should be divided into
+column-fill: Specifies how to fill columns, balanced or not
+column-gap: Specifies the gap between the columns
+column-rule: A shorthand property for all the column-rule-* properties
+column-rule-color: Specifies the color of the rule between columns
+column-rule-style: Specifies the style of the rule between columns
+column-rule-width: Specifies the width of the rule between columns
+column-span: Specifies how many columns an element should span across
+column-width: Specifies the column width
 
 [Images]
-image-rendering	              Specifies the "type of algorithm to use for image scaling" 
-filter               image effects: grayscale, blur, invert etc.    
+image-rendering: Specifies the "type of algorithm to use for image scaling" 
+filter: image effects: grayscale, blur, invert etc.
 
 [Font] 
-font                 all font properties in one line 
-@font-face           declare non-web-safe fonts {}
-font-family          font of the element 
-font-size            font size    
-font-size-adjust     control font size if the first declared option is not available 
-font-stretch         widen or narrow text 
-font-style           font style: normal, italic, oblique 
-font-variant         set small-caps 
-font-weight          use bold or thin characters 
-font	                    A shorthand property for the font-style, font-variant, font-weight, font-size/line-height, and the font-family properties
-@font-face	                A rule that allows websites to download and use fonts other than the "web-safe" fonts
-font-family	                Specifies the font family for text
-font-feature-settings	    Allows control over advanced typographic features in OpenType fonts
-@font-feature-values{}	    Allows authors to use a common name in font-variant-alternate for feature activated differently in OpenType
-font-kerning	            Controls the usage of the kerning information (how letters are spaced)
-font-language-override	    Controls the usage of language-specific glyphs in a typeface
-font-size	                Specifies the font size of text
-font-size-adjust	        Preserves the readability of text when font fallback occurs
-font-stretch	            Selects a normal, condensed, or expanded face from a font family
-font-style	                Specifies the font style for text
-font-synthesis	            Controls which missing typefaces (bold or italic) may be synthesized by the browser
-font-variant	            Specifies whether or not a text should be displayed in a small-caps font
-font-variant-alternates	    Controls the usage of alternate glyphs associated to alternative names defined in @font-feature-values{}
-font-variant-caps	        Controls the usage of alternate glyphs for capital letters
-font-variant-east-asian	    Controls the usage of alternate glyphs for East Asian scripts (e.g Japanese and Chinese)
-font-variant-ligatures	    Controls which ligatures and contextual forms are used in textual content of the elements it applies to
-font-variant-numeric	    Controls the usage of alternate glyphs for numbers, fractions, and ordinal markers
-font-variant-position	    Controls the usage of alternate glyphs of smaller size positioned as superscript or subscript regarding the baseline of the font
-font-weight	                Specifies the weight of a font
-letter-spacing	                Increases or decreases the space between characters in a text
-text-align	Specifies the horizontal alignment of text
-text-align-last	Describes how the last line of a block or a line right before a forced line break is aligned when text-align is "justify"
-text-combine-upright	Specifies the combination of multiple characters into the space of a single character
-text-decoration	Specifies the decoration added to text
-text-decoration-color	Specifies the color of the text-decoration
-text-decoration-line	Specifies the type of line in a text-decoration
-text-decoration-style	Specifies the style of the line in a text decoration
-text-indent	Specifies the indentation of the first line in a text-block
-text-justify	Specifies the justification method used when text-align is "justify"
-text-orientation	Defines the orientation of the text in a line
-text-overflow	Specifies what should happen when text overflows the containing element
-text-shadow	Adds shadow to text
-text-transform	Controls the capitalization of text
-text-underline-position	Specifies the position of the underline which is set using the text-decoration property
-word-break	    Specifies how words should break when reaching the end of a line
-word-spacing	Increases or decreases the space between words in a text
-word-wrap	    Allows long, unbreakable words to be broken and wrap to the next line
-writing-mode	Specifies whether lines of text are laid out horizontally or vertically
-white-space     Specifies how white-space inside an element is handled
+font: A shorthand property for the font-style, font-variant, font-weight, font-size/line-height, and the font-family properties
+@font-face: declare non-web-safe fonts {}
+font-family: font of the element 
+font-size: font size
+font-size-adjust: control font size if the first declared option is not available 
+font-stretch: widen or narrow text 
+font-style: font style: normal, italic, oblique 
+font-variant: set small-caps 
+font-weight: use bold or thin characters 
+@font-face: A rule that allows websites to download and use fonts other than the "web-safe" fonts
+font-family: Specifies the font family for text
+font-feature-settings: Allows control over advanced typographic features in OpenType fonts
+@font-feature-values{}: Allows authors to use a common name in font-variant-alternate for feature activated differently in OpenType
+font-kerning: Controls the usage of the kerning information (how letters are spaced)
+font-language-override: Controls the usage of language-specific glyphs in a typeface
+font-size: Specifies the font size of text
+font-size-adjust: Preserves the readability of text when font fallback occurs
+font-stretch: Selects a normal, condensed, or expanded face from a font family
+font-style: Specifies the font style for text
+font-synthesis: Controls which missing typefaces (bold or italic) may be synthesized by the browser
+font-variant: Specifies whether or not a text should be displayed in a small-caps font
+font-variant-alternates: Controls the usage of alternate glyphs associated to alternative names defined in @font-feature-values{}
+font-variant-caps: Controls the usage of alternate glyphs for capital letters
+font-variant-east-asian: Controls the usage of alternate glyphs for East Asian scripts (e.g Japanese and Chinese)
+font-variant-ligatures: Controls which ligatures and contextual forms are used in textual content of the elements it applies to
+font-variant-numeric: Controls the usage of alternate glyphs for numbers, fractions, and ordinal markers
+font-variant-position: Controls the usage of alternate glyphs of smaller size positioned as superscript or subscript regarding the baseline of the font
+font-weight: Specifies the weight of a font
+letter-spacing: Increases or decreases the space between characters in a text.
+text-align: Specifies the horizontal alignment of text.
+text-align-last: Describes how the last line of a block or a line right before a forced line break is aligned when text-align is "justify".
+text-decoration: Specifies the decoration added to text.
+text-decoration-color: Specifies the color of the text-decoration.
+text-decoration-line: Specifies the type of line in a text-decoration.
+text-decoration-style: Specifies the style of the line in a text-decoration.
+text-indent: Specifies the indentation of the first line in a text-block.
+text-overflow: Specifies what should happen when text overflows the containing element.
+text-shadow	: Adds shadow to text.
+text-transform: Controls the capitalization of text.
+text-combine-upright: Specifies the combination of multiple characters into the space of a single character
+text-justify: Specifies the justification method used when text-align is "justify".
+text-orientation: Defines the orientation of the text in a line.
+text-underline-position: Specifies the position of the underline which is set using the text-decoration property.
+word-break: Specifies how words should break when reaching the end of a line.
+word-spacing: Increases or decreases the space between words in a text.
+word-wrap: Allows long, unbreakable words to be broken and wrap to the next line.
+writing-mode: Sets whether direction or lines of text are laid out horizontally or vertically, as well as the in which blocks progress.
 
 [Line]
-line-break	                    Specifies how/if to break lines
-line-height	                    Sets the line height
+line-break: Specifies how/if to break lines
+line-height: Sets the line height
 
 [List] 
-list-style           all list properties in one line 
-list-style-image     replace the list item marker with an image 
-list-style-position  list item markers inside or outside the content flow 
-list-style-type      set the type of the list item marker 
+list-style: all list properties in one line 
+list-style-image: replace the list item marker with an image 
+list-style-position: list item markers inside or outside the content flow 
+list-style-type: set the type of the list item marker 
 
 [Page] 
-page-break-after	Sets the page-break behavior after an element
-page-break-before	Sets the page-break behavior before an element
-page-break-inside	Sets the page-break behavior inside an element
+page-break-after: Sets the page-break behavior after an element
+page-break-before: Sets the page-break behavior before an element
+page-break-inside: Sets the page-break behavior inside an element
 
 [Outline] 
-outline          A shorthand property for the outline-width, outline-style, and the outline-color properties (drow an outer border around elemen)
-outline-color    outline color 
-outline-offset   gap between the element and the outline 
-outline-style    outline style 
-outline-width    outline width 
+outline: A shorthand property for the outline-width, outline-style, and the outline-color properties (drow an outer border around elemen)
+outline-colorout: line color 
+outline-offset: gap between the element and the outline 
+outline-style: outline style 
+outline-width: outline width 
 
 [Object]
-object-fit	Specifies how the contents of a replaced element should be fitted to the box established by its used height and width
-object-position	Specifies the alignment of the replaced element inside its box
+object-fit: Specifies how the contents of a replaced element should be fitted to the box established by its used height and width
+object-position: Specifies the alignment of the replaced element inside its box
 
 [Overflow] 
-overflow     hide, display or scroll if the content overflows its container 
-overflow-x   horizontal overflow 
-overflow-y   vertical overflow 
-overflow
-Specifies what happens if content overflows an element's box
-overflow-wrap	Specifies whether or not the browser can break lines with long words, if they overflow the container
-overflow-x	Specifies whether or not to clip the left/right edges of the content, if it overflows the element's content area
-overflow-y	Specifies whether or not to clip the top/bottom edges of the content, if it overflows the element's content area
+overflow: hide, display or scroll if the content overflows its container 
+overflow-wrap: Specifies whether or not the browser can break lines with long words, if they overflow the container
+overflow-x: Specifies whether or not to clip the left/right edges of the content, if it overflows the element's content area
+overflow-y: Specifies whether or not to clip the top/bottom edges of the content, if it overflows the element's content area
 
 [Scroll]
-scroll-behavior	Specifies whether to smoothly animate the scroll position in a scrollable box, instead of a straight jump
-
-[Text] 
-text-align       horizontal alignment of text 
-text-align-last  horizontal alignment of last line of tex 
-text-decoration  overline, underline or line-through the text 
-text-indent      indentation of the first line of the text 
-text-overflow    the way how overflowed content is marked (ellipsis) 
-text-shadow      text shadow 
-text-transform   capitalization of text 
+scroll-behavior: Specifies whether to smoothly animate the scroll position in a scrollable box, instead of a straight jump
 
 [Mask] 
-mask	            Hides parts of an element by masking or clipping an image at specific places
-mask-clip	        Specifies the mask area
-mask-composite	    Represents a compositing operation used on the current mask layer with the mask layers below it
-mask-image	        Specifies an image to be used as a mask layer for an element
-mask-mode	        Specifies whether the mask layer image is treated as a luminance mask or as an alpha mask
-mask-origin	        Specifies the origin position (the mask position area) of a mask layer image
-mask-position	    Sets the starting position of a mask layer image (relative to the mask position area)
-mask-repeat	        Specifies how the mask layer image is repeated
-mask-size	        Specifies the size of a mask layer image
-mask-type	        Specifies whether an SVG <mask> element is treated as a luminance mask or as an alpha mask
+mask: Hides parts of an element by masking or clipping an image at specific places
+mask-clip: Specifies the mask area
+mask-composite: Represents a compositing operation used on the current mask layer with the mask layers below it
+mask-image: Specifies an image to be used as a mask layer for an element
+mask-mode: Specifies whether the mask layer image is treated as a luminance mask or as an alpha mask
+mask-origin: Specifies the origin position (the mask position area) of a mask layer image
+mask-position: Sets the starting position of a mask layer image (relative to the mask position area)
+mask-repeat: Specifies how the mask layer image is repeated
+mask-size: Specifies the size of a mask layer image
+mask-type: Specifies whether an SVG <mask> element is treated as a luminance mask or as an alpha mask
 
 [Box]
-box-shadow           shadow to element 
-box-sizing           box sizing properties
-box-decoration-break	    Sets the behavior of the background and border of an element at page-break, or, for in-line elements, at line-break.
-box-shadow	                Attaches one or more shadows to an element
-box-sizing	                Defines how the width and height of an element are calculated: should they include padding and borders, or not
+box-sizing: Defines how the width and height of an element are calculated: should they include padding and borders, or not.
+border-box: Value of properties thats make the element start from the border right top edge.
+padding-box: Value of properties thats make the element start from the padding right top edge.
+content-box: Value of properties thats make the element start from the element box right top edge.
+box-shadow: shadow to element 
+box-decoration-break: Sets the behavior of the background and border of an element at page-break, or, for in-line elements, at line-break.
+box-shadow: Attaches one or more shadows to an element
 
 [Break]
-break-after	                Specifies whether or not a page-, column-, or region-break should occur after the specified element
-break-before	            Specifies whether or not a page-, column-, or region-break should occur before the specified element
-break-inside	            Specifies whether or not a page-, column-, or region-break should occur inside the specified element
+break-after: Specifies whether or not a page-, column-, or region-break should occur after the specified element
+break-before: Specifies whether or not a page-, column-, or region-break should occur before the specified element
+break-inside: Specifies whether or not a page-, column-, or region-break should occur inside the specified element
 
 [Nav]
-nav-down             where to navigate when the the arrow-down button is pressed 
-nav-index            sets sequential navigation order 
-nav-left             where to navigate when the the arrow-left button is presse 
-nav-right            where to navigate when the the arrow-right button is pressed 
-nav-up               where to navigate when the the arrow-up button is presse 
+nav-down: where to navigate when the the arrow-down button is pressed 
+nav-index: sets sequential navigation order 
+nav-left: where to navigate when the the arrow-left button is presse 
+nav-right: where to navigate when the the arrow-right button is pressed 
+nav-up: where to navigate when the the arrow-up button is presse 
 
 [Tab] 
-tab-size	Specifies the width of a tab character
+tab-size: Specifies the width of a tab character
 
 [Table]
-table-layout	Defines the algorithm used to lay out table cells, rows, and columns
-empty-cells          hide borders and background on empty table cells 
-caption-side         placement of a table caption 
+table-layout: Defines the algorithm used to lay out table cells, rows, and columns
+empty-cells: hide borders and background on empty table cells 
+caption-side: placement of a table caption 
 
 [Floating]
-float                float elements left or right 
-clear                deny floating of an element 
+float: float elements left or right 
+clear: deny floating of an element 
 
 [Content]
-content              insert content :before and :after elements 
-counter-increment    count sections 
-counter-reset        reset counter
+content: insert content :before and :after elements 
+counter-increment: count sections 
+counter-reset: reset counter
 
 [Others * ]
-all                  change all properties 
-cursor               cursor type when element is hovered 
-pointer-events	    Defines whether or not an element reacts to pointer events
-display              box display type    
-direction            writing direction, Arabic is using rtl 
-hanging-punctuation  can a punctuation mark be placed outside the line box? 
-opacity              transparency level of an element 
-order                reorder elements in a container 
-quotes               set quotation marks to wrap an element 
-resize               declare resizable elements 
-isolation	                  Defines whether an element must create a new stacking content 
-orphans         	Sets the minimum number of lines that must be left at the bottom of a page or column
-unicode-bidi	Used together with the direction property to set or return whether the text should be overridden to support multiple languages in the same document
-user-select	Specifies whether the text of an element can be selected
-visibility	Specifies whether or not an element is visible
+all: change all properties 
+cursor: cursor type when element is hovered 
+pointer-events: Defines whether or not an element reacts to pointer events
+display: box display type
+direction: writing direction, Arabic is using rtl 
+hanging-punctuation: can a punctuation mark be placed outside the line box? 
+opacity: transparency level of an element 
+orderre: order elements in a container 
+quotes: set quotation marks to wrap an element 
+resize: declare resizable elements 
+isolation: Defines whether an element must create a new stacking content 
+orphans: Sets the minimum number of lines that must be left at the bottom of a page or column
+unicode-bidi: Used together with the direction property to set or return whether the text should be overridden to support multiple languages in the same document
+user-select: Specifies whether the text of an element can be selected
+visibility: Specifies whether or not an element is visible
 
 /* CSS Selectors ****************************************************/
 
