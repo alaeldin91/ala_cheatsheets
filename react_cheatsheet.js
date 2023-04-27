@@ -1394,3 +1394,91 @@ export default App;
 // ! React 18
 // ==================
 // Syntax:-
+
+
+// Email and Phone Validation Exp
+<div md={6} className={styles.formCol}>
+  <Group controlId="email">
+    <Label className={styles.label}>Email</Label>
+    <Control
+      required
+      type="email"
+      name="email"
+      placeholder="Enter email"
+      onChange={(e) => setEmail(e.target.value)}
+      className={styles.input}
+      minLength={8}
+      isInvalid={
+        error.status &&
+        (error.type.includes("email") || !validateEmail(email))
+      }
+    />
+    <Form.Control.Feedback type="invalid">
+      Please Give Valid Email.
+    </Form.Control.Feedback>
+  </Group>
+</div>
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+// or 
+isInvalid={
+  error.status &&
+  (error.type.includes("email") || !validateEmail(email))
+}
+
+// API call for simple forma 
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!validateEmail(email)) {
+    setError({
+      type: ["email"],
+      status: true,
+      message: "Enter Valid Email",
+    });
+    return;
+  }
+  if (phone.length < 10) {
+    setError({
+      type: ["phone"],
+      status: true,
+      message: "Enter Valid Phone Number",
+    });
+    return;
+  }
+  const form = e.currentTarget;
+  if (form.checkValidity() === false) {
+    e.stopPropagation();
+    return;
+  }
+
+  const data = {
+    fullname: fullname,
+    email: email,
+    phone: phone,
+    urgent: urgent,
+    message: message,
+  };
+  console.log("all from data:", data);
+
+  try {
+    const response = await axiosConfig.post("/get-in-touch", data);
+    console.log("response:", response.data);
+    router.push("/thankyou");
+  } catch (error) {
+    const { response } = error;
+    //   console.error(response.data.error.message);
+    setError({
+      // message: response.data.error.message,
+      status: true,
+      type: [],
+    });
+  }
+
+  setValidated(true);
+};
