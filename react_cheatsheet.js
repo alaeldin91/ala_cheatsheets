@@ -1396,6 +1396,8 @@ export default App;
 // Syntax:-
 
 
+
+
 // Email and Phone Validation Exp
 <div md={6} className={styles.formCol}>
   <Group controlId="email">
@@ -1482,3 +1484,11 @@ const handleSubmit = async (e) => {
 
   setValidated(true);
 };
+
+
+// Fallback in react :  refers to default props that are used when a component is unable to render its primary content... ample, a component that displays a user's profile picture may use a default image as a fallback if the user's image is not yet available.
+<SomeComponent fallback={<div className="backup-container" />}></SomeComponent>
+
+// useLayoutEffect hook: runs synchronously / runs after the code mutation / make changes before the browser paints the DOM.
+
+
