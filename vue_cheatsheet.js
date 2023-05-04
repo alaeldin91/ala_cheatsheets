@@ -261,8 +261,8 @@ data() {
 
 
 
-// Uploading pdf/ex/etc files to the DB
-
+// # Uploading pdf/ex/etc files to the DB
+// way (1)
 // Backend code (to get the file URL)
 /** Upload files in AWS */  
 router.post('/upload-file', validateToken, async (req, res) => {
@@ -305,21 +305,24 @@ let upload_meta = {
 };
 await this.uploadFile(upload_meta);
 async uploadFile(val) {
-     const token = this.$store.getters.getToken;
-     const AuthStr = "Bearer ".concat(token);
+    const token = this.$store.getters.getToken;
+    const AuthStr = "Bearer ".concat(token);
 
-     const fd = new FormData();
-     fd.append("a", val.file, val.name);
-     fd.append("b", this.selectedEmp._id + Date.now() + val.file.name);
-     fd.append("folder", "claims");
+    const fd = new FormData();
+    fd.append("a", val.file, val.name);
+    fd.append("b", this.selectedEmp._id + Date.now() + val.file.name);
+    fd.append("folder", "claims");
 
-     await this.$axios
-       .$post("/requests/upload-file", fd, {
-         headers: { Authorization: AuthStr },
-       })
-       .then((res) => {
-         this.link_url = res.url;
-         this.link_filename = res.name;
-       })
-       .catch((e) => console.log(e));
+    await this.$axios
+      .$post("/requests/upload-file", fd, {
+        headers: { Authorization: AuthStr },
+      })
+      .then((res) => {
+        this.link_url = res.url;
+        this.link_filename = res.name;
+      })
+      .catch((e) => console.log(e));
   },
+
+
+// way (2)

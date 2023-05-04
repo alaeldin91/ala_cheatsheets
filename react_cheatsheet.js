@@ -1492,3 +1492,143 @@ const handleSubmit = async (e) => {
 // useLayoutEffect hook: runs synchronously / runs after the code mutation / make changes before the browser paints the DOM.
 
 
+// # Uploading pdf/ex/etc files to the DB
+const [file,setFile] = useState('');
+
+const handleFileChange = (event) => {
+  let uploadedFile = event.target.files[0]
+  console.log('uploaded file:', uploadedFile);
+  setFile(uploadedFile);
+};
+
+<Form.Label className={styles.label}>File</Form.Label>
+<Form.Group controlId="passport" className={styles.fileUploadInput}>
+    <Form.Label className={styles.fileUploadLabel}>
+        { passportCopy == '' ? 'No file selected' : 'File Uploaded' } 
+        <FiUploadCloud style={{fontSize: '28px'}} />
+    </Form.Label>
+    <Form.Control 
+    className={styles.fileUploaderInput} 
+    type="file" 
+    name="passport"
+    onChange={handlePassport} 
+    // value={passportCopy} 
+    />
+</Form.Group>
+
+
+// # uploading file using formatData
+// (1) Form
+<form id="mainform" onSubmit={handleSubmit}>
+  <input type="file" onChange={handleFileSelect} id="uploaded_file" />
+  <button type="submit">Submit</button>
+</form>
+// (2) Methods
+// On File Change 
+const handleFileSelect = (event) => {
+  console.log('file :', event.target.files[0])
+};
+// On Submitting the Form
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  // form
+  let form = document.querySelector("#mainform")
+  console.log('form :', form)
+  // file
+  let file = document.querySelector("#uploaded_file")
+  console.log('uploaded file :', document.querySelector("#uploaded_file").files[0])
+  // formData
+  const formData = new FormData();
+  formData.append('dummyFile', document.querySelector("#uploaded_file").files[0]);
+  formData.append('fullName', 'bushra aboubida');
+  // show content of the formatData
+  console.log('formatData value:', formData.get('dummyFile'))
+  console.log('formatData value:', formData.get('fullName'))
+};
+// Ex for sending pdf to endpoint
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData();
+
+  // form 
+  let apply_form = document.querySelector('#apply_form');
+  console.log('form: ', apply_form);
+
+  // files
+  console.log('passport: ', document.querySelector('#passport'));
+  console.log('visa: ', document.querySelector('#visa'));
+  console.log('emirates_id: ', document.querySelector('#emirates_id'));
+  console.log('photograph: ', document.querySelector('#photograph'));
+  console.log('cancellation_documents: ', document.querySelector('#cancellation_documents'));
+  console.log('police_clearance: ', document.querySelector('#police_clearance'));
+
+  // setting formaData
+  formData.append('fullname', 'Bushra Aboubida');
+  formData.append('phone', '0555278993');
+  formData.append('email', 'bushra@gmail.com');
+  formData.append('occupation', 'D OCt');
+  formData.append('jobtype', 'BNLS');
+  formData.append('salary', '500');
+
+  formData.append('passport_copy', document.querySelector('#passport').files[0]);
+  formData.append('visa_copy', document.querySelector('#visa').files[0]);
+  formData.append('emirates_id', document.querySelector('#emirates_id').files[0]);
+  formData.append('photograph', document.querySelector('#photograph').files[0]);
+  formData.append('cancellation_documents', document.querySelector('#cancellation_documents').files[0]);
+  formData.append('police_clearance', document.querySelector('#police_clearance').files[0]);
+
+  // log
+  console.log('formData full_name: ', formData.get('full_name'));
+  console.log('formData phone: ', formData.get('phone'));
+  console.log('formData email: ', formData.get('email'));
+  console.log('formData occupation: ', formData.get('occupation'));
+  console.log('formData jobtype: ', formData.get('jobtype'));
+  console.log('formData salary: ', formData.get('salary'));
+
+  console.log('formData passport: ', formData.get('passport'));
+  console.log('formData visa: ', formData.get('visa'));
+  console.log('formData emirates_id: ', formData.get('emirates_id'));
+  console.log('formData photograph: ', formData.get('photograph'));
+  console.log('formData cancellation_documents: ', formData.get('cancellation_documents'));
+  console.log('formData police_clearance: ', formData.get('police_clearance'));
+
+  // hitting endpoint
+  try {
+      const config = {
+          headers: {
+              'Content-Type': 'multipart/form-data',
+              'Authorization': 'Bearer '
+          }
+      };
+      const res = await axiosConfig.post("/employer-personal-info", formData, config);
+      console.log("res:", res);
+  } catch (err) {
+      console.log(err);
+  }
+};
+
+
+// Error Soluation for Hydration failed because the initial UI does not match what was rendered on the server
+
+Since it isn't a good practice to modify the content of the package itself, the best way to tackle such issues is to render the component only after the DOM is loaded. So you can try this.
+
+const Index = () => {
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
+
+  return (
+    <>
+      {domLoaded && (
+        <Swiper>
+          <div>Test</div>
+        </Swiper>
+      )}
+    </>
+  );
+};
+
+export default Index;
