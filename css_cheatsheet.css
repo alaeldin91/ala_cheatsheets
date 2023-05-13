@@ -803,3 +803,17 @@ in the targeted tag/class/id
         grid-template-columns: repeat(NumberOfColumns, WidthOfColumns);
     }
 
+
+
+// #Glass effect
+
+. glass-effect (
+background: linear-gradient(135deg, rgba(255.
+255, 255, 0.1), rgba(255, 255, 255, 0));
+-webkit-backdrop-filter: blur(20px);
+backdrop-filter: blur(20px);
+box-shadow: 0 8px 32px 0 rgba(o, 0, 0, 0.37);
+border: lpx solig rgba(255, 255, 255, 0.18);
+border-radius: 32px;
+}
+
