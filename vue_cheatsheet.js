@@ -259,6 +259,43 @@ data() {
 
 </script>
 
+// If API Response comoing in htm tag
+
+# res:
+created_date: "2023-05-18T00:00:00.000Z"
+header_image: "https://dsf.s3.eu-central-1.amazonaws.com/stories/e-stamp.png"
+short_desc: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p>END</p>"
+title:"Test Page break"
+_id: "6465cee9107d8a59f65bfcf7"
+
+# body
+<v-img :src="news[2].header_image" ></v-img>
+<v-img :src="getCategoryImage(news[2].category)" contain></v-img>
+<div v-html="truncateString(news[2].short_desc,60)"></div>
+
+# methods
+getCategoryImage(val) {
+  if (val == "newClient") return "/news/newClient.svg";
+  if (val == "regionalNews") return "/news/regionalNews.svg";
+  if (val == "nathanNews") return "/news/nathanNews.svg";
+  if (val == "teamNews") return "/news/teamNews.svg";
+  if (val == "spotlight") return "/news/spotlight.svg";
+},
+events() {},
+getImage(val) {
+  let image =
+    "https://nathanhroperations.s3.amazonaws.com/profile_pics/Sahiba_T/avatar-7.png";
+  if (this.users.length > 0) {
+    let abc = this.users.filter((a) => a._id == val);
+    if (abc.length > 0) {
+      if (abc[0].hasOwnProperty("image_url")) {
+        if (abc[0].image_url != "") image = abc[0].image_url;
+      }
+    }
+  }
+  return image;
+},
+
 
 
 // # Uploading pdf/ex/etc files to the DB
