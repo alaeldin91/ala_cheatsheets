@@ -1015,3 +1015,159 @@ jQuery[0] // jQuery unwrap:(Arrays Object) to get the element out of the jQuery 
 //                                                             *
 
 // What is JSON? JSON is just a way of organizing data & works well with AJAX.
+
+
+
+
+// ProgressBar
+let interval = setInterval(() => {
+    if (this.progressBarTimer === this.thingTime) {
+    clearInterval(interval)
+    this.progressBarTimer=0
+    }
+    this.progressBarTimer += 1
+    console.log(this.progressBarTimer);
+}, 100)
+
+// Get Image
+getImage(id){
+    let image = 'dummayImag.png'
+    if(this.users.length > 0){
+        let filteredUserList = this.users.filter(user => user._id == val)
+        if(filteredUserList.length > 0){
+            if(filteredUserList[0].hasOwnProperty('image_url')){
+                if(filteredUserList[0].image_url != '') image = filteredUserList[0].image_url
+            }
+        }
+    }
+    return image
+}
+
+// Get User Info
+getUserInfo() {
+    const token =  this.$store.getters.getToken
+    const AuthStr = 'Bearer '.concat(token);
+    let abc = this.$store.getters.getUser
+    this.$axios.$get("/users/info/" + abc._id, {headers: { Authorization: AuthStr }})
+    .then((res) => {
+        this.user = res[0]
+    })
+    .catch();
+}
+
+// forms
+<form name="myForm" id="myForm">
+    <input name="fullname" id="fullname" />
+    <input name="email" id="email" />
+    <input type="submit" />
+</form>
+
+if (myForm.validate()) { 
+    // api call
+    myForm.reset();
+}
+
+
+// add ti fav list 
+addFavorite(id){
+    const token =  this.$store.getters.getToken
+    const AuthStr = 'Bearer '.concat(token)
+    let abc = this.user
+    if(abc.hasOwnProperty('my_favorites') == false){
+        abc.my_favorites = []
+        abc.my_favorites.push(id)
+        abc.my_favorites = _.uniq(abc.my_favorites) // removing duplicates from array
+    } else {
+        if( !abc.my_favorites.includes(id)){
+            abc.my_favorites.push(id)
+            abc.my_favorites = _.uniq(abc.my_favorites) // removing duplicates from array
+        } else {
+            abc.my_favorites = _.without(abc.my_favorites, id) // removing user from favorites
+        }
+    }
+    let arr = [];
+    arr.push(abc);
+    this.$axios.$put('users/fav'+ abc._id, arr, {headers: { Authorization: AuthStr }})
+    .then(res => {
+        // do nothing for now
+    }).catch(res =>{})
+},
+        
+
+// 
+getImage(val){
+    let image = 'https:///avatar-7.png'
+    if(this.users.length > 0){
+        let abc = this.users.filter(a => a._id == val)
+        if(abc.length > 0){
+            if(abc[0].hasOwnProperty('image_url')){
+                if(abc[0].image_url != '') image = abc[0].image_url
+            }
+        }
+    }
+    return image
+},
+getUserInfo() {
+    const token =  this.$store.getters.getToken
+    const AuthStr = 'Bearer '.concat(token);
+
+    this.user = this.$store.getters.getUser
+    this.currentYear = new Date().toISOString().substr(0,10)
+
+    let abc = this.$axios.$get("/wfh/today/all", {headers: { Authorization: AuthStr }})
+    .then(res =>{
+        for(let i = 0;i<res.length;i++){
+            this.todayWfh.push(res[i].user_id)
+        }
+        
+        // this.todayWfh = res
+    }).catch()
+
+    let leaveReq = this.$axios.$get("/leaves/today/all", {headers: { Authorization: AuthStr }})
+    .then(res =>{
+        for(let i = 0;i<res.length;i++){
+            this.todayLeave.push(res[i].user_id)
+        }
+        // this.todayWfh = res
+    }).catch()
+},
+        
+// Filter fun: filter array of objs depend on a selected val from select dropdown menu
+filterText() {
+    let users = this.users
+    let depts = this.depts
+    console.log('users:', this.users);
+    console.log('user:', this.user);
+    console.log('depts:', this.depts);
+    console.log('selected Filter:', this.selectedFilter);
+    
+    if (this.selectedFilter == "ALL") {
+        users = this.users
+    }
+    else if (this.selectedFilter == "My Team") {
+        users = this.users.filter(a => a.reporting.team == this.user.reporting.team)
+        console.log('users:', this.users);
+    }
+    else if (this.selectedFilter == "Department" ){
+        users = this.users.filter(a => a.reporting.department == this.user.reporting.department)
+    }
+    else if (this.selectedFilter == "Company") {
+        users = this.users.filter((a) => {
+            a.company_ID == this.user.company_ID)
+            console.log(' a.company_ID:', a.company_ID);
+            console.log(' this.user.company_ID:', this.user.company_ID);
+        }
+    }else if (this.selectedFilter == "My Favorites" ){
+        let favorites = []
+        for(let x = 0; x < this.user.my_favorites.length; x++){
+            favorites.push(this.user.my_favorites[x])
+        }
+        users = this.users.filter(a => favorites.some(fav => fav === a._id))
+    }
+},
+visibleUsers(){
+    return _.orderBy(this.filterText, ['first_name'],['asc'])
+},
+
+
+// Search Bar

@@ -16,6 +16,46 @@
     </div>
 </template>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// # Responsive Design :
 // Media Queries :-
 
 // Small devices (landscape phones, 576px and above till next break point)
@@ -26,6 +66,8 @@
 
 // Large devices (desktops, 992px and above till next break point)
 @media (min-width: 992px) { ... }
+
+
 
 
 

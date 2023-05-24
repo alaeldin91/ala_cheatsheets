@@ -259,7 +259,7 @@ data() {
 
 </script>
 
-// If API Response comoing in htm tag
+// If API Response coming in htm tag
 
 # res:
 created_date: "2023-05-18T00:00:00.000Z"
@@ -295,7 +295,6 @@ getImage(val) {
   }
   return image;
 },
-
 
 
 // # Uploading pdf/ex/etc files to the DB
@@ -363,3 +362,7 @@ async uploadFile(val) {
 
 
 // way (2)
+
+
+
+// Progr
