@@ -1394,3 +1394,1012 @@ export default App;
 // ! React 18
 // ==================
 // Syntax:-
+
+
+
+
+// Email and Phone Validation Exp
+<div md={6} className={styles.formCol}>
+  <Group controlId="email">
+    <Label className={styles.label}>Email</Label>
+    <Control
+      required
+      type="email"
+      name="email"
+      placeholder="Enter email"
+      onChange={(e) => setEmail(e.target.value)}
+      className={styles.input}
+      minLength={8}
+      isInvalid={
+        error.status &&
+        (error.type.includes("email") || !validateEmail(email))
+      }
+    />
+    <Form.Control.Feedback type="invalid">
+      Please Give Valid Email.
+    </Form.Control.Feedback>
+  </Group>
+</div>
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+// or 
+isInvalid={
+  error.status &&
+  (error.type.includes("email") || !validateEmail(email))
+}
+
+// API call for simple forma 
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!validateEmail(email)) {
+    setError({
+      type: ["email"],
+      status: true,
+      message: "Enter Valid Email",
+    });
+    return;
+  }
+  if (phone.length < 10) {
+    setError({
+      type: ["phone"],
+      status: true,
+      message: "Enter Valid Phone Number",
+    });
+    return;
+  }
+  const form = e.currentTarget;
+  if (form.checkValidity() === false) {
+    e.stopPropagation();
+    return;
+  }
+
+  const data = {
+    fullname: fullname,
+    email: email,
+    phone: phone,
+    urgent: urgent,
+    message: message,
+  };
+  console.log("all from data:", data);
+
+  try {
+    const response = await axiosConfig.post("/get-in-touch", data);
+    console.log("response:", response.data);
+    router.push("/thankyou");
+  } catch (error) {
+    const { response } = error;
+    //   console.error(response.data.error.message);
+    setError({
+      // message: response.data.error.message,
+      status: true,
+      type: [],
+    });
+  }
+
+  setValidated(true);
+};
+
+
+// Fallback in react :  refers to default props that are used when a component is unable to render its primary content... ample, a component that displays a user's profile picture may use a default image as a fallback if the user's image is not yet available.
+<SomeComponent fallback={<div className="backup-container" />}></SomeComponent>
+
+// useLayoutEffect hook: runs synchronously / runs after the code mutation / make changes before the browser paints the DOM.
+
+
+// # Uploading pdf/ex/etc files to the DB
+const [file,setFile] = useState('');
+
+const handleFileChange = (event) => {
+  let uploadedFile = event.target.files[0]
+  console.log('uploaded file:', uploadedFile);
+  setFile(uploadedFile);
+};
+
+<Form.Label className={styles.label}>File</Form.Label>
+<Form.Group controlId="passport" className={styles.fileUploadInput}>
+    <Form.Label className={styles.fileUploadLabel}>
+        { passportCopy == '' ? 'No file selected' : 'File Uploaded' } 
+        <FiUploadCloud style={{fontSize: '28px'}} />
+    </Form.Label>
+    <Form.Control 
+    className={styles.fileUploaderInput} 
+    type="file" 
+    name="passport"
+    onChange={handlePassport} 
+    // value={passportCopy} 
+    />
+</Form.Group>
+
+
+// # uploading file using formatData
+// (1) Form
+<form id="mainform" onSubmit={handleSubmit}>
+  <input type="file" onChange={handleFileSelect} id="uploaded_file" />
+  <button type="submit">Submit</button>
+</form>
+// (2) Methods
+// On File Change 
+const handleFileSelect = (event) => {
+  console.log('file :', event.target.files[0])
+};
+// On Submitting the Form
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  // form
+  let form = document.querySelector("#mainform")
+  console.log('form :', form)
+  // file
+  let file = document.querySelector("#uploaded_file")
+  console.log('uploaded file :', document.querySelector("#uploaded_file").files[0])
+  // formData
+  const formData = new FormData();
+  formData.append('dummyFile', document.querySelector("#uploaded_file").files[0]);
+  formData.append('fullName', 'bushra aboubida');
+  // show content of the formatData
+  console.log('formatData value:', formData.get('dummyFile'))
+  console.log('formatData value:', formData.get('fullName'))
+};
+// Ex for sending pdf to endpoint
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData();
+
+  // form 
+  let apply_form = document.querySelector('#apply_form');
+  console.log('form: ', apply_form);
+
+  // files
+  console.log('passport: ', document.querySelector('#passport'));
+  console.log('visa: ', document.querySelector('#visa'));
+  console.log('emirates_id: ', document.querySelector('#emirates_id'));
+  console.log('photograph: ', document.querySelector('#photograph'));
+  console.log('cancellation_documents: ', document.querySelector('#cancellation_documents'));
+  console.log('police_clearance: ', document.querySelector('#police_clearance'));
+
+  // setting formaData
+  formData.append('fullname', 'Bushra Aboubida');
+  formData.append('phone', '0555278993');
+  formData.append('email', 'bushra@gmail.com');
+  formData.append('occupation', 'D OCt');
+  formData.append('jobtype', 'BNLS');
+  formData.append('salary', '500');
+
+  formData.append('passport_copy', document.querySelector('#passport').files[0]);
+  formData.append('visa_copy', document.querySelector('#visa').files[0]);
+  formData.append('emirates_id', document.querySelector('#emirates_id').files[0]);
+  formData.append('photograph', document.querySelector('#photograph').files[0]);
+  formData.append('cancellation_documents', document.querySelector('#cancellation_documents').files[0]);
+  formData.append('police_clearance', document.querySelector('#police_clearance').files[0]);
+
+  // log
+  console.log('formData full_name: ', formData.get('full_name'));
+  console.log('formData phone: ', formData.get('phone'));
+  console.log('formData email: ', formData.get('email'));
+  console.log('formData occupation: ', formData.get('occupation'));
+  console.log('formData jobtype: ', formData.get('jobtype'));
+  console.log('formData salary: ', formData.get('salary'));
+
+  console.log('formData passport: ', formData.get('passport'));
+  console.log('formData visa: ', formData.get('visa'));
+  console.log('formData emirates_id: ', formData.get('emirates_id'));
+  console.log('formData photograph: ', formData.get('photograph'));
+  console.log('formData cancellation_documents: ', formData.get('cancellation_documents'));
+  console.log('formData police_clearance: ', formData.get('police_clearance'));
+
+  // hitting endpoint
+  try {
+      const config = {
+          headers: {
+              'Content-Type': 'multipart/form-data',
+              'Authorization': 'Bearer '
+          }
+      };
+      const res = await axiosConfig.post("/employer-personal-info", formData, config);
+      console.log("res:", res);
+  } catch (err) {
+      console.log(err);
+  }
+};
+
+
+// Error Soluation for Hydration failed because the initial UI does not match what was rendered on the server
+
+Since it isn't a good practice to modify the content of the package itself, the best way to tackle such issues is to render the component only after the DOM is loaded. So you can try this.
+
+const Index = () => {
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
+
+  return (
+    <>
+      {domLoaded && (
+        <Swiper>
+          <div>Test</div>
+        </Swiper>
+      )}
+    </>
+  );
+};
+
+export default Index;
+
+
+// >>>>>> Ex!!
+  
+// # RegExp for Email & Phone
+  const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+  const validateEmail = (email) => {
+  return String(email)
+      .toLowerCase()
+      .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+
+// # Contact Form [validation + send POST req] 
+import React, { useEffect, useState, useCallback } from "react";
+import _debounce from "lodash/debounce";
+import styles from "./styles.module.scss";
+import { Row, Col, Container } from "react-bootstrap";
+import Image from "next/image";
+import Card from "react-bootstrap/Card";
+import { FiArrowRight } from "react-icons/fi";
+import classnames from "classnames";
+import { TbBrandTelegram } from "react-icons/tb";
+import { BiPhoneCall } from "react-icons/bi";
+import { MdOutlineAccessTime } from "react-icons/md";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import BannerImg from "../../../assets/images/ThankYou/thank_you_banner_img.png";
+import SmallStarsImg from "../../../assets/images/ThankYou/small_stars_img.png";
+import { BsCheck2Circle } from "react-icons/bs";
+import { useRouter } from "next/router";
+import axiosConfig from "../../../utils/axiosConfig";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import 'react-phone-number-input/style.css'
+function Banner() {
+  const [step, setStep] = useState(0);
+  const { Group, Control, Label } = Form;
+  const router = useRouter();
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [urgent, setUrgent] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState({
+    status: false,
+    message: "",
+    type: [],
+  });
+  const [validated, setValidated] = useState(false);
+  const debounceMobileFn = useCallback(_debounce(mobileDebounce, 800), [step]);
+  // RegExp for Email & Phone
+  const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+  // mobileDebounce
+  function mobileDebounce(value) {
+    const getCheckElement = document.getElementById("check_loader_pop_mobile");
+    const getCheckMarkElement = document.getElementById("checkmark_pop_mobile");
+    if (value && isValidPhoneNumber(value)) {
+      getCheckElement.classList.add("load-complete");
+      getCheckMarkElement.style.display = "block";
+      if (step === 1) {
+        setStep(2);
+        console.log("this again works");
+        gsap
+          .timeline()
+          .add("email2")
+          .add("mobile2")
+          .add("vectorLogo")
+          .fromTo(
+            ".contact_popmobile_inputemail_container",
+            {
+              y: -90,
+            },
+            {
+              y: -315,
+            },
+            "email"
+          )
+          .fromTo(
+            ".contact_popmobile_inputphone_container",
+            {
+              y: 0,
+            },
+            {
+              y: -225,
+            },
+            "mobile2"
+          )
+          .to(
+            ".contact_form_mob_bgLogo",
+            {
+              filter: "opacity(0.2)",
+            },
+            "vectorLogo"
+          )
+          .fromTo(
+            ".contact_popmobile_selectReason_container",
+            {
+              display: "none",
+              opacity: 0,
+              scale: 0.2,
+            },
+            {
+              display: "flex",
+              opacity: 1,
+              scale: 1,
+            }
+          );
+      }
+    } else {
+      getCheckElement.classList.contains("load-complete") &&
+        getCheckElement.classList.remove("load-complete");
+      getCheckMarkElement.style.display = "none";
+    }
+  }
+  // handleMobile
+  const handleMobile = (value) => {
+    setMobile(value);
+    debounceMobileFn(value);
+  };
+  // Redirection to Thank you page
+  const handleSend = (e) => {
+    e.preventDefault();
+    router.push("/thankyou");
+  };
+  // Submitting the form
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const data = {
+      fullname: fullname,
+      email: email,
+      phone: phone,
+      urgent: urgent,
+      message: message,
+    };
+    console.log("contact form data:", data);
+
+    try {
+      const res = await axiosConfig.post("/get-in-touch", data);
+        console.log("res:", res.data);
+        router.push("/thankyou");
+    } catch (err) {
+      console.log(err);
+    }
+    setValidated(true);
+  };
+  return (
+    <div className={styles.contactSection}>
+      <Container fluid className={styles.thankYouWrapper}>
+        <Row className={styles.Row}>
+          <Col className={styles.Col1}>
+            <div className={styles.contentWrapper}>
+              {/* Header */}
+              <div className={styles.header}>
+                <span className={styles.headerMainTxt}>
+                  Have question or comment?
+                  <br />
+                  <b>Drop us a line</b>
+                </span>
+                <span className={styles.headerSubTxt}>
+                  Our team is happy to answer any question you have. We are
+                  looking forward to hear from you!
+                </span>
+              </div>
+              {/* Contact Info */}
+              <div className={styles.contactInfoCard}>
+                <div className={styles.timing}>
+                  <MdOutlineAccessTime style={{ fontSize: "30px" }} />
+                  <span className={styles.cardTxt}>
+                    Sunday to Thursday, 9:00 AM to 6:00 PM
+                  </span>
+                </div>
+                <div className={styles.emailAndphone}>
+                  <div className={styles.email}>
+                    <TbBrandTelegram style={{ fontSize: "30px" }} />
+                    <span className={styles.cardTxt}>info@maidsvisa.ae</span>
+                  </div>
+                  <div className={styles.phone}>
+                    <BiPhoneCall style={{ fontSize: "30px" }} />
+                    <span className={styles.cardTxt}>+971 4388 8400</span>
+                  </div>
+                </div>
+              </div>
+              {/* Location Info */}
+              <div className={styles.locationInfoCard}>
+                <div className={styles.timing}>
+                  <MdOutlineAccessTime style={{ fontSize: "30px" }} />
+                  <span className={styles.cardTxt}>
+                    Office 203, Bay Square 13 Business Bay, Dubai, United Arab
+                    Emirates
+                  </span>
+                </div>
+                <a className={styles.link}>Get office direction link</a>
+              </div>
+            </div>
+          </Col>
+          <Col className={styles.Col2}>
+            <Form
+              className={styles.contentWrapper}
+              validated={validated}
+              onSubmit={handleSubmit}
+              action=""
+            >
+              <h3 className={styles.header}>Get in Touch with Us</h3>
+              <div className={styles.formRow}>
+                <div md={6} className={styles.formCol}>
+                  <Group controlId="fullname">
+                    <Label className={styles.label}>Full Name</Label>
+                    <Control
+                      required
+                      type="text"
+                      name="fullname"
+                      placeholder="Enter your full name"
+                      onChange={(e) => setFullname(e.target.value)}
+                      className={styles.input}
+                      minLength={5}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Please Give Full Name.
+                    </Form.Control.Feedback>
+                  </Group>
+                </div>
+                <div md={6} className={styles.formCol}>
+                  <Group controlId="email">
+                    <Label className={styles.label}>Email</Label>
+                    <Control
+                      required
+                      type="email"
+                      name="email"
+                      placeholder="Enter email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      className={styles.input}
+                      minLength={8}
+                      isInvalid={
+                        error.status &&
+                        (error.type.includes("email") || !validateEmail(email))
+                      }
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Please Give Valid Email.
+                    </Form.Control.Feedback>
+                  </Group>
+                </div>
+                <div md={6} className={styles.formCol}>
+                  <Group
+                    controlId="phone"
+                    className={styles.contactPopmobileSelectReasonContainer}
+                  >
+                    <Label className={styles.label}>Phone</Label>
+                    <PhoneInput
+                      international
+                      countryCallingCodeEditable={false}
+                      defaultCountry="AE"
+                      className={styles.input}
+                      value={phone}
+                      onChange={setPhone}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Please Give Valid Phone.
+                    </Form.Control.Feedback>
+                  </Group>
+                </div>
+                <div md={6} className={styles.formCol}>
+                  <Group controlId="urgent">
+                    <Label className={styles.label}>Urgent</Label>
+                    <Control
+                      required
+                      type="text"
+                      name="urgent"
+                      placeholder="1/3 Months"
+                      onChange={(e) => setUrgent(e.target.value)}
+                      className={styles.input}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Please Give Urgent.
+                    </Form.Control.Feedback>
+                  </Group>
+                </div>
+              </div>
+              <div md={12} className={styles.textAreaContainer}>
+                <Group controlId="message">
+                  <Label className={styles.label}>Message</Label>
+                  <Control
+                    required
+                    name="message"
+                    as="textarea"
+                    rows={3}
+                    placeholder="Type here...."
+                    onChange={(e) => setMessage(e.target.value)}
+                    className={styles.textArea}
+                    minLength={5}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    Please Give Message.
+                  </Form.Control.Feedback>
+                </Group>
+              </div>
+              <Button className={styles.mainBtn} type="submit">
+                <span className={styles.next}>Send</span>
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+}
+export default Banner;
+
+// Apply Form [sending POST req with pdf documnets]
+import React, { useEffect, useState, useCallback } from "react";
+import styles from "./styles.module.scss";
+import { Row, Col, Container } from "react-bootstrap";
+import Image from "next/image";
+import Card from 'react-bootstrap/Card';
+import {FiArrowRight} from 'react-icons/fi'
+import classnames from "classnames";
+import {BsCheckCircleFill} from 'react-icons/bs';
+import {FiUploadCloud} from 'react-icons/fi';
+import {BsCheck2Circle} from 'react-icons/bs';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { useRouter } from 'next/router'
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import axiosConfig from "../../../utils/axiosConfig";
+import 'react-phone-number-input/style.css'
+import _debounce from "lodash/debounce";
+
+function Banner() {
+    const [step,setStep] = useState(1);
+    const router = useRouter();
+    const [allName, setAllName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [phone, setPhone] = useState(null);
+    const [occupation, setOccupation] = useState(null);
+    const [jobType, setJobType] = useState(null);
+    const [salary, setSalary] = useState(null);
+    const [passport,setPassport] = useState(null);
+    const [visa,setVisa] = useState(null);
+    const [emiratesId,setEmiratesId] = useState(null);
+    const [photograph,setPhotograph] = useState(null);
+    const [cancellationDocuments,setCancellationDocuments] = useState(null);
+    const [policeClearance,setPoliceClearance] = useState(null);
+    const [isValid,setIsValid] = useState('Check');
+    const [error, setError] = useState({
+        status: false,
+        message: "",
+        type: [],
+    });
+
+
+    const [validated, setValidated] = useState(false);
+
+    const debounceMobileFn = useCallback(_debounce(mobileDebounce, 800), [step]);
+    
+    
+    // RegExp for Email & Phone
+    const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+    const validateEmail = (email) => {
+    return String(email)
+        .toLowerCase()
+        .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
+
+
+    // mobileDebounce
+    function mobileDebounce(value) {
+        const getCheckElement = document.getElementById("check_loader_pop_mobile");
+        const getCheckMarkElement = document.getElementById("checkmark_pop_mobile");
+        if (value && isValidPhoneNumber(value)) {
+        getCheckElement.classList.add("load-complete");
+        getCheckMarkElement.style.display = "block";
+        if (step === 1) {
+            setStep(2);
+            console.log("this again works");
+
+            gsap
+            .timeline()
+            .add("email2")
+            .add("mobile2")
+            .add("vectorLogo")
+            .fromTo(
+                ".contact_popmobile_inputemail_container",
+                {
+                y: -90,
+                },
+                {
+                y: -315,
+                },
+                "email"
+            )
+            .fromTo(
+                ".contact_popmobile_inputphone_container",
+                {
+                y: 0,
+                },
+                {
+                y: -225,
+                },
+                "mobile2"
+            )
+            .to(
+                ".contact_form_mob_bgLogo",
+                {
+                filter: "opacity(0.2)",
+                },
+                "vectorLogo"
+            )
+            .fromTo(
+                ".contact_popmobile_selectReason_container",
+                {
+                display: "none",
+                opacity: 0,
+                scale: 0.2,
+                },
+                {
+                display: "flex",
+                opacity: 1,
+                scale: 1,
+                }
+            );
+        }
+        } else {
+        getCheckElement.classList.contains("load-complete") &&
+            getCheckElement.classList.remove("load-complete");
+        getCheckMarkElement.style.display = "none";
+        }
+    }
+
+    const stepTwo = () => {
+        if(allName != null &&
+            email != null &&
+            phone != null &&
+            occupation != null &&
+            jobType != null &&
+            salary != null
+            ) { 
+                setStep(2);
+            }
+    };
+    const stepOne = () => {
+        setStep(1);
+    };
+    useEffect(() => {
+        if(allName != null &&
+            email != null &&
+            phone != null &&
+            occupation != null &&
+            jobType != null &&
+            salary != null
+            ) {
+            setIsValid('Next');
+        }
+    }, [stepTwo]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+
+        // form 
+        let apply_form = document.querySelector('#apply_form');
+        console.log('form: ', apply_form);
+
+        // files
+        console.log('passport: ', document.querySelector('#passport'));
+        console.log('visa: ', document.querySelector('#visa'));
+        console.log('emirates_id: ', document.querySelector('#emirates_id'));
+        console.log('photograph: ', document.querySelector('#photograph'));
+        console.log('cancellation_documents: ', document.querySelector('#cancellation_documents'));
+        console.log('police_clearance: ', document.querySelector('#police_clearance'));
+
+        // setting formaData
+        formData.append('fullname', allName);
+        formData.append('phone', phone);
+        formData.append('email', email);
+        formData.append('occupation', occupation);
+        formData.append('jobtype', jobType);
+        formData.append('salary', salary);
+        formData.append('passport_copy', document.querySelector('#passport').files[0]);
+        formData.append('visa_copy', document.querySelector('#visa').files[0]);
+        formData.append('emirates_id', document.querySelector('#emirates_id').files[0]);
+        formData.append('photograph', document.querySelector('#photograph').files[0]);
+        formData.append('cancellation_documents', document.querySelector('#cancellation_documents').files[0]);
+        formData.append('police_clearance', document.querySelector('#police_clearance').files[0]);
+
+        // hitting endpoint
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': 'Bearer '
+                }
+            };
+            const res = await axiosConfig.post("/employer-personal-info", formData, config);
+            console.log("res:", res);
+            router.push('/thankyou')
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    return (
+        <Container fluid className={styles.applyWrapper}>
+            <Row className={styles.row1}>
+                <h1 className={styles.header}>Visa Sponsorship Application Form</h1>
+            </Row>
+            <Row className={styles.row2}>
+                <Col md={4} className={styles.col1}>
+                    <div className={styles.cardWrapper}>
+                        <div className={classnames(styles.currentStepCard, step==1 ? styles.currentStepCard : styles.passedStepCard)} onClick={stepOne}>
+                            <div  className={styles.currentStepCardContainer}>
+                                <div className={styles.title}>
+                                    { step==1 ? 
+                                        <div className={styles.no}>1</div> :
+                                        <BsCheckCircleFill style={{fontSize:'25px'}} />
+                                    } 
+                                    <span className={styles.stepName}>Employer Personal Info</span>
+                                </div>
+                                <span className={styles.body}>Please fill in all fields below and upload the files required.</span>
+                            </div>
+                        </div>
+                        <div className={classnames(step==2 ? styles.currentStepCard : styles.nextStepCard)} onClick={stepTwo}>
+                            <div  className={styles.currentStepCardContainer}>
+                                <div className={styles.title}>
+                                    <div className={styles.no}>2</div>
+                                    <span className={styles.stepName}>Domestic Worker Info</span>
+                                </div>
+                                <span className={styles.body}>Please fill in all fields below and upload the files required.</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </Col>
+                <Col md={6} className={styles.col2}>
+                    <div className={styles.formWrapper}>
+                        <Form id='apply_form' onSubmit={handleSubmit} className={styles.form}>
+                            { step == 1 ? 
+                                <Row className={styles.formRow}>
+                                    <Col md={6} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Full Name</Form.Label>
+                                        <Form.Control 
+                                        className={styles.input} 
+                                        type="text" 
+                                        id="full_name"
+                                        onChange={(e) => setAllName(e.target.value)}
+                                        minLength={9}
+                                        placeholder="Enter your full name" 
+                                        required 
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please Give Full Name.
+                                        </Form.Control.Feedback>
+                                    </Col>
+                                    <Col md={6} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Phone</Form.Label>
+                                        <PhoneInput
+                                        className={styles.input}
+                                        countryCallingCodeEditable={false}
+                                        value={phone}
+                                        id="phone"
+                                        onChange={setPhone}
+                                        placeholder="Enter phone number" 
+                                        defaultCountry="AE"
+                                        international
+                                        required
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please Give Valid Phone.
+                                        </Form.Control.Feedback>
+                                    </Col>
+                                    <Col md={6} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Email</Form.Label>
+                                        <Form.Control 
+                                        className={styles.input} 
+                                        type="email" 
+                                        id="email"
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder="Enter email" 
+                                        minLength={8}
+                                        required
+                                        isInvalid={
+                                            error.status &&
+                                            (error.type.includes("email") || !validateEmail(email))
+                                        }
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please Give Valid Email.
+                                        </Form.Control.Feedback>
+                                    </Col>
+                                    <Col md={6} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Job Type</Form.Label>
+                                        <Form.Control 
+                                        className={styles.input} 
+                                        type="text" 
+                                        id="jobType"
+                                        onChange={(e) => setJobType(e.target.value)}
+                                        minLength={5}
+                                        placeholder="Select your job" 
+                                        required 
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please Give Valid Job.
+                                        </Form.Control.Feedback>
+                                    </Col>
+                                    <Col md={6} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Occupation <small>(in UAE)</small></Form.Label>
+                                        <Form.Control 
+                                        className={styles.input} 
+                                        type="text"
+                                        id="occupation"
+                                        onChange={(e) => setOccupation(e.target.value)}
+                                        minLength={3}
+                                        placeholder="Enter your occupation in UAE" 
+                                        required 
+                                        />
+                                    </Col>
+                                    <Col md={6} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Minimum Monthly Salary <small>(in AED)</small></Form.Label>
+                                        <Form.Control 
+                                        onChange={(e) => setSalary(e.target.value)} 
+                                        name="salary" 
+                                        id="salary" 
+                                        className={styles.input} 
+                                        type="number" 
+                                        placeholder="Enter your minimum salary" 
+                                        required 
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please Give Valid Salary.
+                                        </Form.Control.Feedback>
+                                    </Col>
+                                </Row>
+                                :
+                                <Row className={styles.formRow}>
+                                    <Col md={12} className="mt-1"></Col>
+                                    <Col md={4} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Passport Copy</Form.Label>
+                                        <Form.Group controlId="passport" className={styles.fileUploadInput}>
+                                            <Form.Label className={styles.fileUploadLabel}>
+                                                { passport == null ? 'No file selected' : passport } 
+                                                <FiUploadCloud style={{fontSize: '28px'}} />
+                                            </Form.Label>
+                                            <Form.Control 
+                                            className={styles.fileUploaderInput} 
+                                            type="file" 
+                                            id="passport"
+                                            onChange={(e) => setPassport(e.target.files[0].name)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={4} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Old Residence Visa Copy</Form.Label>
+                                        <Form.Group controlId="visa" className={styles.fileUploadInput}>
+                                            <Form.Label className={styles.fileUploadLabel}>
+                                                { visa == null ? 'No file selected' : visa } 
+                                                <FiUploadCloud style={{fontSize: '28px'}} />
+                                            </Form.Label>
+                                            <Form.Control 
+                                            className={styles.fileUploaderInput} 
+                                            type="file" 
+                                            id="visa" 
+                                            onChange={(e) => setVisa(e.target.files[0].name)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={4} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Emirates ID Copy</Form.Label>
+                                        <Form.Group controlId="emirates_id" className={styles.fileUploadInput}>
+                                            <Form.Label className={styles.fileUploadLabel}>
+                                                { emiratesId == null ? 'No file selected' : emiratesId } 
+                                                <FiUploadCloud style={{fontSize: '28px'}} />
+                                            </Form.Label>
+                                            <Form.Control 
+                                            className={styles.fileUploaderInput} 
+                                            type="file" 
+                                            id="emirates_id" 
+                                            onChange={(e) => setEmiratesId(e.target.files[0].name)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={12} className="mt-1"></Col>
+                                    <Col md={4} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Photograph<br/><small style={{fontSize: '12px'}}>(see attached guidelines)</small></Form.Label>
+                                        <Form.Group controlId="photograph" className={styles.fileUploadInput}>
+                                            <Form.Label className={styles.fileUploadLabel}>
+                                                { photograph == null ? 'No file selected' : photograph } 
+                                                <FiUploadCloud style={{fontSize: '28px'}} />
+                                            </Form.Label>
+                                            <Form.Control 
+                                            className={styles.fileUploaderInput} 
+                                            type="file" 
+                                            id="photograph" 
+                                            onChange={(e) => setPhotograph(e.target.files[0].name)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={4} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Cancellation Documents<br/><small style={{fontSize: '12px'}}>(canceled documents)</small></Form.Label>
+                                        <Form.Group controlId="cancellation_documents" className={styles.fileUploadInput}>
+                                            <Form.Label className={styles.fileUploadLabel}>
+                                                { cancellationDocuments == null ? 'No file selected' : cancellationDocuments } 
+                                                <FiUploadCloud style={{fontSize: '28px'}} />
+                                            </Form.Label>
+                                            <Form.Control 
+                                            className={styles.fileUploaderInput} 
+                                            type="file" 
+                                            id="cancellation_documents" 
+                                            onChange={(e) => setCancellationDocuments(e.target.files[0].name)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={4} className={styles.formCol}>
+                                        <Form.Label className={styles.label}>Police Clearance<br/><small style={{fontSize: '12px'}}>(african nationals)</small></Form.Label>
+                                        <Form.Group controlId="police_clearance" className={styles.fileUploadInput}>
+                                            <Form.Label className={styles.fileUploadLabel}>
+                                                { policeClearance == null ? 'No file selected' : policeClearance } 
+                                                <FiUploadCloud style={{fontSize: '28px'}} />
+                                            </Form.Label>
+                                            <Form.Control 
+                                            className={styles.fileUploaderInput} 
+                                            type="file" 
+                                            id="police_clearance" 
+                                            onChange={(e) => setPoliceClearance(e.target.files[0].name)}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={12} className="mt-1"></Col>
+                                </Row>
+                            } 
+                            <Row className={styles.actionBtnRow}>
+                                <Col md={3} className={styles.mainBtnContainer}>
+                                    { step == 1 ?
+                                    <div className={styles.mainBtn} onClick={stepTwo}>
+                                        <span className={styles.next}>{isValid}</span>
+                                        <FiArrowRight />
+                                    </div>
+                                    : 
+                                    <div className={styles.mainBtn} onClick={handleSubmit}>
+                                        <span className={styles.next}>Submit</span>
+                                        <BsCheck2Circle style={{color: '#04A0BC',fontSize: '20px'}} />
+                                    </div>
+                                    }
+                                </Col>
+                            </Row>
+                        </Form>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+    );
+}
+export default Banner;
+
+// 
+
