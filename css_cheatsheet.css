@@ -18,33 +18,23 @@ transform-origin: Allows you to change the position of transform of an elements 
 transform-style: Sets whether children of an element are positioned in the 3D space or are flattened in the plane of the element (flat|3d).
 
 [Transition]
-transition: Shorthand for 'transition-property transition-duration transition-timing-function transition-delay' that provide a way to control animation speed when changing CSS properties (Instead of having property changes take effect immediately).
+transition: Shorthand for 'transition-property transition-duration transition-timing-function transition-delay' that provide a way to control animation speed when changing CSS properties, Instead of having property changes take effect immediately (Transition triggers :hover|:focus|:active).
 transition-property: Values (none|all|property|initial|inherit).
-transition-duration: Values (0s|1s|2s).
-transition-timing-function: Values (ease|linear|ease-in|ease-out|ease-in-out|step-start|step-end).
+transition-duration: Values (0.4s|1s).
+transition-timing-function: Values (ease|linear|ease-in|ease-out|ease-in-out|step-start|step-end|cubic-bezier(n,n,n,n)).
 transition-delay: Values (0s|1s|2s).
 
 [Animation] 
-animation: Shorthand property for "all the animation-* properties.
-animationbinds: an animation to an element 
-animation-delay: delays animation start 
-animation-direction: reverse animation or in alternate cycles 
-animation-durationanimation: duration in seconds or ms 
-animation-fill-mode: style when the animation is not playing 
-animation-iteration-countnumber: of an animation replay 
-animation-namename: for the @keyframes{} animation 
-animation-play-state: the animation is running or paused 
-animation-timing-functionspeed: curve of an animation 
-backface-visibility: is element visible when not facing the screen 
-@keyframesspecifies the animation code {}
-animation-delay: Specifies a delay for the start of an animation
-animation-direction: Specifies whether an animation should be played forwards, backwards or in alternate cycles
-animation-duration: Specifies how long an animation should take to complete one cycle
-animation-fill-mode: Specifies a style for the element when the animation is not playing. (before it starts, after it ends, or both) 
-animation-iteration-count: Specifies the number of times an animation should be played
-animation-name: Specifies a name for the @keyframes {} animation
-animation-play-state: Specifies whether the animation is running or paused 
-animation-timing-function: Specifies the speed curve of an animation 
+@keyframe name { from or 0%{ property: animation-starting-value } to or 100% { property: animation-ending-value} }
+animation: Shorthand property for 'animation-name animation-duration animation-timing-function animation-delay animation-iteration-count animation-direction animation-fill-mode animation-play-state'.
+animation-name: Specifies a @keyframes for the animation.
+animation-duration: Specifies how long an animation should take to complete one cycle.
+animation-time-function: Specifies the acceleration curve for @keyframes in single animation cycle.
+animation-delay: Specifies a delay before start the animation.
+animation-iteration-count: Specifies how many times you want the animation to run.
+animation-direction: Specifies should the animation play forward or backward (normal|reverse|alternate|alternate-reverse)
+animation-fill-mode: Specifies a style for the element when the animation is not playing (none|forwards|backwards|both) (NOTE: its connected to the @keyframes from=>forwards to=>backwards).
+animation-play-state: Specifies whether the animation is running or paused (paused|running|initial).
 
 [Window]
 widows: Sets the minimum number of lines that must be left at the top of a page or column
