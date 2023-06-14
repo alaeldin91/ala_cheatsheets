@@ -554,6 +554,24 @@ vmax	Relative to 1% of viewport's* larger dimension
     - content : speciifes the value associaated with the http-equiv or name attribute -> ( width="device-width", initial-scale=1.0, shrink-to-fit=no )
     - http-equiv : provides an HTTP header for the information/value of the content attribute-> (http-equiv="refresh", content-security, policy, content-type, default-style)
     - name : spesifies a name for the metadata ->(name="viewport", application-name, author, description, generator, keywords)
+
+/* The trick to viewport units on mobile */
+/* height: calc(var(--vh, 1vh) * 100); */
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+.my-element {
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
+.module {
+    height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
+    margin: 0 auto;
+    max-width: 30%;
+}
     
 /* Media Queries */
 - Media queries allow you to create different layouts depend on the size of the viewport.
