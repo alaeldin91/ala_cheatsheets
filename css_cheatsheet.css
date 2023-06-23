@@ -592,6 +592,10 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
         }
     }/* this mean: applay this ruels to all screens that have width of 800px and above (800px screen width and above) */
 
+
+    /* Screens Sizes */
+    - laptops: width form [ 0px to 1537px]
+    - Desktops: width form [ 1537px to ?px]
 /* Layouts */
 - Layouts is the arrangement of all visual element on a webpage.
 
