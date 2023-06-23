@@ -594,6 +594,7 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 
     /* Screens Sizes */
+    /* Check this link for more info: https://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
     - laptops: width form [ 0px to 1537px]
     - Desktops: width form [ 1537px to ?px]
 /* Layouts */
