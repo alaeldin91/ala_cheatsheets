@@ -417,8 +417,10 @@ var timeout = require('connect-timeout')
 const helmet = require("helmet");
 const port = 4001
 const app = express()
+
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
+
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('database connected'))
 app.use(cors())
