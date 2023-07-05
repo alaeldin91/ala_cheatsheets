@@ -495,8 +495,8 @@ class Post extends Component {
 
 // # Context API
 {
-  // Contect is a center place to share data with all other component without sending props.
-  // Same as Redux (Centeral Data of true)
+  // Context is a center place to share data with all other component without sending props.
+  // Same as Redux (Central Data of true)
 }
 // # Hooks
 {
