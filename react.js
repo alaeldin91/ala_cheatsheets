@@ -1,36 +1,138 @@
+// ### React Hooks ### //
 
 /***************************************************************/
-// Context Hook
+// Reducer Hook (useReducer)
 /***************************************************************/
 
 /* 
-What is React Context API?
-- Context provides a way to pass data through the component tree without having to pass props down manually at every level.  
-- React Context API consists of two main components: 
-1. The Provider component: is responsible for defining the context and providing the data.
-2. The Consumer component (or useContext hook): is used by child components to access the data from the context.
+- What is React useReducer Hook?
+is a built-in hook provided by React that allows you to manage complex state and state transitions in a more structured and predictable way. 
+It is an alternative to using the useState hook when you have more complex state management needs, 
+especially when the state transitions depend on previous state or involve multiple actions.
+
+const [state, dispatch] = useReducer(reducer, initialState);
+state: The current state value.
+dispatch: A function used to dispatch actions to update the state.
+reducer: A function that handles state transitions based on the dispatched actions.
+initialState: The initial state value.
 */
 
-// # Simple example of how React Context work:
+// # Example of using useReducer Hook:
+import { useReducer } from 'react';
+const initialState = 0;
+// Reducer function
+const CounterReducer = (state, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    case 'RESET':
+      return initialState;
+    default:
+      return state;
+  }
+};
+const Counter = () => {
+  const [count, dispatch] = useReducer(CounterReducer, initialState);
+  return (
+    <div>
+      Count: {count}
+      <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'DECREMENT' })}>Decrement</button>
+      <button onClick={() => dispatch({ type: 'RESET' })}>Reset</button>
+    </div>
+  );
+};
+
+// # Example-2
+import { useReducer } from 'react';
+const initialState = 0;
+const balanceReducer = (state, action) => {
+  switch (action.type) {
+    case 'INCREASE': return state + 1;
+    case 'DECREASE': return state - 1;
+    case 'RESET': return initialState;
+    default: return state;
+  }
+}
+function App() {
+  const [balance, dispatch] = useReducer(balanceReducer, initialState)
+  return (
+    <div className="App" style={{ display: 'flex', flexDirection: 'column', alignItems:'center', justifyContent: 'center'}}>
+      <h1>Current Balance is: {balance}</h1>
+      <div style={{ display: 'flex' }}>
+        <button onClick={() => {dispatch({type: 'INCREASE'})} }>Increase</button>
+        <button onClick={() => {dispatch({type: 'DECREASE'})} }>Decrease</button>
+        <button onClick={() => {dispatch({type: 'RESET'})} }>Reset</button>
+      </div>
+    </div>
+  );
+}
+export default App;
+
+
+
+/***************************************************************/
+// Context Hook (createContext / useContext)
+/***************************************************************/
+
+/* 
+What is useContext Hook?
+is a built-in hook provided by React that allows you to access the value of a context directly within a functional component. 
+It is used to consume the value from a context without the need for a nested consumer component.
+
+const value = useContext(Context);
+Context: The context object created using React.createContext.
+This useContext hook takes a context object created using React.createContext and returns the current value of that context.
+
+NOTE: useContext can be useful when you want to access values from a context in functional components without wrapping the component with a context consumer.
+*/
+
+// # Example of using createContext and useContext Hooks:
+
+// A: Parent Component: 
+import React, { createContext } from 'react';
+
+const ThemeContext = createContext(); // Create a context using createContext Hook call 'ThemContext'
+
+function App() {
+ return (
+   // wrap the application with the context provider and give it a global value so all child component will access it
+    <ThemeContext.Provider value="dark">
+      <ThemeDisplay />
+    </ThemeContext.Provider>
+  );
+}
+
+export default App;
+
+// B: Child Component:
+import React, { useContext } from 'react';
+
+function ThemeDisplay() {
+  const theme = useContext(ThemeContext); // use 'ThemeContext' context and save its value in 'theme'.
+  return <div>Current theme: {theme}</div>;
+}
+
+export default ThemeDisplay;
+
+
+// # Example-2:
 
 // A: myContext.js (Context)
-// 1. Create a new context
-const MyContext = React.createContext();
+const MyContext = React.createContext(); // create context
 
-// 2. Define a component that provides the context data
+// Provider (Dynamic parent function to wrapper children component)
 function MyProvider({ children }) {
-  const sharedData = 'This is the shared data';
-
-  // wrap the dynamic parent with the provider to allow children to access the context shared data 
   return (
-    <MyContext.Provider value={sharedData}>
+    <MyContext.Provider value={'This is the shared data'}>
       {children}
     </MyContext.Provider>
   );
 }
 
-// B: App.js (Parent Component)
-// Usage in the component tree (an other parent component with children)
+// B: App.js
 import { MyProvider } from './context/myContext.js'
 function App() {
   return (
@@ -40,13 +142,14 @@ function App() {
   );
 }
 
-// C: MyComponent.js (Child Component)
-// Random component that consumes / use the context data
+// C: MyComponent.js (Random component that consumes / use the context data)
 function MyComponent() {
- // use a context call MyContext
- const sharedData = React.useContext(MyContext);
+ const sharedData = React.useContext(MyContext); // use context call 'MyContext'
  return <div>{sharedData}</div>;
 }
 
 
-// # Real Example of using React Context Hook: a counter example
+
+/***************************************************************/
+// ? Hook ()
+/***************************************************************/
