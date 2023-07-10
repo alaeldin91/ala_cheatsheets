@@ -85,7 +85,6 @@ It is used to consume the value from a context without the need for a nested con
 const value = useContext(Context);
 Context: The context object created using React.createContext.
 This useContext hook takes a context object created using React.createContext and returns the current value of that context.
-
 NOTE: useContext can be useful when you want to access values from a context in functional components without wrapping the component with a context consumer.
 */
 
