@@ -830,3 +830,20 @@ border: lpx solig rgba(255, 255, 255, 0.18);
 border-radius: 32px;
 }
 
+/* Stander Styles Rules ****************************************************/
+
+/* smooth animation */
+.targeted-class.ng-enter {
+    transition: .5s linear all;
+    transform: translateY(30px); /* X or Y depend on the element direction */
+    opacity: 0;
+}
+.targeted-class.ng-enter.ng-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+}
+.targeted-class.ng-leave-stagger {
+    transition-delay: .2s;
+    transition-duration: 0;
+}
+/* hover */
