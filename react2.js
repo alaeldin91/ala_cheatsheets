@@ -2401,5 +2401,170 @@ function Banner() {
 }
 export default Banner;
 
-// 
+//
 
+
+
+
+
+// ---------------------------------------------------------
+// ### Seting Global Dark and Light Theme Using React Context and LocalStorage:
+
+// ThemContext.js
+import React from "react";
+export const initialThemeState = {
+  theme: "light",
+  setTheme: () => null,
+};
+const ThemeContext = React.createContext(initialThemeState);
+export default ThemeContext;
+
+// ThemeProvider.js
+import React, { useState, useEffect } from "react";
+import ThemeContext, { initialThemeState } from "./ThemeContext";
+const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(initialThemeState.theme);
+  const localStorage = window.localStorage;
+  useEffect(() => {
+    const savedThemeLocal = localStorage.getItem("globalTheme");
+    if (!!savedThemeLocal) {
+      setTheme(savedThemeLocal);
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("globalTheme", theme);
+  }, [theme]);
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <div className={`theme--${theme}`}>{children}</div>
+    </ThemeContext.Provider>
+  );
+};
+export default ThemeProvider;
+
+// _theme.sass
+// for text
+$text--light: black;
+$text--dark: white;
+$text-gr--light: #474747;
+$text-gr--dark: #474747;
+$text-cost--light: #bacad6;
+$text-cost--dark: #bacad6;
+$text-blue--light: #107cd0;
+$text-blue--dark: #107cd0;
+// for background
+$bg--light: white;
+$bg--dark: black;
+// for hero header
+$hero-text--light: rgba(255, 255, 255, 0.3);
+$hero-text--dark: rgba(255, 255, 255, 0.3);
+// for hero background
+$bg-hero--light: linear-gradient(
+  360deg,
+  hsla(192, 30%, 52%, 1) 0%,
+  hsla(0, 0%, 0%, 1) 100%
+);
+$bg-hero--dark: linear-gradient(
+  360deg,
+  hsla(192, 30%, 52%, 1) 0%,
+  hsla(0, 0%, 0%, 1) 100%
+);
+// for blue gradient button
+$blue-gradient--light: linear-gradient(152deg, #107cd0 0%, #03c2f6 100%);
+$blue-gradient--dark: linear-gradient(152deg, #107cd0 0%, #03c2f6 100%);
+// for gold gradient button
+$gold-gradient--light: linear-gradient(
+  107deg,
+  #feaa00 0%,
+  #8e6517 50%,
+  #ce9c45 100%
+);
+$gold-gradient--dark: linear-gradient(
+  107deg,
+  #feaa00 0%,
+  #8e6517 50%,
+  #ce9c45 100%
+);
+// for cost background
+$cost-bg--light: #001321;
+$cost-bg--dark: #001321;
+// for box background
+$benefits-box--light: #f6f6f6;
+$benefits-box--dark: #f6f6f6;
+// for costumer card
+$costumer-card--light: #1c1c1c;
+$costumer-card--dark: #1c1c1c;
+// for services background
+$bg-services--light: #fcfaf6;
+$bg-services--dark: #fcfaf6;
+
+$themes: (
+  light: (
+    bg: $bg--light,
+    alt-bg: $bg--dark,
+    text: $text--light,
+    blue-text: $text-blue--light,
+    gray-text: $text-gr--light,
+    cost-text: $text-cost--light,
+    alt-text: $text--dark,
+    hero-bg: $bg-hero--light,
+    hero-text: $hero-text--light,
+    blue-button: $blue-gradient--light,
+    gold-button: $gold-gradient--light,
+    cost-bg: $cost-bg--light,
+    benefits-box: $benefits-box--light,
+    costumer-card: $costumer-card--light,
+    services-bg: $bg-services--light,
+  ),
+  dark: (
+    bg: $bg--dark,
+    alt-bg: $bg--light,
+    text: $text--dark,
+    blue-text: $text-blue--dark,
+    gray-text: $text-gr--dark,
+    cost-text: $text-cost--dark,
+    alt-text: $text--light,
+    hero-bg: $bg-hero--dark,
+    hero-text: $hero-text--dark,
+    blue-button: $blue-gradient--dark,
+    gold-button: $gold-gradient--dark,
+    cost-bg: $cost-bg--dark,
+    benefits-box: $benefits-box--dark,
+    costumer-card: $costumer-card--dark,
+    services-bg: $bg-services--dark,
+  ),
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme--#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map-get($theme-map, $key);
+}
+
+// changing theme inside each other elements:
+  .elemetns-class {
+    font- size: 18px;
+  color: #fff;
+  @include themed() { /* call the t method and pass the key */
+      color: t("alt-text");
+      -webkit-transition: all 200ms linear;
+      transition: all 200ms linear;
+    }
+}

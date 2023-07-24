@@ -1,4 +1,6 @@
 // # Instal Angular CLI : npm install - g @angular/cli
+// npx @angular/cli@12.2.2 new <my-project>
+// Nodejs required : node v16.15.0
 // # Starting a New Angular Project : ng new my-app
 // # Run the project : ng serve
 // # Creating Components : ng generate component MyComponent | shorthand => ng g c MyComponent
