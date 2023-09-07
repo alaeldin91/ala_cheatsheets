@@ -206,6 +206,261 @@ getOnlineUsersList(id) {
 */
 
 
+// Map Tracker ( from (point A) to (point B) )
+// Map.vue
+/*
+<template lang="">
+    <div>
+      <GmapMap
+        ref="mapRef"
+        :center="position"
+        :zoom="13"
+        map-type-id="terrain"
+        style="width: 100%; height: 300px"
+      >
+        <GmapMarker
+          :key="index"
+          ref='marker_ref'
+          :position="position"
+          :clickable="true"
+          :draggable="true"
+          :shape="shape"
+          @click="emitClicked"
+          @drag="emitClicked"
+        />
+      </GmapMap>
+    </div>
+  </template>
+  <script>
+  import { Ref } from 'vue'
+  export default {
+    props:{
+position:{
+  type:[Object]
+}
+    },
+    mounted() {
+      // At this point, the child GmapMap has been mounted, but
+      // its map has not been initialized.
+      // Therefore we need to write mapRef.$mapPromise.then(() => ...)
+  
+      this.$refs.mapRef.$mapPromise.then((map) => {
+        map.panTo({ lat: 25.1972, lng: 55.2744 })
+      })
+    },
+    data() {
+      return {
+      //  position:{
+        
+      //  },
+         shape: {
+          coords: [25.2016, 55.2453, 25.1972, 55.2744],
+          type: 'poly'
+        },
+      }
+    },
+    methods:{
+      emitClicked(e){
+        console.log(e,"e")
+
+       let marker = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+        this.$emit("clickedMarker",marker)
+      }
+    }
+  }
+  </script>
+  <style lang="scss"></style>
+  
+*/
+
+// Direction.vue
+/* 
+<template lang="">
+  <div>
+    <gmap-map
+      ref="mapRef"
+      :center="{ lat: 25.2048, lng: 55.2708 }"
+      :zoom="20"
+      map-type-id="terrain"
+      style="width: 100%; height: 300px"
+    >
+      <GmapMarker
+        :position="markers[0].position"
+        :clickable="true"
+        :draggable="true"
+        :shape="shape"
+        @click="center = m.position"
+      />
+      <GmapMarker
+        :position="markers[1].position"
+        :clickable="true"
+        :draggable="true"
+        :shape="shape"
+        @click="center = m.position"
+      />
+      <DirectionsRenderer
+        travelMode="DRIVING"
+        :origin="`${markers[0].position.lat}, ${markers[0].position.lng}`"
+        :destination="`${markers[1].position.lat}, ${markers[1].position.lng}`"
+      />
+    </gmap-map>
+  </div>
+</template>
+<script>
+import DirectionsRenderer from '@/components/Map/DirectionRenderer.js'
+export default {
+  props: {
+    location: {
+      type: Object,
+    },
+    destination: {
+      type: Object,
+    },
+  },
+  components: {
+    DirectionsRenderer,
+  },
+  mounted() {
+    this.getPoints()
+    this.$refs.mapRef.$mapPromise.then((map) => {
+      map.panTo({
+        lat: newVal.location.latitude,
+        lng: newVal.location.longitude,
+      })
+      this.map = map
+    })
+  },
+  watch: {
+    location: {
+      deep: true,
+      handler(newVal) {
+        this.markers[1].position.lat = newVal.location.latitude
+        this.markers[1].position.lng = newVal.location.longitude
+        this.directionsOptions.route.origin = this.markers[1].position
+        this.directionsOptions.route.destination = this.markers[0].position
+
+        console.log(newVal, this.markers[1].position)
+        this.$refs.mapRef.$mapPromise.then((map) => {
+      map.panTo({
+        lat: newVal.location.latitude,
+        lng: newVal.location.longitude,
+      })
+      this.map = map
+    })
+      },
+    },
+  },
+  data() {
+    return {
+      markers: [
+        {
+          position: {
+            lat: 25.1972,
+            lng: 55.2744,
+          },
+        },
+        {
+          position: {
+            lat: 25.1972,
+            lng: 55.2744,
+          },
+        },
+      ],
+      shape: {
+        coords: [25.2016, 55.2453, 25.1972, 55.2744],
+        type: 'poly',
+      },
+      directionsOptions: {
+        route: {
+          origin: {
+            lat: 25.2016,
+            lng: 55.2453,
+          }, // Starting point
+          destination: {
+            lat: 25.1972,
+            lng: 55.2744,
+          }, // Ending point
+        },
+      },
+      path: [
+        { lat: 25.2016, lng: 55.2453 },
+        { lat: 25.1972, lng: 55.2744 },
+        { lat: 25.1972, lng: 55.2744 },
+        {
+          lat: 25.0758214,
+          lng: 55.1406285,
+        },
+        {
+          lat: 25.072998,
+          lng: 55.1582587,
+        },
+      ],
+      polylineOptions: {
+        strokeColor: '#FF0000', // Color, of the polyline (red in this example)
+        strokeOpacity: 1.0, // Opacity of the polyline (1.0 is fully opaque)
+        strokeWeight: 2, // Width of the polyline
+      },
+      map: undefined,
+    }
+  },
+  methods: {
+    async getPoints() {
+      try {
+        const resp = await this.$axios.$post(
+          'https://maps.googleapis.com/maps/api/directions/json?origin=25.075926, 55.140349&destination=25.073088,55.158502&key=AIzaSyCcjGKv6shjDFenjaJ4TovJ0qg_Hi7jCgg&mode=driving',
+          {
+            headers: {
+              mode: 'no-cors',
+            },
+          }
+        )
+        console.log(resp)
+      } catch {}
+    },
+  },
+}
+</script>
+*/
+
+// DirectionRenderer.js
+/* 
+import { MapElementFactory } from "vue2-google-maps";
+export default MapElementFactory({
+  name: "directionsRenderer",
+  ctr() {
+    return window.google.maps.DirectionsRenderer;
+  },
+  events: [],
+  mappedProps: {},
+  props: {
+    origin: { type: Object },
+    destination: { type: Object },
+    travelMode: { type: String }
+  },
+
+  afterCreate(directionsRenderer) {
+    let directionsService = new window.google.maps.DirectionsService();
+    this.$watch(
+      () => [this.origin, this.destination, this.travelMode],
+      () => {
+        let { origin, destination, travelMode } = this;
+        if (!origin || !destination || !travelMode) return;
+        directionsService.route(
+          {
+            origin,
+            destination,
+            travelMode
+          },
+          (response, status) => {
+            if (status !== "OK") return;
+            directionsRenderer.setDirections(response);
+          }
+        );
+      }
+    );
+  }
+});
+*/
 
 
 
