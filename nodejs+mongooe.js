@@ -1,787 +1,353 @@
-// npm Pk
-axios - body-parser - cors - express - mongoose - dotenv - nodemon
-
-// File structure
-api: []
-models: [mongoose Schema for all models]
-server: []
-env: []
-
-//          project/
-//            ├── src/
-//            |   ├── controllers/
-//            |   |   ├── userController.js
-//            |   |   └── ...
-//            |   ├── models/
-//            |   |   ├── userModel.js
-//            |   |   └── ...
-//            |   ├── routes/
-//            |   |   ├── userRoutes.js
-//            |   |   └── ...
-//            |   └── utils/
-//            |       ├── db.js
-//            |       └── ...
-//            ├── tests/
-//            |   ├── unit/
-//            |   ├── integration/
-//            |   └── ...
-//            ├── node_modules/
-//            ├── package.json
-//            ├── package-lock.json
-//            ├── .env
-//            ├── .gitignore
-//            └── server.js
-- .env file contains environment variables that the application needs to run.
-- Server.js file is the entry point of the application that starts the server and initializes the application.
-- Routes directory contains the route files that define the application's API endpoints.
-- Models directory contains the model files that define the application's data schema and interact with the database.
-- Utils directory contains utility functions that can be used across the application.
-- Controllers directory contains the controller files that define the application's business logic.
-- Tests directory contains all the test files for the application, organized into unit tests, integration tests, and other types of tests.
+// NOTE BUDDY: Please put all the usfule things and in order, with readable command, and thanks :)
 
 
-// .env (Environment variables) //
-DATABASE_URL=mongodb+srv://app-2MMDDg5bA
-MAIN_API_URL=http://localhost:7500
-JWT_KEY=KeyName
-
-// server.js (start the server init app) //
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('mongoose')
-const axios = require('axios')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const timeout = require('connect-timeout')
-const fileUpload = require('express-fileupload');
-const compression = require('compression')
-const Sentry = require("@sentry/node");
-// or use es6 import statements
-// import * as Sentry from '@sentry/node';
-
-const port = 7800
-const app = express()
-
-app.use(cors())
-app.use(timeout('5s'))
-app.use(bodyParser.json({limit: '50mb'}))
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}))
-app.use(compression({level:6}))
-app.use(fileUpload({ useTempFiles: true, limits: { fileSize: 50 * 1024 * 1024 } }));
-app.get('/', (req,res) => {
-    res.send('Hello!')
-})
-
-// Models (import models that u want to us in this server or single routes)
-const ExampleModel = require('./models/example')
-const ModelName = require('./models/model_file_name')
-const dummyData = {};
-
-// Reusable fun for handling different request event (???)
-const handleRequestEvent = (type, data) => {
-    const { id } = data;
-    dummyData[id] = { id, first_name, last_name, email };
-    const requestDummyData = new RequestModel(data)
-    const newRequest = await requestDummyData.save()
-    logAction(newRequest._id, 'new request', data.created_by)
-}
-
-// GET Request (SEND/READ) for a targeted route [sending a data from the db to a route ]
-app.get('/exampleRoute', (req, res) => {
-    res.send(dummyData);
-});
-app.get('/route_name', (req, res) => {
-    res.send(data);
-});
-
-// POST Request (RECEIVE/STORE/WRITE) from a route [saving a data coming from a route into the db]
-app.post('/exampleRoute', (req, res) => {
-    const { type, data } = req.body;
-    handleRequestEvent(type, data);
-    res.send({});
-});
-
-// Router ()
-const requestsRouter = require('./api/requests')
-app.use('/requests', requestsRouter)
-const languagesRouter = require('./api/languages')
-app.use('/languages', languagesRouter)
-
-// Controller (???)
-function logAction(request, status, user_id) {
-    const action_log_data = new ActionLogsSchema({
-        request_id: request,
-        status: status,
-        user_id: user_id
-    })
-    action_log_data.save()
-}
-
-app.listen(port, () => {
-    console.log(`server running at port ${port}`)
-})
+/***************************************************************/
+// Needed NPM Packages
+/***************************************************************/
+axios - body-parser - cors - express - mongoose - dotenv - nodemon -express-fileupload -
 
 
-// models/exampleModel.js //
-const mongoose = require('mongoose')
-const ExampleSchema = new mongoose.Schema({
-    first_name: {
-        type: String
-    },
-    last_name: { 
-        type: String
-    },
-    email: {
-        type: String, 
-    },
-}) 
-module.exports = mongoose.model('Example', ExampleSchema)
+/***************************************************************/
+// File Structure
+/***************************************************************/
 
-// server.js //
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('mongoose')
-const port = 7800
-const app = express()
-const requests = {};
-const handleRequestEvent = (type, data) => {
-    if (type === 'PostCreated') {
-        const { id, designation } = data;
-        requests[id] = { id, designation, candidates: [] };
-    }
-}
-app.get('/requests', (req, res) => {
-    res.send(requests);
-});
-app.post('/requests', (req, res) => {
-    const { type, data } = req.body;
-    handleRequestEvent(type, data);
-    res.send({});
-});
-app.listen(port, () => {
-    console.log(`server running at port ${port}`)
-})
+// project_name/
+//   ├── src/
+//   |   ├── controllers/
+//   |   |   ├── userController.js
+//   |   |   └── ...
+//   |   ├── models/
+//   |   |   ├── userModel.js
+//   |   |   └── ...
+//   |   ├── routes/api/
+//   |   |   ├── userRoutes.js
+//   |   |   └── ...
+//   |   └── utils/
+//   |       ├── db.js
+//   |       └── ...
+//   ├── node_modules/
+//   ├── package.json
+//   ├── package-lock.json
+//   ├── .env
+//   ├── .gitignore
+//   └── server.js/app.js
 
-
-// EVENT BUS (server.js) Single file : [ its use to distribute single route /events to a deferent endpoints]
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const timeout = require('connect-timeout')
-const axios = require('axios')
-const port = 7900
-const app = express()
-app.use(cors())
-app.use(timeout('5s'))
-app.use(bodyParser.json({limit: '50mb'}))
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}))
-const events = [];
-app.post('/events', (req, res) => {
-    const event = req.body;
-    events.push(event);
-    // endpoint - 1
-    axios.post('http://localhost:7500/events', event); // CENTRAL
-    axios.post('http://localhost:7800/events', event); // QUERY
-    // endpoint - 2
-    axios.post('http://localhost:7800/events', event); // QUERY
-    // endpoint - 3
-    axios.post('http://localhost:7800/events', event); // QUERY
-    res.send({ status: 'OK' });
-});
-app.get('/events', (req, res) => {
-    es.send(events);
-});
-app.listen(port, () => {
-    console.log(`server running at port ${port}`)
-})
-
-
-// -----------------------------------------------------------------------------------------------------------
-// EXAMPLE (2): 
-// File Structure:
 /* 
-    # my-app
-        # api
-            - getInTouch.js
-        # models
-            - getInTouch.js
-        # utils
-            - email.js
-        - .env
-        - server.js
+- [.env]: file contains environment variables that the application needs to run.
+- [Server.js/app.js]: file is the entry point of the application that starts the server and initializes the application.
+- [Routes/api]: directory contains the route files that define the application's API endpoints.
+- [Models]: directory contains the model files that define the application's data schema and interact with the database.
+- [Utils]: directory contains utility functions that can be used across the application.
+- [Controllers]: directory contains the controller files that define the application's business logic.
 */
 
-// Server.js
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const fileUpload = require('express-fileupload');
-var timeout = require('connect-timeout')
-const helmet = require("helmet");
 
-const port = 4001
-const app = express()
+/***************************************************************/
+// Modules
+/***************************************************************/
 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-const db = mongoose.connection
-db.on('error', (error) => console.error(error))
-db.once('open', () => console.log('database connected'))
+// Modules in node is a reusable block of code to perform a specific set of tasks (variables/objects/functions/classes), and the purpose of using modules in node is to help organize code into smaller pieces.
 
-app.use(cors())
-app.use(timeout('120s'))
-app.use(fileUpload({ useTempFiles: true, limits: { fileSize: 100 * 1024 * 1024 } }));
-app.use(express.json({ limit: '50mb' }));
-app.use(express.urlencoded({ limit: '50mb', extended: false }));
-app.use(express.json())
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
-app.use(helmet());
+// # Build in modules :
 
-app.disable('x-powered-by')
+/* 1. OS : provide information about operating system 
+const os = require('os');
+const x = os.below_methods()
 
-app.get('/', (req, res) => {
-  res.send('Hello Nathan HR - ERP!')
+arch()	Returns the operating system CPU architecture
+constants	Returns an object containing the operating system's constants for process signals, error cotes etc.
+cpus()	Returns an array containing information about the computer's CPUs
+endianness()	Returns the endianness of the CPU
+EOL	Returns the end-of-line marker for the current operating system
+freemem()	Returns the number of free memory of the system
+hostname()	Returns the hostname of the operating system
+loadavg()	Returns an array containing the load averages, (1, 5, and 15 minutes)
+networkInterfaces()	Returns the network interfaces that has a network address
+platform()	Returns information about the operating system's platform
+release()	Returns information about the operating system's release
+tmpdir()	Returns the operating system's default directory for temporary files
+totalmem()	Returns the number of total memory of the system
+type()	Returns the name of the operating system
+uptime()	Returns the uptime of the operating system, in seconds
+userInfo()	Returns information about the current user 
+*/
+
+/* 2. PATH : provides utility functions for working with file paths
+const path = require('path')
+const x = path.below_methods()
+ 
+basename()	Returns the last part of a path
+delimiter	Returns the delimiter specified for the platform
+dirname()	Returns the directories of a path
+extname()	Returns the file extension of a path
+format()	Formats a path object into a path string
+isAbsolute()	Returns true if a path is an absolute path, otherwise false
+join()	Joins the specified paths into one
+normalize()	Normalizes the specified path
+parse()	Formats a path string into a path object
+posix	Returns an object containing POSIX specific properties and methods
+relative()	Returns the relative path from one specified path to another specified path
+resolve()	Resolves the specified paths into an absolute path
+sep	Returns the segment separator specified for the platform
+win32	Returns an object containing Windows specific properties and methods
+*/
+
+/* 3. FS : file system operations (Reading/Writing/Deleting) 
+const fs = require('fs');
+const x = fs.below_methods()
+
+// Write a File
+fs.writeFile('node_cheatsheet.txt', 'node is super cool :)', (err) => {
+ if (err) {
+  throw new Error(err);
+ } else {
+  console.log('File was written successfully');
+ }
+})
+// Read a File 
+fs.readFile('node_cheatsheet.txt', 'utf8', (err, data) => {
+ if (err) {
+  throw new Error(err);
+ } else {
+  console.log('File content is:', data);
+ }
 })
 
-// API: Get in touch
-const getInTouchRouter = require('./api/getInTouch')
-app.use('/get-in-touch', getInTouchRouter)
+access()	Checks if a user has access to this file or directory
+accessSync()	Same as access(), but synchronous instead of asynchronous
+appendFile()	Appends data to a file
+appendFileSync()	Same as appendFile(), but synchronous instead of asynchronous
+chmod()	Changes the mode of a file
+chmodSync()	Same as chmod(), but synchronous instead of asynchronous
+chown()	Changes the owner of a file
+chownSync()	Same as chown(), but synchronous instead of asynchronous
+close()	Closes a file
+closeSync()	Same as close(), but synchronous instead of asynchronous
+constants	Returns an object containing constant values for the file system
+createReadStream()	Returns a new stream object
+createWriteStream()	Returns a new writeable stream object
+exists()	Deprecated. Checks if a file or folder exists
+existsSync()	Same as exists(), but synchronous instead of asynchronous. This method is NOT deprecated
+fchmod()	Changes the mode of a file
+fchmodSync()	Same as fchmod(), but synchronous instead of asynchronous
+fchown()	Changes the owner of a file
+fchownSync()	Same as fchown(), but synchronous instead of asynchronous
+fdatasync()	Syncronizes a file with the one stored on the computer
+fdatasyncSync()	Same as fdatasync(), but synchronous instead of asynchronous
+fstat()	Returns the status of a file
+fstatSync()	Same as fstat(), but synchronous instead of asynchronous
+fsync()	Syncronizes a file with the one stored on the computer
+fsyncSync()	Same as fsync(), but synchronous instead of asynchronous
+ftruncated()	Truncates a file
+ftruncatedSync()	Same as ftruncated(), but synchronous instead of asynchronous
+futimes()	Change the timestamp of a file
+futimesSync()	Same as futimes(), but synchronous instead of asynchronous
+lchmod()	Changes the mode of a file, for Mac OS X
+lchmodSync()	Same as lchmod(), but synchronous instead of asynchronous
+lchown()	Changes the owner of a file, for Mac OS X
+lchownSync()	Same as lchown(), but synchronous instead of asynchronous
+link()	Makes an addition name for a file. Both the old and the new name may be used
+linksync()	Same as link(), but synchronous instead of asynchronous
+lstat()	Returns the status of a file
+lstatSync()	Same as lstat(), but synchronous instead of asynchronous
+mkdir()	Makes a new directory
+mkdirSync()	Same as mkdir(), but synchronous instead of asynchronous
+mkdtemp()	Makes a new temporary directory
+mkdtempSync()	Same as mktemp(), but synchronous instead of asynchronous
+open()	Opens a file
+openSync()	Same as open(), but synchronous instead of asynchronous
+read()	Reads the content of a file
+readdir()	Reads the content of a directory
+readdirSync()	Same as readdir(), but synchronous instead of asynchronous
+readFile()	Reads the content of a file
+readFileSync()	Same as readFile(), but synchronous instead of asynchronous
+readlink()	Reads the value of a link
+readlinkSync()	Same as readlink(), but synchronous instead of asynchronous
+realpath()	Returns the absolute pathname
+realpathSync()	Same as realpath(), but synchronous instead of asynchronous
+rename()	Renames a file
+renameSync()	Same as rename(), but synchronous instead of asynchronous
+rmdir()	Removes a directory
+rmdirSync()	Same as rmdir(), but synchronous instead of asynchronous
+stat()	Returns the status of a file
+statSync()	Same as stat(), but synchronous instead of asynchronous
+symlink()	Makes a symbolic name for a file
+symlinkSync()	Same as symlink(), but synchronous instead of asynchronous
+truncate()	Truncates a file
+truncateSync()	Same as truncate(), but synchronous instead of asynchronous
+unlink()	Removes a link
+unlinkSync()	Same as unlink(), but synchronous instead of asynchronous
+unwatchFile()	Stops watching for changes on a filename
+utimes()	Change the timestamp of a file
+utimesSync()	Same as utimes(), but synchronous instead of asynchronous
+watch()	Watch for changes of a filename or directoryname
+watchFile()	Watch for changes of a filename
+write()	Writes buffer to a file
+write()	Writes data to a file
+writeFile()	Writes data to a file
+writeFileSync()	Same as writeFile(), but synchronous instead of asynchronous
+writeSync()	Same as write(); writes buffer to a file synchronous instead of asynchronous
+writeSync()	Same as write(); writes data to a file synchronous instead of asynchronous
+*/
 
-// API: Employer Info
-const employerInfoRouter = require('./api/employerInfo')
-app.use('/employer-info', employerInfoRouter)
+/* 4. Events : provides a way of working with events.
+var events = require('events');
+const x = events.below_methods()
 
-// API: Employer Personal Info
-const employerPersonalInfoRouter = require('./api/employerPersonalInfo')
-app.use('/employer-personal-info', employerPersonalInfoRouter)
-
-// API: Config
-const configRouter = require('./api/config')
-app.use('/configurator', configRouter)
-
-
-const expressServer = app.listen(port, () => {
-  console.log(`server running at port ${port}`)
-})
-
-
-// API
-const express = require("express")
-const router = express.Router()
-const GetInTouchModel = require("../models/getInTouch")
-const Config = require("../models/config")
-const {dispatchEmail} = require("../utils/email")
-const { ObjectId } = require("mongodb")
-
-router.post("/", async (req, res) => {
-    
-    try {
-        
-        let info = await GetInTouchModel.create(req.body)
-        let emailbody = `
-            <!doctype html>
-            <html>
-            <body>
-                <p>Hi,</p>
-                <p>${info.fullname} wants to get in touch.</p>
-                <p><b>Message:</b> ${info.message}</p> 
-                <p><b>Email:</b> ${info.email}</p> 
-                <p><b>Phone:</b> ${info.phone}</p> 
-            </body>
-            </html>
-        `
-        let emailList = await Config.findOne({version:1},{websiteSenderEmailsList:1})
-        let email = await dispatchEmail(emailList.websiteSenderEmailsList, "Get in Touch", emailbody)
-        res.status(201).json({
-            status: "ok",
-            statusCode: 201,
-            message: "Information saved successfully.",
-            data: info
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "fail",
-            statusCode: 400,
-            message: "Unable to save information.",
-            error: error
-        })
-    }
-})
-
-
-router.get("/",async (req,res)=>{
-    let info = await GetInTouchModel.find({})
-
-    res.status(201).json({
-        status: "ok",
-        statusCode: 200,
-        message: "Fetched Successfully.",
-        data: info
-    })
-})
-
-module.exports = router
-
-
-// Models
-const mongoose = require("mongoose")
-
-const getInTouchSchema = new mongoose.Schema({
-    fullname: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true,
-        validate: {
-            validator: function (v) {
-                return /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(v)
-            },
-            message: props => `${props.value} is not a valid email.`
-        },
-        required: [true, 'Email is required.']
-    },
-    phone: {
-        type: String,
-        required: [true, 'Phone Number is required.'],
-    },
-    urgent: {
-        type: String,
-    },
-    message: {
-        type: String,
-    }
-})
-
-module.exports = mongoose.model("get_in_touch", getInTouchSchema)
-
-// Utils
-const { SESV2 } = require("aws-sdk");
-const AWS = require("aws-sdk")
-
-const ses = new AWS.SES({
-    accessKeyId: process.env.ACCESS_KEY,
-    secretAccessKey: process.env.SECRET_KEY_AWS,
-    region: "eu-central-1",
-})
-
-
-const dispatchEmail = async (emailArray,emailSubject,emailBody) => {
-    const params = {
-        Source: "donotreply@nathanhr.ae",
-        Destination: {
-            ToAddresses: emailArray,
-        },
-        Message: {
-            Body: {
-                Html: {
-                    Data: emailBody,
-                    Charset: "UTF-8",
-                }
-            },
-            Subject: {
-                Data: emailSubject,
-                Charset: "UTF-8",
-            }
-        },
-    };
-    
-    
-    let dispatchedEmail = await ses.sendEmail(params).promise();
-    return dispatchedEmail
-}
-
-
-module.exports = {
-    dispatchEmail
-}
-
-
-// >>>>>>>>>>>>>>>>>>>>>>>>>>> Examples <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-// # an endpoint for receiving contact form req and save it to db
-
-// serer.js
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const fileUpload = require('express-fileupload');
-var timeout = require('connect-timeout')
-const helmet = require("helmet");
-const port = 4001
-const app = express()
-
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-const db = mongoose.connection
-
-db.on('error', (error) => console.error(error))
-db.once('open', () => console.log('database connected'))
-app.use(cors())
-app.use(timeout('120s'))
-app.use(fileUpload({ useTempFiles: true, limits: { fileSize: 100 * 1024 * 1024 } }));
-app.use(express.json({ limit: '50mb' }));
-app.use(express.urlencoded({ limit: '50mb', extended: false }));
-app.use(express.json())
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
-app.use(helmet());
-app.disable('x-powered-by')
-app.get('/', (req, res) => {
-  res.send('Hello Nathan HR - ERP!')
-})
-// API: Get in touch
-const getInTouchRouter = require('./api/getInTouch')
-app.use('/get-in-touch', getInTouchRouter)
-// API: Employer Info
-const employerInfoRouter = require('./api/employerInfo')
-app.use('/employer-info', employerInfoRouter)
-// API: Employer Personal Info
-const employerPersonalInfoRouter = require('./api/employerPersonalInfo')
-app.use('/employer-personal-info', employerPersonalInfoRouter)
-// API: Config
-const configRouter = require('./api/config')
-app.use('/configurator', configRouter)
-const expressServer = app.listen(port, () => {
-  console.log(`server running at port ${port}`)
-})
-
-// @/[api folder]
-
-// getInTouch.js
-const express = require("express")
-const router = express.Router()
-const GetInTouchModel = require("../models/getInTouch")
-const Config = require("../models/config")
-const {dispatchEmail} = require("../utils/email")
-const { ObjectId } = require("mongodb")
-router.post("/", async (req, res) => {
-    
-    try {
-        
-        let info = await GetInTouchModel.create(req.body)
-        let emailbody = `
-            <!doctype html>
-            <html>
-            <body>
-                <p>Hi,</p>
-                <p>${info.fullname} wants to get in touch.</p>
-                <p><b>Message:</b> ${info.message}</p> 
-                <p><b>Email:</b> ${info.email}</p> 
-                <p><b>Phone:</b> ${info.phone}</p> 
-            </body>
-            </html>
-        `
-        let emailList = await Config.findOne({version:1},{websiteSenderEmailsList:1})
-        let email = await dispatchEmail(emailList.websiteSenderEmailsList, "Get in Touch", emailbody)
-        res.status(201).json({
-            status: "ok",
-            statusCode: 201,
-            message: "Information saved successfully.",
-            data: info
-        })
-    } catch (error) {
-        res.status(400).json({
-            status: "fail",
-            statusCode: 400,
-            message: "Unable to save information.",
-            error: error
-        })
-    }
-})
-router.get("/",async (req,res)=>{
-    let info = await GetInTouchModel.find({})
-
-    res.status(201).json({
-        status: "ok",
-        statusCode: 200,
-        message: "Fetched Successfully.",
-        data: info
-    })
-})
-module.exports = router
-
-// employerPersonalInformation.js
-const express = require("express")
-const router = express.Router()
-const EmployerPersonalInfo = require("../models/employerPersonalInfo")
-const Config = require("../models/config")
-const { ObjectId } = require("mongodb")
-const { uploadFile } = require("../utils/s3upload")
-const {dispatchEmail} = require("../utils/email")
-router.post("/", async (req, res) => {
-    try {
-        var doc = new EmployerPersonalInfo()
-        doc.fullname = req.body.fullname
-        doc.phone = req.body.phone
-        doc.email = req.body.email
-        doc.occupation = req.body.occupation
-        doc.files = {
-            passport_copy: req.files.passport_copy.name || null,
-            visa_copy: req.files.visa_copy.name || null,
-            emirates_id: req.files.emirates_id.name || null,
-        }
-        await doc.validate()
-        if (req.files.passport_copy) {
-            let uploadedFile = await uploadFile(req.files.passport_copy)
-            doc.files.passport_copy = uploadedFile.Location
-        }
-        if (req.files.visa_copy) {
-            let uploadedFile = await uploadFile(req.files.visa_copy)
-            doc.files.visa_copy = uploadedFile.Location
-        }
-        if (req.files.emirates_id) {
-            let uploadedFile = await uploadFile(req.files.emirates_id)
-            doc.files.emirates_id = uploadedFile.Location
-        }
-        let info = await doc.save()
-        let emailbody = `
-            <!doctype html>
-            <html>
-            <body>
-                <p>Hi,</p>
-                <p>${info.fullname} has filled the Employer Personal Information form.</p>
-                <p>Please check the portal.</p>
-                <p>Thank You.</p>
-            </body>
-            </html>
-        `
-        let emailList = await Config.findOne({version:1},{websiteSenderEmailsList:1})
-        let email = await dispatchEmail(emailList.websiteSenderEmailsList, "Employer Personal Information", emailbody)
-        res.status(201).json({
-            status: "ok",
-            statusCode: 201,
-            message: "Information saved successfully.",
-            data: info
-        })
-    } catch (error) {
-        console.log("Error# ",error)
-        res.status(400).json({
-            status: "fail",
-            statusCode: 400,
-            message: "Unable to save information.",
-            error: error
-        })
-    }
-})
-router.get("/",async (req,res)=>{
-    let info = await EmployerPersonalInfo.find({})
-    res.status(200).json({
-        status: "ok",
-        statusCode: 200,
-        message: "Fetched Successfully.",
-        data: info
-    })
-})
-module.exports = router
-
-// config.js
-const express = require("express")
-const router = express.Router()
-const Config = require("../models/config")
-const { ObjectId } = require("mongodb")
-router.post("/set-website-sender-emails-list",async(req,res)=>{
-    try {
-        let config = await Config.findOneAndUpdate({ version: 1 }, { websiteSenderEmailsList: req.body.list }, { upsert: true, runValidators: true, new: true })
-        res.status(201).json({
-            status: "ok",
-            statusCode: 201,
-            message: "Config Set Successfully.",
-            data: config
-        })
-    } catch (error) {
-        res.status(201).json({
-            status: "fail",
-            statusCode: 201,
-            message: "Something went wrong.",
-            error: error
-        })
-    }
-})
-router.get("/get-all-config",async(req,res)=>{
-    try {
-        let config = await Config.findOne({ version: 1 })
-        res.status(201).json({
-            status: "ok",
-            statusCode: 201,
-            message: "Config Fetched Successfully.",
-            data: config
-        })
-    } catch (error) {
-        res.status(201).json({
-            status: "fail",
-            statusCode: 201,
-            message: "Something went wrong.",
-            error: error
-        })
-    }
-})
-module.exports = router
-
-
-// @/ [models folder]
-
-// getInTouch.js (models)
-const mongoose = require("mongoose")
-
-const getInTouchSchema = new mongoose.Schema({
-    fullname: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true,
-        validate: {
-            validator: function (v) {
-                return /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(v)
-            },
-            message: props => `${props.value} is not a valid email.`
-        },
-        required: [true, 'Email is required.']
-    },
-    phone: {
-        type: String,
-        required: [true, 'Phone Number is required.'],
-    },
-    urgent: {
-        type: String,
-    },
-    message: {
-        type: String,
-    }
-})
-module.exports = mongoose.model("get_in_touch", getInTouchSchema)
-
-// employerPersonalInformation.js (models)
-const mongoose = require("mongoose")
-const employerPersonalInfoSchema = new mongoose.Schema({
-    fullname: {
-        type: String,
-        required: true
-    },
-    phone: {
-        type: Number,
-        required: [true, 'Phone Number is required.'],
-        validate: {
-            validator: function (v) {
-                return /^\d{10}$/.test(v)
-            },
-            message: props => `${props.value} is not a valid phone number.`
-        }
-    },
-    email: {
-        type: String,
-        required: true,
-        validate: {
-            validator: function (v) {
-                return /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(v)
-            },
-            message: props => `${props.value} is not a valid email.`
-        },
-        required: [true, 'Email is required.']
-    },
-    occupation:{
-        type: String,
-        required: true
-    },
-    files: {
-        type: new mongoose.Schema({
-            passport_copy: {
-                type: String,
-                required: true
-            },
-            visa_copy: {
-                type: String,
-                required: true
-            },
-            emirates_id: {
-                type: String,
-                required: true
-            }
-        }, { _id: false })
-    },
-})
-module.exports = mongoose.model("Employer_Personal_Info",employerPersonalInfoSchema)
-
-// config.js (models)
-const mongoose = require("mongoose")
-const configSchema = new mongoose.Schema({
-    websiteSenderEmailsList:{
-        type: [String],
-    },
-    version: {
-        type: Number,
-        unique: true
-    }
-})
-module.exports = mongoose.model("Configs",configSchema)
-
-// @/ [ utils folder ]
-
-// email.js
-const { SESV2 } = require("aws-sdk");
-const AWS = require("aws-sdk")
-const ses = new AWS.SES({
-    accessKeyId: process.env.ACCESS_KEY,
-    secretAccessKey: process.env.SECRET_KEY_AWS,
-    region: "eu-central-1",
-})
-const dispatchEmail = async (emailArray,emailSubject,emailBody) => {
-    const params = {
-       Source: "donotreply@nathanhr.ae",
-        Destination: {
-            ToAddresses: emailArray,
-        },
-        Message: {
-            Body: {
-                Html: {
-                    Data: emailBody,
-                    Charset: "UTF-8",
-                }
-            },
-            Subject: {
-                Data: emailSubject,
-                Charset: "UTF-8",
-            }
-        },
-    };
-    
-    
-    let dispatchedEmail = await ses.sendEmail(params).promise();
-    return dispatchedEmail
-}
-module.exports = {
-    dispatchEmail
-}
-
-// s3upload.js
-const AWS = require("aws-sdk")
-const fs = require('fs')
-const s3 = new AWS.S3({
-    accessKeyId: process.env.ACCESS_KEY,
-    secretAccessKey: process.env.SECRET_KEY_AWS,
+// Event Emitter
+var eventEmitter = new events.EventEmitter();
+eventEmitter.on('scream', function() {
+    console.log('A scream is detected!');
 });
-const uploadFile = async function (file){
-    const fileStream = fs.createReadStream(file.tempFilePath);
-    const params = {
-        Bucket: process.env.BUCKET_NAME,
-        Key: `${Date.now()}_${file.name}`,
-        Body: fileStream,
-        ACL: 'public-read',
-        ContentType: file.mimetype,
-    };
-    let uploadedFile = await s3.upload(params).promise()
-    return uploadedFile
-}
-module.exports = {
-    uploadFile
-}
+eventEmitter.emit('scream');
+
+addListener()	Adds the specified listener
+defaultMaxListeners	Sets the maximum number of listeners allowed for one event. Default is 10
+emit()	Call all the listeners registered with the specified name
+eventNames()	Returns an array containing all registered events
+getMaxListeners()	Returns the maximum number of listeners allowed for one event
+listenerCount()	Returns the number of listeners with the specified name
+listeners()	Returns an array of listeners with the specified name
+on()	Adds the specified listener
+once()	Adds the specified listener once. When the specified listener has been executed, the listener is removed
+prependListener()	Adds the specified listener as the first event with the specified name
+prependOnceListener()	Adds the specified listener as the first event with the specified name, once. When the specified listener has been executed, the listener is removed
+removeAllListeners()	Removes all listeners with the specified name, or ALL listeners if no name is specified
+removeListener()	Removes the specified listener with the specified name
+setMaxListeners()	Sets the maximum number of listeners allowed for one event. Default is 10
+*/
+
+/* 5. HTTP : create http servers
+var http = require('http');
+
+const { log } = require('console');
+
+// Create a Server Object
+http.createServer(function (req, res) {
+  res.write('Hello World!'); // write a response to the client
+  res.end(); // end the response
+}).listen(4000); // the server object listens on port 4000
 
 
+
+/***************************************************************/
+// DataBase [ Connect - Create Shema - CRUD ]
+/***************************************************************/
+
+// # A: Connect to the Database (server.js/app.js)
+const mongoose = require('mongoose');
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+const db = mongoose.connection
+db.on('error', (error) => console.error(error))
+db.once('open', () => console.log('database connected'))
+
+// # B:  Create Database Schema (../models/usersModel.js)
+const mongoose = require('mongoose');
+const UsersSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: Number,
+    },
+    email: {
+        type: String,
+        unique: true,
+        required: [true, 'Email is required.'],
+        validate: [
+            {
+                validator: (value) => {  return value.length >= 5; },
+                message: 'Email must be at least 3 characters long.',
+            },
+            {
+                validator: (value) => { return /^[A-Za-z]+$/.test(value); },
+                message: 'Name must only contain letters.',
+            },
+        ]
+    }
+})
+module.exports = mongoose.model('users_schema', UsersSchema)
+
+// # C: Insert Data into DataBase (./routes/api/users.js)
+const express = require('express')
+const userModel = require('../models/userModel.js')
+const app = express()
+
+// GET all users
+app.get('/users', async (req, res) => {
+ let users = await userModel.find({})
+ res.status(201).json({
+  statusL: 'ok',
+  statusCode: 200,
+  message: 'Users Fetched Successfully',
+  data: users
+ })
+})
+
+// POST document
+app.post('/users', async (req, res) => {
+ try {
+  let email = await emailModel.create(body)
+  res.status(201).json({
+   status: "ok",
+   statusCode: 201,
+   message: "Information saved successfully.",
+   data: email
+  })
+ } catch (error) {
+  console.log(error)
+  res.status(400).json({
+   status: "fail",
+   statusCode: 400,
+   message: "Unable to save information.",
+   error: error
+  })
+ }
+})
+
+// edit document
+emailModel.findById('ID#948933', (error, document) => {
+ if (error) {
+  console.error(error);
+  return;
+ }
+ 
+ // add the new email
+ document.email = 'bushra.ebox@gmial.com';
+
+ // save the change
+ document.save((error) => {
+  if (error) {
+   console.error(error);
+  } else {
+   console.log('Document updated successfully')
+  }
+ });
+
+});
+
+// delete document 
+emailModel.findByIdAndRemove('ID#948933', (error, document) => {
+ if (error) {
+  console.error(error);
+  return;
+ }
+
+ if (document) {
+  console.log('Document deleted successfully');
+ } else {
+  console.log('Document not found');
+ }
+})
+
+// delete document 2
+emailModel.deleteOne({ email: 'test@gmail.com' }, (error) => {
+ if (error) {
+  console.error(error)
+ } else {
+  console.log('Document deleted successfully')
+ }
+})
+
+module.exports = router
